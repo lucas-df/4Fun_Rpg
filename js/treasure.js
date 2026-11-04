@@ -5,8 +5,15 @@ const TreasureDataModule = {
     generationType: null,
     resources: null,
 
+    // Civilizado: valor total (DO) = rolagem × VALOR_POR_ROLAGEM × dificuldade do covil
+    VALOR_POR_ROLAGEM: 50,
+    // Civilizado: a cada VALOR_POR_ITEM DO do valor total, um item de categoria aleatória
+    VALOR_POR_ITEM: 100,
+
+    // ===== Dados e interface =====
+
     /**
-     * Rol um número aleatório de 1 a 6, simulando um dado
+     * Rola um d6
      */
     rolarDado() {
         return Math.floor(Math.random() * 6) + 1;
@@ -28,13 +35,6 @@ const TreasureDataModule = {
     },
 
     /**
-     * Carrega os recursos do JSON
-     */
-    async carregarRecursos() {
-        return this.importarTabelaRecursos();
-    },
-
-    /**
      * Define o tipo de geração e atualiza a interface
      */
     setGenerationType(type) {
@@ -43,102 +43,153 @@ const TreasureDataModule = {
         document.querySelectorAll('#treasure .tab').forEach(tab => {
             tab.classList.remove('active');
         });
-        document.getElementById(type === 'civilizado' ? 'civilizadoTab' : 'selvagemTab').classList.add('active');
+        document.getElementById(`${type}Tab`).classList.add('active');
 
         const btn = document.getElementById('gerarTesouroBtn');
         if (btn) btn.disabled = false;
     },
 
     /**
-     * Gera um tesouro e exibe o resultado na interface
+     * Lê um campo numérico do formulário (mínimo 1)
+     */
+    lerNumero(id) {
+        return parseInt(document.getElementById(id).value) || 1;
+    },
+
+    /**
+     * Mostra as linhas no painel de resultado
+     */
+    exibirResultado(linhas) {
+        const resultDiv = document.getElementById('treasureResult');
+        resultDiv.innerHTML = linhas.join('<br> ');
+        resultDiv.style.display = 'block';
+    },
+
+    // ===== Auxiliares de geração =====
+
+    /**
+     * Nome exibido de uma categoria ou item (categorias usam "name" ou "desc", itens usam "desc")
+     */
+    nomeDe(entrada) {
+        return entrada.desc || entrada.name;
+    },
+
+    /**
+     * Retorna a tabela de categorias (categoryTables) pelo nome
+     */
+    categoriasDe(nome) {
+        return this.resources?.categoryTables?.[nome] || [];
+    },
+
+    /**
+     * Sorteia uma categoria da tabela pelo campo "roll"
+     */
+    sortearCategoria(categorias) {
+        const dado = this.rolarDado();
+        return categorias.find(c => c.roll === dado) || categorias[0];
+    },
+
+    /**
+     * Escolhe em itemTables o item correspondente à dificuldade do covil.
+     * Retorna null se a categoria não tem tabela de itens.
+     */
+    escolherItem(tabelaChave, dificuldade) {
+        const lista = this.resources?.itemTables?.[tabelaChave];
+        if (!lista?.length) return null;
+
+        const indice = Math.min(Math.max(dificuldade - 1, 0), lista.length - 1);
+        return lista[indice];
+    },
+
+    // ===== Geração =====
+
+    /**
+     * Gera um tesouro do tipo escolhido e exibe o resultado na interface
      */
     async gerar() {
-
         await this.importarTabelaRecursos();
 
-        let result = this.rolarDado();
-        const rolagens = [result];
-
-        if ((result === 6) && (this.generationType === 'selvagem')) {
-            const andar = parseInt(document.getElementById('covilAndar').value) || 1;
-
-
-            let dadosRolados = 1;
-            while (dadosRolados < andar) {
-                result = this.rolarDado();
-                dadosRolados++
-
-                rolagens.push(result)
-
-                if (result < 6) {
-                    break
-                }
-            }
-        }
-
-        let total = 0
-
-        for (var i in rolagens) {
-            total += rolagens[i];
-        }
-
-        const resultDiv = document.getElementById('treasureResult');
-
         if (this.generationType === 'civilizado') {
-            const civilizedResources = this.resources?.civilizedResources || [];
-            if (civilizedResources.length === 0) {
-                const diff = parseInt(document.getElementById('covilDificuldade').value) || 1;
-                resultDiv.innerHTML = `Rolagens: ${rolagens.join(' + ')}<br> Tesouro: ${total * 50 * diff} DO`;
-                resultDiv.style.display = 'block';
-                return;
-            }
-            const tipoDado = this.rolarDado();
-            const tipoIndice = tipoDado - 1;
-            const categoria = civilizedResources[tipoIndice >= 0 && tipoIndice < civilizedResources.length ? tipoIndice : 0];
-            const dificuldadeCovil = parseInt(document.getElementById('covilDificuldade').value) || 1;
-            let itemDesc = categoria.desc || categoria.name;
-            let precoUnitario = 0;
-            const tabelaChave = categoria.table;
-            if (tabelaChave && this.resources?.[tabelaChave]) {
-                const lista = this.resources[tabelaChave];
-                if (Array.isArray(lista) && lista.length > 0) {
-                    const idx = Math.min(Math.max(dificuldadeCovil - 1, 0), lista.length - 1);
-                    const item = lista[idx];
-                    itemDesc = item.desc || item.name || itemDesc;
-                    precoUnitario = item.value !== undefined ? item.value : (total * 50 * dificuldadeCovil);
-                } else {
-                    precoUnitario = total * 50 * dificuldadeCovil;
-                }
-            } else {
-                precoUnitario = total * 50 * dificuldadeCovil;
-            }
-            const precoTotal = precoUnitario * total;
-            resultDiv.innerHTML = `Rolagens: ${rolagens.join(' + ')}<br> Categoria: ${categoria.desc || categoria.name}<br> Item: ${itemDesc} x ${total}<br> Preço unitário: ${precoUnitario} PO<br> Preço total: ${precoTotal} PO`;
-        } else {
-            const naturalResources = this.resources?.naturalResources || [];
-            if (naturalResources.length === 0) {
-                resultDiv.innerHTML = `Rolagens: ${rolagens.join(' + ')}<br> Recursos selvagens: Nenhum recurso encontrado`;
-                resultDiv.style.display = 'block';
-                return;
-            }
-            const tipoDado = this.rolarDado();
-            const tipoIndice = tipoDado - 1;
-            const tipoRecurso = naturalResources[tipoIndice >= 0 && tipoIndice < naturalResources.length ? tipoIndice : 0];
-            const tipoChave = tipoRecurso.table;
-            const listaRecursos = this.resources?.[tipoChave] || [];
-            if (listaRecursos.length === 0) {
-                resultDiv.innerHTML = `Rolagens: ${rolagens.join(' + ')}<br> Tipo: ${tipoRecurso.name} (sem itens) x ${total}`;
-                resultDiv.style.display = 'block';
-                return;
-            }
-            const dificuldadeCovil = parseInt(document.getElementById('covilDificuldade').value) || 1;
-            const recursoIndice = Math.min(Math.max(dificuldadeCovil - 1, 0), listaRecursos.length - 1);
-            const recurso = listaRecursos[recursoIndice];
-            const precoUnitario = recurso.value !== undefined ? recurso.value : 0;
-            const precoTotal = precoUnitario * total;
-            resultDiv.innerHTML = `Rolagens: ${rolagens.join(' + ')}<br> Tipo: ${tipoRecurso.name}<br> Recurso: ${recurso.desc || recurso.name} x ${total}<br> Preço unitário: ${precoUnitario} DO<br> Preço total: ${precoTotal} DO`;
+            this.gerarCivilizado();
+        } else if (this.generationType === 'selvagem') {
+            this.gerarSelvagem();
+        }
+    },
+
+    /**
+     * Civilizado: a rolagem define o valor total. A cada VALOR_POR_ITEM DO desse valor,
+     * sorteia-se uma categoria de item. (Futuro: usar o valor para escolher itens específicos.)
+     */
+    gerarCivilizado() {
+        const categorias = this.categoriasDe('civilized');
+        if (categorias.length === 0) {
+            this.exibirResultado(['Nenhuma categoria encontrada']);
+            return;
         }
 
-        resultDiv.style.display = 'block';
+        const rolagem = this.rolarDado();
+        const valorTotal = rolagem * this.VALOR_POR_ROLAGEM * this.lerNumero('covilDificuldade');
+        const quantidadeItens = Math.floor(valorTotal / this.VALOR_POR_ITEM);
+
+        const linhas = [`Rolagem: ${rolagem}`, `Valor total: ${valorTotal} DO`];
+
+        if (quantidadeItens === 0) {
+            linhas.push(`Nenhum item (valor abaixo de ${this.VALOR_POR_ITEM} DO)`);
+            this.exibirResultado(linhas);
+            return;
+        }
+
+        const contagem = new Map();
+        for (let i = 0; i < quantidadeItens; i++) {
+            const categoria = this.sortearCategoria(categorias);
+            contagem.set(categoria, (contagem.get(categoria) || 0) + 1);
+        }
+
+        linhas.push(`Itens: ${quantidadeItens}`);
+        [...contagem]
+            .sort(([a], [b]) => a.roll - b.roll)
+            .forEach(([categoria, quantidade]) => {
+                linhas.push(`${this.nomeDe(categoria)} x ${quantidade}`);
+            });
+
+        this.exibirResultado(linhas);
+    },
+
+    /**
+     * Selvagem: a rolagem define a quantidade de recursos (cada 6 rola outro dado, limitado
+     * ao andar do covil). Uma categoria é sorteada e o recurso vem da dificuldade do covil.
+     */
+    gerarSelvagem() {
+        const categorias = this.categoriasDe('natural');
+        if (categorias.length === 0) {
+            this.exibirResultado(['Nenhuma categoria encontrada']);
+            return;
+        }
+
+        const andar = this.lerNumero('covilAndar');
+        const rolagens = [this.rolarDado()];
+        while (rolagens.length < andar && rolagens.at(-1) === 6) {
+            rolagens.push(this.rolarDado());
+        }
+        const quantidade = rolagens.reduce((soma, rolagem) => soma + rolagem, 0);
+
+        const categoria = this.sortearCategoria(categorias);
+        const recurso = this.escolherItem(categoria.table, this.lerNumero('covilDificuldade'));
+
+        const linhas = [
+            `Rolagens: ${rolagens.join(' + ')}`,
+            `Tipo: ${this.nomeDe(categoria)}${recurso ? '' : ` (sem itens) x ${quantidade}`}`
+        ];
+
+        if (recurso) {
+            const precoUnitario = recurso.value ?? 0;
+            linhas.push(
+                `Recurso: ${this.nomeDe(recurso)} x ${quantidade}`,
+                `Preço unitário: ${precoUnitario} DO`,
+                `Preço total: ${precoUnitario * quantidade} DO`
+            );
+        }
+
+        this.exibirResultado(linhas);
     }
 };
