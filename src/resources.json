@@ -1,6 +1,6 @@
 {   "naturalResources": [
         {
-            "name": "Recursos Medicinais",
+            "name": "Recurso Medicinal",
             "value": "medicinalResources"
         },
         {
@@ -16,11 +16,11 @@
             "value": "foodResources"
         },
         {
-            "name": "Espólios Mundanos",
+            "name": "Item Mundano",
             "value": "loot"
         },
         {
-            "name": "Recursos Ùnico",
+            "name": "Recurso Ùnicos",
             "value": "uniqueResources"
         }
     ],
@@ -79,7 +79,7 @@
         },
         {
             "name": "stormBottle",
-            "desc": "Tempesatade Engarrafada",
+            "desc": "Tempestade Engarrafada",
             "value": 100
         },
         {
