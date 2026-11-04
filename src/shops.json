@@ -1,0 +1,32 @@
+[
+  {
+    "type": "Mercador",
+    "sells": "Rações, Suprimentos e Itens Mundanos.",
+    "buys": "Paga o dobro do valor por Iguarias Comestíveis."
+  },
+  {
+    "type": "Curandeiro",
+    "sells": "Suprimentos Medicinais.",
+    "buys": "Paga o dobro do valor por Recursos Medicinais."
+  },
+  {
+    "type": "Loja Mágica",
+    "sells": "Suprimentos Mágicos.",
+    "buys": "Paga o dobro do valor por Materiais Mágicos."
+  },
+  {
+    "type": "Colecionador",
+    "sells": null,
+    "buys": "Paga o dobro do valor por Obras de Arte."
+  },
+  {
+    "type": "Armeiro",
+    "sells": "Armas e Kits de Reparo",
+    "buys": "Paga o dobro do valor por Equipamentos."
+  },
+  {
+    "type": "Loja para Aventureiros",
+    "sells": "Todos os equipamentos e Itens Mundanos e Especiais",
+    "buys": "Compra qualquer item."
+  }
+]
