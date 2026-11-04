@@ -1,0 +1,123 @@
+{   "naturalResources": [
+        {
+            "name": "Recursos Medicinais",
+            "value": "medicinalResources"
+        },
+        {
+            "name": "Minério Mítico",
+            "value": "mineralResources"
+        },
+        {
+            "name": "Material Mágico",
+            "value": "magicResources"
+        },
+        {
+            "name": "Iguaria Comestível",
+            "value": "foodResources"
+        },
+        {
+            "name": "Espólios Mundanos",
+            "value": "loot"
+        },
+        {
+            "name": "Recursos Ùnico",
+            "value": "uniqueResources"
+        }
+    ],
+    "medicinalResources": [
+        {
+            "name": "smallHerb",
+            "desc": "Erva Pequenina",
+            "value": 1,
+            "craft": "Erva-de-Fumo dos Pequenos"
+        },
+        {
+            "name": "greenSalt",
+            "desc": "Sais-verdes da Maresia",
+            "value": 10,
+            "craft": "Poção da Força do Marinheiro"
+        },
+        {
+            "name": "seraphBlood",
+            "desc": "Sangue de Serafim",
+            "value": 100,
+            "craft": "Poção da Vida"
+        }
+    ],
+    "mineralResources": [
+        {
+            "name": "coldIron",
+            "desc": "Ferro Frio",
+            "value": 1
+        },
+        {
+            "name": "thunderStone",
+            "desc": "Pedra-Trovão",
+            "value": 10
+        },
+        {
+            "name": "infernalSteel",
+            "desc": "Aço Infernal",
+            "value": 100
+        },
+        {
+            "name": "mithril",
+            "desc": "Mithril",
+            "value": 10000
+        }
+    ],
+    "magicResources": [
+        {
+            "name": "carbCrystal",
+            "desc": "Cristal de Carbúnculo",
+            "value": 1
+        },
+        {
+            "name": "shadowSilk",
+            "desc": "Seda Umbral",
+            "value": 10
+        },
+        {
+            "name": "stormBottle",
+            "desc": "Tempesatade Engarrafada",
+            "value": 100
+        },
+        {
+            "name": "cosmicCristal",
+            "desc": "Cristal Cósmico",
+            "value": 10000
+        }
+    ],
+    "foodResources": [
+        {
+            "name": "ogreTruffle",
+            "desc": "Trufa Estômago-de-Ogro",
+            "value": 1,
+            "effect": "Você não sente fome ou sede."
+        },
+        {
+            "name": "eyeBerry",
+            "desc": "Frutóculos",
+            "value": 10,
+            "effect": "Você não sente sono e não pode ser emboscado."
+        },
+        {
+            "name": "witchMushroom",
+            "desc": "Congumelo Chapéu-de-Bruxa",
+            "value": 100,
+            "effect": "Você ignora a próxima condição mágica imposta a você."
+        },
+        {
+            "name": "ambrosiaHoney",
+            "desc": "Mel de Ambrósia",
+            "value": 1000,
+            "effect": "Você tem duas Vidas Extras."
+        },
+        {
+            "name": "magicFish",
+            "desc": "Magicarpa",
+            "value": 10000,
+            "effect": "???"
+        }
+    ]
+}
