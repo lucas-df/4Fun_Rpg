@@ -1,27 +1,59 @@
 {   "naturalResources": [
         {
             "name": "Recurso Medicinal",
-            "value": "medicinalResources"
+            "table": "medicinalResources"
         },
         {
             "name": "Minério Mítico",
-            "value": "mineralResources"
+            "table": "mineralResources"
         },
         {
             "name": "Material Mágico",
-            "value": "magicResources"
+            "table": "magicResources"
         },
         {
             "name": "Iguaria Comestível",
-            "value": "foodResources"
+            "table": "foodResources"
         },
         {
             "name": "Item Mundano",
-            "value": "loot"
+            "table": "loot"
         },
         {
-            "name": "Recurso Ùnicos",
-            "value": "uniqueResources"
+            "name": "Recurso Único",
+            "table": "uniqueResources"
+        }
+    ],
+    "civilizedResources": [
+        {
+            "roll": 1,
+            "table": "treasureArt",
+            "desc": "Tesouro/Obra de Arte"
+        },
+        {
+            "roll": 2,
+            "table": "supplies",
+            "desc": "Suprimento"
+        },
+        {
+            "roll": 3,
+            "table": "brokenEquipment",
+            "desc": "Equipamento (Quebrado)"
+        },
+        {
+            "roll": 4,
+            "table": "equipment",
+            "desc": "Equipamento"
+        },
+        {
+            "roll": 5,
+            "table": "naturalResource",
+            "desc": "Recurso Natural"
+        },
+        {
+            "roll": 6,
+            "table": "specialItem",
+            "desc": "Item Especial"
         }
     ],
     "medicinalResources": [
@@ -79,7 +111,7 @@
         },
         {
             "name": "stormBottle",
-            "desc": "Tempestade Engarrafada",
+            "desc": "Tempesatade Engarrafada",
             "value": 100
         },
         {
@@ -118,6 +150,60 @@
             "desc": "Magicarpa",
             "value": 10000,
             "effect": "???"
+        }
+    ],
+    "goldResources": [
+        {
+            "name": "coin",
+            "desc": "Uma moeda",
+            "value": 1
+        },
+        {
+            "name": "handfulOfCoins",
+            "desc": "Punhado de moedas",
+            "value": 10
+        },
+        {
+            "name": "bagOfCoins",
+            "desc": "Saco de moedas",
+            "value": 100
+        },
+        {
+            "name": "chestOfCoins",
+            "desc": "Baú de Moedas",
+            "value": 1000
+        },
+        {
+            "name": "vaultOfGoldBars",
+            "desc": "Cofre com barras D'Ouro",
+            "value": 10000
+        }
+    ],
+    "valuableResources": [
+        {
+            "name": "ivoryGraniteQuartz",
+            "desc": "Marfim, Granito ou Quartzo",
+            "value": 1
+        },
+        {
+            "name": "silverSilkAmethyst",
+            "desc": "Prata, Seda ou Ametista",
+            "value": 10
+        },
+        {
+            "name": "goldPearlsRuby",
+            "desc": "Ouro, Pérolas ou Rubi",
+            "value": 100
+        },
+        {
+            "name": "platinumSapphire",
+            "desc": "Platina ou Safira",
+            "value": 1000
+        },
+        {
+            "name": "jadeObsidianDiamond",
+            "desc": "Jade, Obsidiana ou Diamante",
+            "value": 10000
         }
     ]
 }

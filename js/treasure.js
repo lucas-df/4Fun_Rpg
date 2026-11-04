@@ -85,8 +85,35 @@ const TreasureDataModule = {
         const resultDiv = document.getElementById('treasureResult');
 
         if (this.generationType === 'civilizado') {
-            const diff = parseInt(document.getElementById('covilDificuldade').value) || 1;
-            resultDiv.innerHTML = `Tesouro: ${total * 50 * diff} DO`;
+            const civilizedResources = this.resources?.civilizedResources || [];
+            if (civilizedResources.length === 0) {
+                const diff = parseInt(document.getElementById('covilDificuldade').value) || 1;
+                resultDiv.innerHTML = `Rolagens: ${rolagens.join(' + ')}<br> Tesouro: ${total * 50 * diff} DO`;
+                resultDiv.style.display = 'block';
+                return;
+            }
+            const tipoDado = this.rolarDado();
+            const tipoIndice = tipoDado - 1;
+            const categoria = civilizedResources[tipoIndice >= 0 && tipoIndice < civilizedResources.length ? tipoIndice : 0];
+            const dificuldadeCovil = parseInt(document.getElementById('covilDificuldade').value) || 1;
+            let itemDesc = categoria.desc || categoria.name;
+            let precoUnitario = 0;
+            const tabelaChave = categoria.table;
+            if (tabelaChave && this.resources?.[tabelaChave]) {
+                const lista = this.resources[tabelaChave];
+                if (Array.isArray(lista) && lista.length > 0) {
+                    const idx = Math.min(Math.max(dificuldadeCovil - 1, 0), lista.length - 1);
+                    const item = lista[idx];
+                    itemDesc = item.desc || item.name || itemDesc;
+                    precoUnitario = item.value !== undefined ? item.value : (total * 50 * dificuldadeCovil);
+                } else {
+                    precoUnitario = total * 50 * dificuldadeCovil;
+                }
+            } else {
+                precoUnitario = total * 50 * dificuldadeCovil;
+            }
+            const precoTotal = precoUnitario * total;
+            resultDiv.innerHTML = `Rolagens: ${rolagens.join(' + ')}<br> Categoria: ${categoria.desc || categoria.name}<br> Item: ${itemDesc} x ${total}<br> Preço unitário: ${precoUnitario} PO<br> Preço total: ${precoTotal} PO`;
         } else {
             const naturalResources = this.resources?.naturalResources || [];
             if (naturalResources.length === 0) {
@@ -97,7 +124,7 @@ const TreasureDataModule = {
             const tipoDado = this.rolarDado();
             const tipoIndice = tipoDado - 1;
             const tipoRecurso = naturalResources[tipoIndice >= 0 && tipoIndice < naturalResources.length ? tipoIndice : 0];
-            const tipoChave = tipoRecurso.value;
+            const tipoChave = tipoRecurso.table;
             const listaRecursos = this.resources?.[tipoChave] || [];
             if (listaRecursos.length === 0) {
                 resultDiv.innerHTML = `Rolagens: ${rolagens.join(' + ')}<br> Tipo: ${tipoRecurso.name} (sem itens) x ${total}`;
