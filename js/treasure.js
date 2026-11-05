@@ -65,40 +65,90 @@ const TreasureDataModule = {
         resultDiv.style.display = 'block';
     },
 
-    // ===== Auxiliares de geração =====
+    // ===== Tabelas =====
 
     /**
-     * Nome exibido de uma categoria ou item (categorias usam "name" ou "desc", itens usam "desc")
+     * Nome exibido de uma entrada (entradas usam "name" ou "desc")
      */
     nomeDe(entrada) {
         return entrada.desc || entrada.name;
     },
 
     /**
-     * Retorna a tabela de categorias (categoryTables) pelo nome
+     * Retorna a tabela do JSON pelo nome (null se não existir)
      */
-    categoriasDe(nome) {
-        return this.resources?.categoryTables?.[nome] || [];
+    buscarTabela(nome) {
+        return this.resources?.find(tabela => tabela.name === nome) || null;
     },
 
     /**
-     * Sorteia uma categoria da tabela pelo campo "roll"
+     * Sorteia uma entrada da lista, todas com a mesma chance
      */
-    sortearCategoria(categorias) {
-        const dado = this.rolarDado();
-        return categorias.find(c => c.roll === dado) || categorias[0];
+    sortearAleatorio(entradas) {
+        return entradas[Math.floor(Math.random() * entradas.length)];
     },
 
     /**
-     * Escolhe em itemTables o item correspondente à dificuldade do covil.
-     * Retorna null se a categoria não tem tabela de itens.
+     * Sorteia uma entrada da lista com chances proporcionais ao campo "weight"
+     * (entradas sem "weight" têm peso 1)
      */
-    escolherItem(tabelaChave, dificuldade) {
-        const lista = this.resources?.itemTables?.[tabelaChave];
-        if (!lista?.length) return null;
+    sortearPonderado(entradas) {
+        const pesoDe = entrada => entrada.weight ?? 1;
+        const pesoTotal = entradas.reduce((soma, entrada) => soma + pesoDe(entrada), 0);
 
-        const indice = Math.min(Math.max(dificuldade - 1, 0), lista.length - 1);
-        return lista[indice];
+        let alvo = Math.random() * pesoTotal;
+        for (const entrada of entradas) {
+            alvo -= pesoDe(entrada);
+            if (alvo < 0) return entrada;
+        }
+        return entradas.at(-1);
+    },
+
+    /**
+     * Escolhe a entrada da tabela correspondente à dificuldade do covil
+     */
+    escolherPorDificuldade(tabela, dificuldade) {
+        const indice = Math.min(Math.max(dificuldade - 1, 0), tabela.length - 1);
+        return tabela[indice];
+    },
+
+    /**
+     * Escolhe uma entrada da tabela conforme o seu campo "selection":
+     * "random" sorteia com chances iguais; "weightedRandom" sorteia conforme o "weight"
+     * de cada entrada; "difficulty" segue a dificuldade do covil.
+     */
+    escolherEntrada(tabela, dificuldade) {
+        switch (tabela.selection) {
+            case 'random':
+                return this.sortearAleatorio(tabela.entries);
+            case 'weightedRandom':
+                return this.sortearPonderado(tabela.entries);
+            case 'difficulty':
+                return this.escolherPorDificuldade(tabela.entries, dificuldade);
+            default:
+                throw new Error(`Seleção desconhecida "${tabela.selection}" na tabela "${tabela.name}"`);
+        }
+    },
+
+    /**
+     * Se a entrada tem o campo "table", escolhe uma entrada nessa tabela e repete o processo
+     * com a nova entrada. Retorna a cadeia completa, da entrada inicial até a última.
+     * Para se a tabela não existe ou se um ciclo é detectado.
+     */
+    resolverCadeia(entrada, dificuldade) {
+        const cadeia = [entrada];
+        const visitadas = new Set();
+
+        while (entrada.table && !visitadas.has(entrada.table)) {
+            visitadas.add(entrada.table);
+
+            const tabela = this.buscarTabela(entrada.table);
+            if (!tabela?.entries.length) break;
+
+            entrada = this.escolherEntrada(tabela, dificuldade);
+            cadeia.push(entrada);
+        }
+        return cadeia;
     },
 
     // ===== Geração =====
@@ -118,17 +168,19 @@ const TreasureDataModule = {
 
     /**
      * Civilizado: a rolagem define o valor total. A cada VALOR_POR_ITEM DO desse valor,
-     * sorteia-se uma categoria de item. (Futuro: usar o valor para escolher itens específicos.)
+     * sorteia-se uma categoria de item. (Futuro: usar o valor para escolher itens específicos
+     * a partir da categoria, seguindo o campo "table" com resolverCadeia.)
      */
     gerarCivilizado() {
-        const categorias = this.categoriasDe('civilized');
-        if (categorias.length === 0) {
+        const tabela = this.buscarTabela('civilized');
+        if (!tabela?.entries.length) {
             this.exibirResultado(['Nenhuma categoria encontrada']);
             return;
         }
 
+        const dificuldade = this.lerNumero('covilDificuldade');
         const rolagem = this.rolarDado();
-        const valorTotal = rolagem * this.VALOR_POR_ROLAGEM * this.lerNumero('covilDificuldade');
+        const valorTotal = rolagem * this.VALOR_POR_ROLAGEM * dificuldade;
         const quantidadeItens = Math.floor(valorTotal / this.VALOR_POR_ITEM);
 
         const linhas = [`Rolagem: ${rolagem}`, `Valor total: ${valorTotal} DO`];
@@ -141,13 +193,13 @@ const TreasureDataModule = {
 
         const contagem = new Map();
         for (let i = 0; i < quantidadeItens; i++) {
-            const categoria = this.sortearCategoria(categorias);
+            const categoria = this.escolherEntrada(tabela, dificuldade);
             contagem.set(categoria, (contagem.get(categoria) || 0) + 1);
         }
 
         linhas.push(`Itens: ${quantidadeItens}`);
         [...contagem]
-            .sort(([a], [b]) => a.roll - b.roll)
+            .sort(([a], [b]) => tabela.entries.indexOf(a) - tabela.entries.indexOf(b))
             .forEach(([categoria, quantidade]) => {
                 linhas.push(`${this.nomeDe(categoria)} x ${quantidade}`);
             });
@@ -160,12 +212,13 @@ const TreasureDataModule = {
      * ao andar do covil). Uma categoria é sorteada e o recurso vem da dificuldade do covil.
      */
     gerarSelvagem() {
-        const categorias = this.categoriasDe('natural');
-        if (categorias.length === 0) {
+        const tabela = this.buscarTabela('natural');
+        if (!tabela?.entries.length) {
             this.exibirResultado(['Nenhuma categoria encontrada']);
             return;
         }
 
+        const dificuldade = this.lerNumero('covilDificuldade');
         const andar = this.lerNumero('covilAndar');
         const rolagens = [this.rolarDado()];
         while (rolagens.length < andar && rolagens.at(-1) === 6) {
@@ -173,8 +226,9 @@ const TreasureDataModule = {
         }
         const quantidade = rolagens.reduce((soma, rolagem) => soma + rolagem, 0);
 
-        const categoria = this.sortearCategoria(categorias);
-        const recurso = this.escolherItem(categoria.table, this.lerNumero('covilDificuldade'));
+        const categoria = this.escolherEntrada(tabela, dificuldade);
+        const cadeia = this.resolverCadeia(categoria, dificuldade);
+        const recurso = cadeia.length > 1 ? cadeia.at(-1) : null;
 
         const linhas = [
             `Rolagens: ${rolagens.join(' + ')}`,

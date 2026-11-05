@@ -1,72 +1,156 @@
-{
-    "categoryTables": {
-        "natural": [
+[
+    {
+        "name": "natural",
+        "selection": "random",
+        "entries": [
             {
-                "roll": 1,
                 "name": "Recurso Medicinal",
                 "table": "medicinalResources"
             },
             {
-                "roll": 2,
                 "name": "Minério Mítico",
                 "table": "mineralResources"
             },
             {
-                "roll": 3,
                 "name": "Material Mágico",
                 "table": "magicResources"
             },
             {
-                "roll": 4,
                 "name": "Iguaria Comestível",
                 "table": "foodResources"
             },
             {
-                "roll": 5,
                 "name": "Item Mundano",
                 "table": "loot"
             },
             {
-                "roll": 6,
                 "name": "Recurso Único",
                 "table": "uniqueResources"
             }
-        ],
-        "civilized": [
+        ]
+    },
+    {
+        "name": "civilized",
+        "selection": "random",
+        "entries": [
             {
-                "roll": 1,
                 "table": "goldResources",
                 "desc": "Tesouro: Ouro"
             },
             {
-                "roll": 2,
                 "table": "artResources",
                 "desc": "Tesouro: Obra de Arte"
             },
             {
-                "roll": 3,
                 "table": "supplies",
                 "desc": "Suprimento"
             },
             {
-                "roll": 4,
                 "table": "equipment",
                 "desc": "Equipamento (Quebrado)"
             },
             {
-                "roll": 5,
                 "table": "naturalResource",
                 "desc": "Recurso Natural"
             },
             {
-                "roll": 6,
                 "table": "specialItem",
                 "desc": "Item Especial"
             }
         ]
     },
-    "itemTables": {
-        "medicinalResources": [
+    {
+        "name": "supplies",
+        "selection": "random",
+        "entries": [
+            {
+                "desc": "Ração"
+            },
+            {
+                "desc": "Kit de Reparo"
+            },
+            {
+                "desc": "Consumível",
+                "table": "consumables"
+            },
+            {
+                "desc": "Pacote de Flechas/Setas"
+            },
+            {
+                "desc": "Suprimentos Médicos"
+            },
+            {
+                "desc": "Suprimentos Mágicos",
+                "table": "magicSupplies"
+            }
+        ]
+    },
+    {
+        "name": "consumables",
+        "selection": "random",
+        "entries": [
+            {
+                "desc": "Poção da Força do Marinheiro"
+            },
+            {
+                "desc": "Erva-de-fumo dos Pequenos"
+            },
+            {
+                "desc": "Bomba de Fumaça"
+            },
+            {
+                "desc": "Bomba Incendiária"
+            },
+            {
+                "desc": "Toxina"
+            },
+            {
+                "desc": "Veneno"
+            }
+        ]
+    },
+    {
+        "name": "magicSupplies",
+        "selection": "weightedRandom",
+        "entries": [
+            {
+                "desc": "Cristal Mágico",
+                "weight": 4
+            },
+            {
+                "desc": "Runa Mágica"
+            },
+            {
+                "desc": "Relíquia Sagrada"
+            }
+        ]
+    },
+    {
+        "name": "equipment",
+        "selection": "weightedRandom",
+        "entries": [
+            {
+                "desc": "Escudo"
+            },
+            {
+                "desc": "Armadura"
+            },
+            {
+                "desc": "Arma 1 Mão",
+                "weight": 2
+            },
+            {
+                "desc": "Arma 2 Mãos"
+            },
+            {
+                "desc": "Equipamento Intacto"
+            }
+        ]
+    },
+    {
+        "name": "medicinalResources",
+        "selection": "difficulty",
+        "entries": [
             {
                 "name": "smallHerb",
                 "desc": "Erva Pequenina",
@@ -85,8 +169,12 @@
                 "value": 100,
                 "craft": "Poção da Vida"
             }
-        ],
-        "mineralResources": [
+        ]
+    },
+    {
+        "name": "mineralResources",
+        "selection": "difficulty",
+        "entries": [
             {
                 "name": "coldIron",
                 "desc": "Ferro Frio",
@@ -107,8 +195,12 @@
                 "desc": "Mithril",
                 "value": 10000
             }
-        ],
-        "magicResources": [
+        ]
+    },
+    {
+        "name": "magicResources",
+        "selection": "difficulty",
+        "entries": [
             {
                 "name": "carbCrystal",
                 "desc": "Cristal de Carbúnculo",
@@ -129,8 +221,12 @@
                 "desc": "Cristal Cósmico",
                 "value": 10000
             }
-        ],
-        "foodResources": [
+        ]
+    },
+    {
+        "name": "foodResources",
+        "selection": "difficulty",
+        "entries": [
             {
                 "name": "ogreTruffle",
                 "desc": "Trufa Estômago-de-Ogro",
@@ -161,8 +257,12 @@
                 "value": 10000,
                 "effect": "???"
             }
-        ],
-        "goldResources": [
+        ]
+    },
+    {
+        "name": "goldResources",
+        "selection": "difficulty",
+        "entries": [
             {
                 "name": "coin",
                 "desc": "Uma moeda",
@@ -188,8 +288,12 @@
                 "desc": "Cofre com barras D'Ouro",
                 "value": 10000
             }
-        ],
-        "artResources": [
+        ]
+    },
+    {
+        "name": "artResources",
+        "selection": "difficulty",
+        "entries": [
             {
                 "name": "ivoryGraniteQuartz",
                 "desc": "Marfim, Granito ou Quartzo",
@@ -217,4 +321,4 @@
             }
         ]
     }
-}
+]
