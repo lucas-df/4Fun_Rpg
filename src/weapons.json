@@ -1,0 +1,152 @@
+[
+  {
+    "id": "1hWeapons",
+    "list": [
+      {
+        "desc": "Adaga",
+        "value": 10,
+        "skillName": "Degolar",
+        "skillEffect": "Se você emboscar um inimigo antes que ele tenha sua ação em combate, ou consiga atacá-lo sem que ele note sua presença, você pode acertar automaticamente.",
+        "tags": ["1M"]
+      },
+      {
+        "desc": "Adaga de Duelista",
+        "value": 25,
+        "skillName": "Revidar",
+        "skillEffect": "Após uma Defesa ⛨ bem sucedida, você pode desequilibrar o inimigo para um contra-ataque, deixando-o Vulnerável.",
+        "tags": ["1M"]
+      },
+      {
+        "desc": "Rapieira",
+        "value": 50,
+        "skillName": "Perfurar",
+        "skillEffect": "Você pode atacar inimigos no ponto crítico, rolando um Dado Extra 🎲 para cada Acerto Crítico ❕.",
+        "tags": ["1M"]
+      },
+      {
+        "desc": "Espada Longa",
+        "value": 50,
+        "skillName": "Aparar",
+        "skillEffect": "Quando você é atacado, você pode rolar Agilidade no teste de Defesa ⛨.",
+        "tags": ["1M"]
+      },
+      {
+        "desc": "Adaga de Arremesso",
+        "value": 15,
+        "skillName": "Arremessar",
+        "skillEffect": "Você pode sacar esta arma fazendo um único Ataque ⚔ com Alcance ⌾ 2 para arremessá-la.",
+        "tags": ["1M"]
+      },
+      {
+        "desc": "Machado",
+        "value": 25,
+        "skillName": "Brutalizar",
+        "skillEffect": "Após uma rolagem de Ataque ⚔ com esta arma, você pode escolher rolar novamente cada Erro Crítico ❌.",
+        "tags": ["1M"]
+      },
+      {
+        "desc": "Lança Curta",
+        "value": 25,
+        "skillName": "Lançar",
+        "skillEffect": "Você pode arremessar essa arma e fazer um único Ataque ⚔ com Alcance ⌾ 3.",
+        "tags": ["1M"]
+      },
+      {
+        "desc": "Lâmina Serrada",
+        "value": 25,
+        "skillName": "Rasgar",
+        "skillEffect": "Alvos acertados por seu Ataque ⚔ são incapazes de recuperar Vida ou Vida Extra até o fim da próxima rodada.",
+        "tags": ["1M"]
+      },
+      {
+        "desc": "Porrete",
+        "value": 10,
+        "skillName": "Atordoar",
+        "skillEffect": "Alvos acertados por seu Ataque ⚔ ficam Atordoados 💫.",
+        "tags": ["1M"]
+      },
+      {
+        "desc": "Martelo",
+        "value": 25,
+        "skillName": "Impactar",
+        "skillEffect": "Quando um inimigo nega o dano do seu Ataque ⚔, você atinge o oponente com maior impacto, causando duas ocorrências de dano.",
+        "tags": ["1M"]
+      }
+    ]
+  },
+  {
+    "id": "2hWeapons",
+    "list": [
+      {
+        "desc": "Bastão",
+        "value": 25,
+        "skillName": "Afastar",
+        "skillEffect": "Após um Ataque ⚔, você se Move para a linha de Fundo.",
+        "tags": ["2M"]
+      },
+      {
+        "desc": "Machado Grande",
+        "value": 50,
+        "skillName": "Trespassar",
+        "skillEffect": "Ao acertar um inimigo, você usa a mesma rolagem para Atacar ⚔ outro Inimigo na mesma linha.",
+        "tags": ["2M"]
+      },
+      {
+        "desc": "Espadão",
+        "value": 75,
+        "skillName": "Retaliar",
+        "skillEffect": "Após uma Defesa ⛨, você imediatamente faz um Ataque ⚔.",
+        "tags": ["2M"]
+      },
+      {
+        "desc": "Katana",
+        "value": 100,
+        "skillName": "Retalhar",
+        "skillEffect": "Enquanto estiver afiada, você rola um Dado Extra 🎲 para cada Acerto Crítico ❕ em seus Ataques ⚔. Esta arma exótica exige técnica e precisão nos cortes: seus Ataques ⚔ tem CA -1 e o fio delicado desta arma é danificado se você errar um Ataque ⚔.",
+        "tags": ["2M"]
+      },
+      {
+        "desc": "Malho",
+        "value": 100,
+        "skillName": "Empurrar",
+        "skillEffect": "Alvos acertados por seu Ataque ⚔ são empurrados, sendo movidos para a linha de Fundo.",
+        "tags": ["2M"]
+      },
+      {
+        "desc": "Picareta de Guerra",
+        "value": 75,
+        "skillName": "Penetrar",
+        "skillEffect": "Quando inimigos negam o dano do seu Ataque ⚔, você ignora esse efeito.",
+        "tags": ["2M"]
+      },
+      {
+        "desc": "Alabarda",
+        "value": 100,
+        "skillName": "Dizimar",
+        "skillEffect": "Você pode fazer um Ataque ⚔ contra todos os inimigos em uma linha ao mesmo tempo. Você faz um único Ataque ⚔ contra o oponente de maior Defesa ⛨ na linha. Se acertar, este ataque acerta também todos os outros inimigos na linha.",
+        "tags": ["2M"]
+      },
+      {
+        "desc": "Lança Longa",
+        "value": 50,
+        "skillName": "Empalar",
+        "skillEffect": "Você faz um Ataque ⚔ com Alcance ⌾ 3.",
+        "tags": ["2M"]
+      },
+      {
+        "desc": "Arco",
+        "value": 25,
+        "skillName": "Disparar",
+        "skillEffect": "Você pode fazer Ataques ⚔ com Alcance ⌾ 3 enquanto tiver Flechas. Você não pode alvejar inimigos que estejam em uma posição adjacente a você. Flechas precisam ser certeiras para infligir golpes letais, por isso, rolagens de Ataque ⚔ desta arma tem CA -1.",
+        "tags": ["2M", "Recurso"]
+      },
+      {
+        "desc": "Besta",
+        "value": 50,
+        "skillName": "Cravar",
+        "skillEffect": "Você pode fazer Ataques ⚔ com Alcance ⌾ 3 enquanto tiver Setas. Você não pode alvejar inimigos que estejam em uma posição adjacente a você. Bestas precisam ser recarregadas com uma Reação após cada Ataques ⚔.",
+        "tags": ["2M", "Recurso"]
+      }
+    ]
+  }
+]
