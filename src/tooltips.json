@@ -1,0 +1,177 @@
+[
+    {
+        "id": "immobilized",
+        "name": "Imobilizado",
+        "icon": "✕",
+        "description": "A criatura não pode se Mover ↪."
+    },
+    {
+        "id": "isolated",
+        "name": "Isolado",
+        "icon": "◻",
+        "description": "A criatura foi separada do resto do campo e não pode afetar ou alvejar outras criaturas, nem ser alvejada ou afetada por elas."
+    },
+    {
+        "id": "bleeding",
+        "name": "Sangrando",
+        "icon": "🩸",
+        "description": "A criatura está perdendo muito sangue. Ao final de seu turno receberá dano, e este dano não pode ser negado. A condição é encerrada consumindo Suprimentos Médicos."
+    },
+    {
+        "id": "exhausted",
+        "name": "Exausto",
+        "icon": "💧",
+        "description": "A criatura faz todos os testes com CA -1 até fazer um Descanso. Essa condição é cumulativa."
+    },
+    {
+        "id": "burning",
+        "name": "Incendiado",
+        "icon": "🔥",
+        "description": "A criatura está envolta em chamas. A criatura ou um de seus aliados adjacentes pode usar sua ação para apagar as chamas e encerrar essa condição. Enquanto as chamas não forem apagadas, a criatura recebe dano ao final de seu turno."
+    },
+    {
+        "id": "frozen",
+        "name": "Congelado",
+        "icon": "❄",
+        "description": "A criatura está coberta por uma fina camada de gelo. Não pode usar reações ou se Mover ↪."
+    },
+    {
+        "id": "vulnerable",
+        "name": "Vulnerável",
+        "description": "Ataques ⚔ contra a criatura tem CA +1. A criatura tem CA -1 nas rolagens de Defesa ⛨."
+    },
+    {
+        "id": "poisoned",
+        "name": "Envenenado",
+        "icon": "☠",
+        "description": "Um veneno letal está afetando a criatura. No início de cada um de seus turnos, ela deve rolar Espírito com DIF igual a potência da toxina. Caso falhe, recebe dano. A condição é encerrada quando a criatura passa nesse teste, ou usa Suprimentos Médicos."
+    },
+    {
+        "id": "intoxicated",
+        "name": "Intoxicado",
+        "icon": "☠",
+        "description": "Uma substância tóxica está afetando os sentidos da criatura. No início de cada um de seus turnos, ela deve rolar Espírito com DIF igual a potência da toxina. Caso falhe, todos os testes da criatura tem CA -1. A condição é encerrada quando a criatura passa nesse teste, ou usa Suprimentos Médicos."
+    },
+    {
+        "id": "wounded",
+        "name": "Ferido",
+        "description": "A criatura tem CA -1 nas rolagens e se for ferida novamente, recebe dano. A condição é encerrada usando Suprimentos Médicos ou após dormir por 8 horas."
+    },
+    {
+        "id": "unconscious",
+        "name": "Inconsciente",
+        "icon": "💤",
+        "description": "A criatura está desacordada. Qualquer Ataque ⚔ contra ela acerta automaticamente."
+    },
+    {
+        "id": "nearDeath",
+        "name": "Beira da Morte",
+        "icon": "✝",
+        "description": "A criatura está Inconsciente 💤 e prestes a morrer. Caso não tenha sua Vida ❤ restaurada, o personagem estará Morto ☠ após o fim do combate."
+    },
+    {
+        "id": "dead",
+        "name": "Morto",
+        "icon": "☠",
+        "description": "Você está morto."
+    },
+    {
+        "id": "undead",
+        "name": "Morto-vivo",
+        "icon": "❤",
+        "description": "A criatura voltou à vida de forma incompleta. Ignora qualquer efeito de recuperação de Vida ❤ e qualquer Habilidade que conceda Vida Extra ❤."
+    },
+    {
+        "id": "disarmed",
+        "name": "Desarmado",
+        "icon": "✋",
+        "description": "Os Ataques ⚔ da criatura não causam dano, apenas podem deixar o alvo Atordoado 💫."
+    },
+    {
+        "id": "stunned",
+        "name": "Atordoado",
+        "icon": "💫",
+        "description": "Por uma rodada, a criatura tem CA -1 nas rolagens. Ataques ⚔ e Defesas ⛨ contra ela tem CA +1. Se a criatura for atordoada novamente, fica Desnorteada 💫."
+    },
+    {
+        "id": "dazed",
+        "name": "Desnorteado",
+        "icon": "💫",
+        "description": "Por uma rodada, a criatura tem CA -2 nas rolagens. Ataques ⚔ e Defesas ⛨ contra ela tem CA +2. Se a criatura for atordoada novamente, fica Inconsciente 💤."
+    },
+    {
+        "id": "paralyzed",
+        "name": "Paralisado",
+        "description": "A criatura está completamente imóvel e não tem ações ou reações."
+    },
+    {
+        "id": "blind",
+        "name": "Cego",
+        "description": "A criatura não pode enxergar outras criaturas ou usar reações que dependem da visão."
+    },
+    {
+        "id": "transformed",
+        "name": "Transformado",
+        "icon": "🐑",
+        "description": "A criatura foi transformada em um animal inofensivo e não tem acesso às suas habilidades."
+    },
+    {
+        "id": "frightened",
+        "name": "Amedrontado",
+        "icon": "👻",
+        "description": "A criatura não pode se aproximar voluntariamente de quem o amedrontou e tem CA -1 enquanto puder ver a fonte de seu medo."
+    },
+    {
+        "id": "confused",
+        "name": "Confuso",
+        "icon": "❓",
+        "description": "A criatura não consegue distinguir aliados ou inimigos. Seus Ataques ⚔ têm 50% de chance de ter seu aliado mais próximo como alvo."
+    },
+    {
+        "id": "captivated",
+        "name": "Cativado",
+        "icon": "❤",
+        "description": "A criatura acredita ser aliada de quem o cativou."
+    },
+    {
+        "id": "controlled",
+        "name": "Controlado",
+        "description": "A criatura deve agir seguindo as ordens de quem a controla."
+    },
+    {
+        "id": "pacified",
+        "name": "Pacificado",
+        "icon": "☮",
+        "description": "A criatura é incapaz de fazer Ataques ⚔ e enxerga todos ao seu redor como aliados."
+    },
+    {
+        "id": "sealed",
+        "name": "Selado",
+        "icon": "🔒",
+        "description": "A criatura não pode usar Magia ou fazer Ataques Mágicos."
+    },
+    {
+        "id": "karma",
+        "name": "Karma Acumulado",
+        "icon": "☸",
+        "description": "A criatura escapou da morte. Um ponto de Karma é acumulado cada vez que uma criatura volta dos mortos."
+    },
+    {
+        "id": "hungry",
+        "name": "Faminto",
+        "icon": "🍗",
+        "description": "A criatura não come a muito tempo. Uma vez por dia, Role Resistência com DIF igual ao número de dias desde que a criatura adquiriu essa condição. Caso falhe, todos os testes da criatura tem CA -1 até a próxima refeição."
+    },
+    {
+        "id": "withering",
+        "name": "Definhando",
+        "icon": "💀",
+        "description": "A criatura está morrendo lentamente, ficando Inconsciente 💤 e morrerá em 4d6 horas."
+    },
+    {
+        "id": "flying",
+        "name": "Voando",
+        "icon": "🐦",
+        "description": "Enquanto voa, a criatura só pode ser alvejada por ataques mágicos ou por Ataques ⚔ de Alcance ⌾ 3."
+    }
+]
