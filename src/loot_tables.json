@@ -1,48 +1,54 @@
 [
     {
-        "name": "natural",
-        "selection": "random",
+        "id": "natural",
         "entries": [
             {
                 "name": "Recurso Medicinal",
-                "table": "medicinalResources"
+                "table": "medicinalResources",
+                "selection": "difficulty"
             },
             {
                 "name": "Minério Mítico",
-                "table": "mineralResources"
+                "table": "mineralResources",
+                "selection": "difficulty"
             },
             {
                 "name": "Material Mágico",
-                "table": "magicResources"
+                "table": "magicResources",
+                "selection": "difficulty"
             },
             {
                 "name": "Iguaria Comestível",
-                "table": "foodResources"
+                "table": "foodResources",
+                "selection": "difficulty"
             },
             {
                 "name": "Item Mundano",
-                "table": "loot"
+                "table": "civilized",
+                "selection": "random",
+                "quantity": "1d6"
             },
-            {
+            {   "table": "uniqueResources",
                 "name": "Recurso Único",
-                "table": "uniqueResources"
+                "value": "difficulty"
             }
         ]
     },
     {
-        "name": "civilized",
-        "selection": "random",
+        "id": "civilized",
         "entries": [
             {
                 "table": "goldResources",
-                "desc": "Tesouro: Ouro"
+                "desc": "Tesouro: Ouro",
+                "quantity": "1d6"
             },
             {
                 "table": "artResources",
-                "desc": "Tesouro: Obra de Arte"
+                "desc": "Tesouro: Obra de Arte",
+                "quantity": "1d6"
             },
             {
-                "table": "supplies",
+                "table": "suppliesTable",
                 "desc": "Suprimento"
             },
             {
@@ -50,8 +56,9 @@
                 "desc": "Equipamento (Quebrado)"
             },
             {
-                "table": "naturalResource",
-                "desc": "Recurso Natural"
+                "table": "natural",
+                "desc": "Recurso Natural",
+                "quantity": "1d6"
             },
             {
                 "table": "specialItem",
@@ -60,24 +67,27 @@
         ]
     },
     {
-        "name": "supplies",
-        "selection": "random",
+        "id": "suppliesTable",
         "entries": [
             {
-                "desc": "Ração"
+                "id": "rations",
+                "desc": "Pacote de Rações"
             },
             {
-                "desc": "Kit de Reparo"
+                "desc": "Kit de Reparo",
+                "table": "repairKits"
             },
             {
                 "desc": "Consumível",
-                "table": "consumables"
+                "table": "consumablesTable"
             },
             {
-                "desc": "Pacote de Flechas/Setas"
+                "desc": "Pacote de Flechas/Setas",
+                "table": "projectiles"
             },
             {
-                "desc": "Suprimentos Médicos"
+                "desc": "Suprimentos Médicos",
+                "value": 10
             },
             {
                 "desc": "Suprimentos Mágicos",
@@ -86,69 +96,95 @@
         ]
     },
     {
-        "name": "consumables",
-        "selection": "random",
+        "id": "consumablesTable",
         "entries": [
             {
-                "desc": "Poção da Força do Marinheiro"
+                "desc": "Poção da Força do Marinheiro",
+                "value": 25,
+                "flavor": "Tem gosto de Espinafre.",
+                "effect": "Pode ser usada em combate como parte de sua ação. Concede um Dado Extra 🎲 em todas as rolagens de Ataques ⚔, Defesa ⛨ e Corpo por 1 Hora.",
+                "tag": "consumable"
             },
             {
-                "desc": "Erva-de-fumo dos Pequenos"
+                "desc": "Erva-de-fumo dos Pequenos",
+                "value": 10,
+                "flavor": "Uma especialidade do povo-pequeno. Valorizada por muitos Conjuradores que dizem que a fumaça soprada é capaz de limpar a mente",
+                "effect": "Pode ser usada em combate como parte de sua ação. Ao ser consumida, concede um Dado Extra 🎲 em todas as rolagens de Ataques Mágicos ⛤ e Mente por 1 Hora.",
+                "tag": "consumable"
             },
             {
-                "desc": "Bomba de Fumaça"
+                "desc": "Bomba de Fumaça",
+                "value": 50,
+                "effect": "Arremessar esta pequena esfera no chão a seus pés cobre sua linha atual com uma fumaça densa por uma rodada. As criaturas nesta linha não podem ver ou ser vistas por criaturas fora da linha. Criaturas dentro da fumaça podem Fugir automaticamente do combate se não estiverem sendo vistas por inimigos, e você pode Fugir como parte desta ação.",
+                "tag": ["consumable", "action"]
             },
             {
-                "desc": "Bomba Incendiária"
+                "desc": "Bomba Incendiária",
+                "value": 25,
+                "effect": "Você pode arremessar a bomba e fazer um Ataque ⚔ com Alcance ⌾ 2, Incendiando 🔥 o alvo se acertar.",
+                "tag": ["consumable", "action"]
             },
             {
-                "desc": "Toxina"
+                "desc": "Toxina",
+                "table": "toxins"
             },
             {
-                "desc": "Veneno"
+                "desc": "Veneno",
+                "table": "poisons"
             }
         ]
     },
     {
-        "name": "magicSupplies",
+        "id": "magicSupplies",
         "selection": "weightedRandom",
         "entries": [
             {
                 "desc": "Cristal Mágico",
-                "weight": 4
+                "weight": 4,
+                "value": 50,
+                "flavor": "Pode ser encontrado encravado em cajados, varinhas e outros adereços de Conjuradores ou convertido em tinta mágica para Grimórios",
+                "effect": "Principal componente dos feitiços dos Conjuradores."
             },
             {
-                "desc": "Runa Mágica"
+                "desc": "Runa Mágica",
+                "table": "runes"
+
             },
             {
-                "desc": "Relíquia Sagrada"
+                "desc": "Relíquia Sagrada",
+                "value": 75
             }
         ]
     },
     {
-        "name": "equipment",
+        "id": "equipment",
         "selection": "weightedRandom",
         "entries": [
             {
-                "desc": "Escudo"
+                "desc": "Escudo",
+                "table": "shields"
             },
             {
-                "desc": "Armadura"
+                "desc": "Armadura",
+                "table": "armors"
             },
             {
                 "desc": "Arma 1 Mão",
-                "weight": 2
+                "weight": 2,
+                "table": "1hWeapons"
             },
             {
-                "desc": "Arma 2 Mãos"
+                "desc": "Arma 2 Mãos",
+                "table": "2hWeapons"
             },
             {
-                "desc": "Equipamento Intacto"
+                "desc": "Equipamento Intacto",
+                "table": "equipment"
             }
         ]
     },
     {
-        "name": "medicinalResources",
+        "id": "medicinalResources",
         "selection": "difficulty",
         "entries": [
             {
@@ -172,7 +208,7 @@
         ]
     },
     {
-        "name": "mineralResources",
+        "id": "mineralResources",
         "selection": "difficulty",
         "entries": [
             {
@@ -198,7 +234,7 @@
         ]
     },
     {
-        "name": "magicResources",
+        "id": "magicResources",
         "selection": "difficulty",
         "entries": [
             {
@@ -224,7 +260,7 @@
         ]
     },
     {
-        "name": "foodResources",
+        "id": "foodResources",
         "selection": "difficulty",
         "entries": [
             {
@@ -260,7 +296,7 @@
         ]
     },
     {
-        "name": "goldResources",
+        "id": "goldResources",
         "selection": "difficulty",
         "entries": [
             {
@@ -291,7 +327,7 @@
         ]
     },
     {
-        "name": "artResources",
+        "id": "artResources",
         "selection": "difficulty",
         "entries": [
             {

@@ -1,0 +1,58 @@
+[
+    {
+        "id": "shields",
+        "type": "equipment",
+        "desc": "Escudos",
+        "entries": [
+            {
+                "id": "shield",
+                "desc": "Escudo",
+                "value": 25,
+                "skillName": "Bloquear",
+                "skillEffect": "Quando empunhado em uma das mãos, permite negar uma ocorrência de dano antes de ser danificado."
+            },
+            {
+                "id": "bigShield",
+                "desc": "Escudo Grande",
+                "value": 100,
+                "skillName": "Cobertura",
+                "skillEffect": [
+                    "Requer Treinamento Marcial(id)",
+                    "Quando Quando empunhado em uma das mãos, você tem um Dado Extra 🎲 nas suas rolagens de Defesa ⛨",
+                    "Quando empunhado em uma das mãos, permite negar uma ocorrência de dano, mesmo que seja mágico, antes de ser danificado."
+                ]
+            }
+        ]
+    },
+    {
+        "id": "armors",
+        "type": "equipment",
+        "desc": "Armaduras",
+        "entries": [
+            {
+                "id": "lightArmor",
+                "desc": "Armadura Leve",
+                "value": 75,
+                "skillName": "Proteger",
+                "skillEffect": "Quando vestida, permite negar uma ocorrência de dano antes de ser danificada."
+            },
+            {
+                "id": "mediumArmor",
+                "desc": "Armadura Média",
+                "value": 150,
+                "skillName": "Proteger 2",
+                "skillEffect": "Quando vestida, permite negar duas ocorrências de dano antes de ser danificada."
+            },
+            {
+                "id": "heavyArmor",
+                "desc": "Armadura Pesada",
+                "value": 500,
+                "skillName": "Proteger 3",
+                "skillEffect": [
+                    "Requer Treinamento Marcial(id)",
+                    "Quando vestida, permite negar três ocorrências de dano."
+                ]
+            }
+        ]
+    }
+]

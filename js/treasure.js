@@ -13,10 +13,22 @@ const TreasureDataModule = {
     // ===== Dados e interface =====
 
     /**
-     * Rola um d6
+     * Rola um dado (d6 por padrão)
      */
-    rolarDado() {
-        return Math.floor(Math.random() * 6) + 1;
+    rolarDado(lados = 6) {
+        return Math.floor(Math.random() * lados) + 1;
+    },
+
+    /**
+     * Rola dados em notação "NdM" (ex.: "1d6", "2d6") e retorna cada rolagem
+     */
+    rolarNotacao(notacao) {
+        const partes = /^(\d*)d(\d+)$/.exec(notacao);
+        if (!partes) throw new Error(`Notação de dados inválida: "${notacao}"`);
+
+        const quantidade = parseInt(partes[1]) || 1;
+        const lados = parseInt(partes[2]);
+        return Array.from({ length: quantidade }, () => this.rolarDado(lados));
     },
 
     /**
@@ -116,15 +128,20 @@ const TreasureDataModule = {
      * Escolhe uma entrada da tabela conforme o seu campo "selection":
      * "random" sorteia com chances iguais; "weightedRandom" sorteia conforme o "weight"
      * de cada entrada; "difficulty" segue a dificuldade do covil.
+     * Entradas cujo campo "table" está em tabelasVisitadas não participam da escolha.
+     * Retorna null se não sobrar nenhuma entrada.
      */
-    escolherEntrada(tabela, dificuldade) {
+    escolherEntrada(tabela, dificuldade, tabelasVisitadas = new Set()) {
+        const entradas = tabela.entries.filter(entrada => !tabelasVisitadas.has(entrada.table));
+        if (entradas.length === 0) return null;
+
         switch (tabela.selection) {
             case 'random':
-                return this.sortearAleatorio(tabela.entries);
+                return this.sortearAleatorio(entradas);
             case 'weightedRandom':
-                return this.sortearPonderado(tabela.entries);
+                return this.sortearPonderado(entradas);
             case 'difficulty':
-                return this.escolherPorDificuldade(tabela.entries, dificuldade);
+                return this.escolherPorDificuldade(entradas, dificuldade);
             default:
                 throw new Error(`Seleção desconhecida "${tabela.selection}" na tabela "${tabela.name}"`);
         }
@@ -133,22 +150,58 @@ const TreasureDataModule = {
     /**
      * Se a entrada tem o campo "table", escolhe uma entrada nessa tabela e repete o processo
      * com a nova entrada. Retorna a cadeia completa, da entrada inicial até a última.
-     * Para se a tabela não existe ou se um ciclo é detectado.
+     *
+     * Failsafe contra loops: a tabela de origem (tabelaInicial) e as já percorridas não podem ser
+     * revisitadas, pois as entradas que apontam para elas deixam de ser sorteáveis
+     * (ex.: natural <-> civilized).
+     * Exceção: uma entrada que aponta para a própria tabela em que foi sorteada manda rolar
+     * de novo nela (ex.: "Equipamento Intacto" em equipment). A tabela só entra na lista de
+     * visitadas depois do primeiro sorteio, então essa entrada pode sair uma vez; na nova rolagem
+     * a tabela já está visitada e a entrada deixa de ser sorteável, evitando repetição.
+     * Para também se a tabela não existe ou se não sobra nenhuma entrada a sortear.
      */
-    resolverCadeia(entrada, dificuldade) {
-        const cadeia = [entrada];
-        const visitadas = new Set();
+    resolverCadeia(entrada, dificuldade, tabelaInicial) {
+        const entradas = [entrada];
+        const visitadas = new Set(tabelaInicial ? [tabelaInicial] : []);
+        let tabelaAtual = tabelaInicial;
 
-        while (entrada.table && !visitadas.has(entrada.table)) {
-            visitadas.add(entrada.table);
-
+        while (entrada.table && (entrada.table === tabelaAtual || !visitadas.has(entrada.table))) {
             const tabela = this.buscarTabela(entrada.table);
             if (!tabela?.entries.length) break;
 
-            entrada = this.escolherEntrada(tabela, dificuldade);
-            cadeia.push(entrada);
+            entrada = this.escolherEntrada(tabela, dificuldade, visitadas);
+            if (!entrada) break;
+
+            visitadas.add(tabela.name);
+            entradas.push(entrada);
+            tabelaAtual = tabela.name;
         }
-        return cadeia;
+        return entradas;
+    },
+
+    /**
+     * Quantidade definida por uma cadeia: vale o último "quantity" encontrado nela
+     * (um "quantity" mais adiante na cadeia substitui o anterior).
+     * Retorna null se nenhuma entrada da cadeia define "quantity".
+     */
+    rolarQuantidadeDaCadeia(entradas) {
+        const origem = entradas.findLast(entrada => entrada.quantity);
+        if (!origem) return null;
+
+        const total = this.rolarNotacao(origem.quantity).reduce((soma, rolagem) => soma + rolagem, 0);
+        return { origem, total };
+    },
+
+    /**
+     * Texto da quantidade obtida a partir das rolagens (vazio se não houve rolagem)
+     */
+    descreverQuantidade(rolagens) {
+        if (rolagens.length === 0) return '';
+
+        const soma = rolagens.reduce((total, rolagem) => total + rolagem, 0);
+        return rolagens.length === 1
+            ? ` (quantidade: ${soma})`
+            : ` (quantidade: ${rolagens.join(' + ')} = ${soma})`;
     },
 
     // ===== Geração =====
@@ -168,8 +221,10 @@ const TreasureDataModule = {
 
     /**
      * Civilizado: a rolagem define o valor total. A cada VALOR_POR_ITEM DO desse valor,
-     * sorteia-se uma categoria de item. (Futuro: usar o valor para escolher itens específicos
-     * a partir da categoria, seguindo o campo "table" com resolverCadeia.)
+     * sorteia-se uma categoria de item. Categorias com o campo "quantity" (ex.: "1d6")
+     * rolam esses dados para cada item sorteado, definindo a quantidade obtida.
+     * (Futuro: usar o valor para escolher itens específicos a partir da categoria,
+     * seguindo o campo "table" com resolverCadeia.)
      */
     gerarCivilizado() {
         const tabela = this.buscarTabela('civilized');
@@ -191,17 +246,22 @@ const TreasureDataModule = {
             return;
         }
 
-        const contagem = new Map();
+        // categoria -> { itens: nº de itens sorteados, rolagens: dados de quantidade rolados }
+        const resultados = new Map();
         for (let i = 0; i < quantidadeItens; i++) {
             const categoria = this.escolherEntrada(tabela, dificuldade);
-            contagem.set(categoria, (contagem.get(categoria) || 0) + 1);
+            if (!resultados.has(categoria)) resultados.set(categoria, { itens: 0, rolagens: [] });
+
+            const resultado = resultados.get(categoria);
+            resultado.itens++;
+            if (categoria.quantity) resultado.rolagens.push(...this.rolarNotacao(categoria.quantity));
         }
 
         linhas.push(`Itens: ${quantidadeItens}`);
-        [...contagem]
+        [...resultados]
             .sort(([a], [b]) => tabela.entries.indexOf(a) - tabela.entries.indexOf(b))
-            .forEach(([categoria, quantidade]) => {
-                linhas.push(`${this.nomeDe(categoria)} x ${quantidade}`);
+            .forEach(([categoria, { itens, rolagens }]) => {
+                linhas.push(`${this.nomeDe(categoria)} x ${itens}${this.descreverQuantidade(rolagens)}`);
             });
 
         this.exibirResultado(linhas);
@@ -209,7 +269,8 @@ const TreasureDataModule = {
 
     /**
      * Selvagem: a rolagem define a quantidade de recursos (cada 6 rola outro dado, limitado
-     * ao andar do covil). Uma categoria é sorteada e o recurso vem da dificuldade do covil.
+     * ao andar do covil). Uma categoria é sorteada e o recurso vem de seguir a cadeia de
+     * tabelas (campo "table"). Se a cadeia define "quantity", ele substitui a quantidade rolada.
      */
     gerarSelvagem() {
         const tabela = this.buscarTabela('natural');
@@ -227,8 +288,8 @@ const TreasureDataModule = {
         const quantidade = rolagens.reduce((soma, rolagem) => soma + rolagem, 0);
 
         const categoria = this.escolherEntrada(tabela, dificuldade);
-        const cadeia = this.resolverCadeia(categoria, dificuldade);
-        const recurso = cadeia.length > 1 ? cadeia.at(-1) : null;
+        const entradas = this.resolverCadeia(categoria, dificuldade, tabela.name);
+        const recurso = entradas.length > 1 ? entradas.at(-1) : null;
 
         const linhas = [
             `Rolagens: ${rolagens.join(' + ')}`,
@@ -236,12 +297,23 @@ const TreasureDataModule = {
         ];
 
         if (recurso) {
-            const precoUnitario = recurso.value ?? 0;
-            linhas.push(
-                `Recurso: ${this.nomeDe(recurso)} x ${quantidade}`,
-                `Preço unitário: ${precoUnitario} DO`,
-                `Preço total: ${precoUnitario * quantidade} DO`
-            );
+            const definida = this.rolarQuantidadeDaCadeia(entradas);
+            const quantidadeFinal = definida ? definida.total : quantidade;
+
+            if (entradas.length > 2) {
+                linhas.push(`Caminho: ${entradas.map(entrada => this.nomeDe(entrada)).join(' > ')}`);
+            }
+            if (definida) {
+                linhas.push(`Quantidade: ${definida.total} (${definida.origem.quantity} de ${this.nomeDe(definida.origem)})`);
+            }
+            linhas.push(`Recurso: ${this.nomeDe(recurso)} x ${quantidadeFinal}`);
+
+            if (recurso.value !== undefined) {
+                linhas.push(
+                    `Preço unitário: ${recurso.value} DO`,
+                    `Preço total: ${recurso.value * quantidadeFinal} DO`
+                );
+            }
         }
 
         this.exibirResultado(linhas);
