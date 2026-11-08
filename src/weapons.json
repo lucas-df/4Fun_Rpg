@@ -1,8 +1,9 @@
 [
   {
-    "id": "1hWeapons",
+    "listId": "1hWeapons",
     "list": [
       {
+        "item": "dagger",
         "desc": "Adaga",
         "value": 10,
         "skillName": "Degolar",
@@ -10,6 +11,7 @@
         "tags": ["1M"]
       },
       {
+        "item": "duelistDagger",
         "desc": "Adaga de Duelista",
         "value": 25,
         "skillName": "Revidar",
@@ -17,6 +19,7 @@
         "tags": ["1M"]
       },
       {
+        "item": "rapier",
         "desc": "Rapieira",
         "value": 50,
         "skillName": "Perfurar",
@@ -24,6 +27,7 @@
         "tags": ["1M"]
       },
       {
+        "item": "longSword",
         "desc": "Espada Longa",
         "value": 50,
         "skillName": "Aparar",
@@ -31,6 +35,7 @@
         "tags": ["1M"]
       },
       {
+        "item": "throwingDagger",
         "desc": "Adaga de Arremesso",
         "value": 15,
         "skillName": "Arremessar",
@@ -38,6 +43,7 @@
         "tags": ["1M"]
       },
       {
+        "item": "axe",
         "desc": "Machado",
         "value": 25,
         "skillName": "Brutalizar",
@@ -45,6 +51,7 @@
         "tags": ["1M"]
       },
       {
+        "item": "shortSpear",
         "desc": "Lança Curta",
         "value": 25,
         "skillName": "Lançar",
@@ -52,6 +59,7 @@
         "tags": ["1M"]
       },
       {
+        "item": "serratedBlade",
         "desc": "Lâmina Serrada",
         "value": 25,
         "skillName": "Rasgar",
@@ -59,6 +67,7 @@
         "tags": ["1M"]
       },
       {
+        "item": "mace",
         "desc": "Porrete",
         "value": 10,
         "skillName": "Atordoar",
@@ -66,6 +75,7 @@
         "tags": ["1M"]
       },
       {
+        "item": "hammer",
         "desc": "Martelo",
         "value": 25,
         "skillName": "Impactar",
@@ -75,30 +85,34 @@
     ]
   },
   {
-    "id": "2hWeapons",
+    "listId": "2hWeapons",
     "list": [
       {
+        "item": "staff",
         "desc": "Bastão",
         "value": 25,
         "skillName": "Afastar",
-        "skillEffect": "Após um Ataque ⚔, você se Move para a linha de Fundo.",
+        "skillEffect": "Após um Ataque ⚔, você pode se Mover para a linha de Fundo.",
         "tags": ["2M"]
       },
       {
+        "item": "greatAxe",
         "desc": "Machado Grande",
         "value": 50,
         "skillName": "Trespassar",
-        "skillEffect": "Ao acertar um inimigo, você usa a mesma rolagem para Atacar ⚔ outro Inimigo na mesma linha.",
+        "skillEffect": "Ao acertar um inimigo, você pode usar a mesma rolagem para Atacar ⚔ outro Inimigo na mesma linha.",
         "tags": ["2M"]
       },
       {
+        "item": "greatSword",
         "desc": "Espadão",
         "value": 75,
         "skillName": "Retaliar",
-        "skillEffect": "Após uma Defesa ⛨, você imediatamente faz um Ataque ⚔.",
+        "skillEffect": "Após uma Defesa ⛨, você imediatamente pode fazer um Ataque ⚔.",
         "tags": ["2M"]
       },
       {
+        "item": "katana",
         "desc": "Katana",
         "value": 100,
         "skillName": "Retalhar",
@@ -106,6 +120,7 @@
         "tags": ["2M"]
       },
       {
+        "item": "maul",
         "desc": "Malho",
         "value": 100,
         "skillName": "Empurrar",
@@ -113,13 +128,15 @@
         "tags": ["2M"]
       },
       {
+        "item": "warPick",
         "desc": "Picareta de Guerra",
         "value": 75,
         "skillName": "Penetrar",
-        "skillEffect": "Quando inimigos negam o dano do seu Ataque ⚔, você ignora esse efeito.",
+        "skillEffect": "Quando inimigos negam o dano do seu Ataque ⚔, você pode ignorar esse efeito.",
         "tags": ["2M"]
       },
       {
+        "item": "halberd",
         "desc": "Alabarda",
         "value": 100,
         "skillName": "Dizimar",
@@ -127,24 +144,27 @@
         "tags": ["2M"]
       },
       {
+        "item": "longSpear",
         "desc": "Lança Longa",
         "value": 50,
         "skillName": "Empalar",
-        "skillEffect": "Você faz um Ataque ⚔ com Alcance ⌾ 3.",
+        "skillEffect": "Você pode fazer um Ataque ⚔ com Alcance ⌾ 3.",
         "tags": ["2M"]
       },
       {
+        "item": "bow",
         "desc": "Arco",
         "value": 25,
         "skillName": "Disparar",
-        "skillEffect": "Você pode fazer Ataques ⚔ com Alcance ⌾ 3 enquanto tiver Flechas. Você não pode alvejar inimigos que estejam em uma posição adjacente a você. Flechas precisam ser certeiras para infligir golpes letais, por isso, rolagens de Ataque ⚔ desta arma tem CA -1.",
+        "skillEffect": "Você pode fazer Ataques ⚔ com Alcance ⌾ 3 enquanto tiver Flechas. Você não pode alvejar inimigos Próximos a você. Flechas precisam ser certeiras para infligir golpes letais, por isso, rolagens de Ataque ⚔ desta arma tem CA -1.",
         "tags": ["2M", "Recurso"]
       },
       {
+        "item": "crossbow",
         "desc": "Besta",
         "value": 50,
         "skillName": "Cravar",
-        "skillEffect": "Você pode fazer Ataques ⚔ com Alcance ⌾ 3 enquanto tiver Setas. Você não pode alvejar inimigos que estejam em uma posição adjacente a você. Bestas precisam ser recarregadas com uma Reação após cada Ataques ⚔.",
+        "skillEffect": "Você pode fazer Ataques ⚔ com Alcance ⌾ 3 enquanto tiver Setas. Você não pode alvejar inimigos Próximos a você. Bestas precisam ser recarregadas com uma Reação após cada Ataques ⚔.",
         "tags": ["2M", "Recurso"]
       }
     ]

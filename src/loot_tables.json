@@ -1,360 +1,191 @@
 [
     {
-        "id": "natural",
+        "tableId": "naturalTable",
         "entries": [
             {
-                "name": "Recurso Medicinal",
-                "table": "medicinalResources",
+                "desc": "Recurso Medicinal",
+                "nextTable": "medicinalResources",
                 "selection": "difficulty"
             },
             {
-                "name": "Minério Mítico",
-                "table": "mineralResources",
+                "desc": "Minério Mítico",
+                "nextTable": "mineralResources",
                 "selection": "difficulty"
             },
             {
-                "name": "Material Mágico",
-                "table": "magicResources",
+                "desc": "Material Mágico",
+                "nextTable": "magicResources",
                 "selection": "difficulty"
             },
             {
-                "name": "Iguaria Comestível",
-                "table": "foodResources",
+                "desc": "Iguaria Comestível",
+                "nextTable": "foodResources",
                 "selection": "difficulty"
             },
             {
-                "name": "Item Mundano",
-                "table": "civilized",
+                "desc": "Item Mundano",
+                "nextTable": "civilized",
                 "selection": "random",
                 "quantity": "1d6"
             },
-            {   "table": "uniqueResources",
-                "name": "Recurso Único",
+            {   "desc": "Recurso Único",
+                "nextTable": "uniqueResources",                
                 "value": "difficulty"
             }
         ]
     },
     {
-        "id": "civilized",
+        "tableId": "civilizedTable",
         "entries": [
             {
-                "table": "goldResources",
+                "nextTable": "goldResources",
                 "desc": "Tesouro: Ouro",
+                "selection": "difficulty",
                 "quantity": "1d6"
             },
             {
-                "table": "artResources",
+                "nextTable": "artResources",
                 "desc": "Tesouro: Obra de Arte",
+                "selection": "difficulty",
                 "quantity": "1d6"
             },
             {
-                "table": "suppliesTable",
-                "desc": "Suprimento"
+                "nextTable": "suppliesTable",
+                "selection": "random",
+                "desc": "Suprimento",
+                "quantity": "1d6"
             },
             {
-                "table": "equipment",
-                "desc": "Equipamento (Quebrado)"
+                "nextTable": "equipmentTable",
+                "desc": "Equipamento (Quebrado)",
+                "selection": "weightedRandom"
             },
             {
-                "table": "natural",
+                "nextTable": "naturalTable",
                 "desc": "Recurso Natural",
+                "selection": "random",
                 "quantity": "1d6"
             },
             {
-                "table": "specialItem",
-                "desc": "Item Especial"
+                "nextTable": "specialItemTable",
+                "desc": "Item Especial",
+                "selection": "random"
             }
         ]
     },
     {
-        "id": "suppliesTable",
+        "tableId": "suppliesTable",
         "entries": [
             {
-                "id": "rations",
+                "item": "rations",
                 "desc": "Pacote de Rações"
             },
             {
                 "desc": "Kit de Reparo",
-                "table": "repairKits"
+                "nextTable": "repairKits",
+                "selection": "random"
             },
             {
                 "desc": "Consumível",
-                "table": "consumablesTable"
+                "nextTable": "consumablesTable",
+                "selection": "random"
             },
             {
                 "desc": "Pacote de Flechas/Setas",
-                "table": "projectiles"
+                "nextTable": "projectiles",
+                "selection": "random"
             },
-            {
-                "desc": "Suprimentos Médicos",
-                "value": 10
+            {   
+                "item": "medicalSupplies",
+                "desc": "Suprimentos Médicos"
             },
             {
                 "desc": "Suprimentos Mágicos",
-                "table": "magicSupplies"
+                "nextTable": "magicSuppliesTable",
+                "selection": "weightedRandom"
             }
         ]
     },
     {
-        "id": "consumablesTable",
+        "tableId": "consumablesTable",
         "entries": [
             {
-                "desc": "Poção da Força do Marinheiro",
-                "value": 25,
-                "flavor": "Tem gosto de Espinafre.",
-                "effect": "Pode ser usada em combate como parte de sua ação. Concede um Dado Extra 🎲 em todas as rolagens de Ataques ⚔, Defesa ⛨ e Corpo por 1 Hora.",
-                "tag": "consumable"
+                "item": "strengthPotion",
+                "desc": "Poção da Força do Marinheiro"
             },
             {
-                "desc": "Erva-de-fumo dos Pequenos",
-                "value": 10,
-                "flavor": "Uma especialidade do povo-pequeno. Valorizada por muitos Conjuradores que dizem que a fumaça soprada é capaz de limpar a mente",
-                "effect": "Pode ser usada em combate como parte de sua ação. Ao ser consumida, concede um Dado Extra 🎲 em todas as rolagens de Ataques Mágicos ⛤ e Mente por 1 Hora.",
-                "tag": "consumable"
+                "item": "smokeHerb",
+                "desc": "Erva-de-fumo dos Pequenos"
             },
-            {
-                "desc": "Bomba de Fumaça",
-                "value": 50,
-                "effect": "Arremessar esta pequena esfera no chão a seus pés cobre sua linha atual com uma fumaça densa por uma rodada. As criaturas nesta linha não podem ver ou ser vistas por criaturas fora da linha. Criaturas dentro da fumaça podem Fugir automaticamente do combate se não estiverem sendo vistas por inimigos, e você pode Fugir como parte desta ação.",
-                "tag": ["consumable", "action"]
+            {   
+                "item": "smokeBomb",
+                "desc": "Bomba de Fumaça"
             },
-            {
-                "desc": "Bomba Incendiária",
-                "value": 25,
-                "effect": "Você pode arremessar a bomba e fazer um Ataque ⚔ com Alcance ⌾ 2, Incendiando 🔥 o alvo se acertar.",
-                "tag": ["consumable", "action"]
+            {   
+                "item": "fireBomb",
+                "desc": "Bomba Incendiária"
             },
             {
                 "desc": "Toxina",
-                "table": "toxins"
+                "nextTable": "toxins",
+                "selection": "difficulty"
             },
             {
                 "desc": "Veneno",
-                "table": "poisons"
+                "nextTable": "poisons",
+                "selection": "difficulty"
             }
         ]
     },
     {
-        "id": "magicSupplies",
-        "selection": "weightedRandom",
+        "tableId": "magicSuppliesTable",
         "entries": [
             {
+                "item": "magicCristal",
                 "desc": "Cristal Mágico",
-                "weight": 4,
-                "value": 50,
-                "flavor": "Pode ser encontrado encravado em cajados, varinhas e outros adereços de Conjuradores ou convertido em tinta mágica para Grimórios",
-                "effect": "Principal componente dos feitiços dos Conjuradores."
+                "weight": 4
             },
             {
                 "desc": "Runa Mágica",
-                "table": "runes"
-
+                "nextTable": "runes",
+                "selection": "random"
             },
             {
+                "item": "sacredRelic",
                 "desc": "Relíquia Sagrada",
                 "value": 75
             }
         ]
     },
     {
-        "id": "equipment",
-        "selection": "weightedRandom",
+        "tableId": "equipmentTable",
         "entries": [
             {
                 "desc": "Escudo",
-                "table": "shields"
+                "nextTable": "shields",
+                "selection": "random"
             },
             {
                 "desc": "Armadura",
-                "table": "armors"
+                "nextTable": "armors",
+                "selection": "random"
             },
             {
                 "desc": "Arma 1 Mão",
                 "weight": 2,
-                "table": "1hWeapons"
+                "nextTable": "1hWeapons",
+                "selection": "random"
             },
             {
                 "desc": "Arma 2 Mãos",
-                "table": "2hWeapons"
+                "nextTable": "2hWeapons",
+                "selection": "random"
             },
             {
                 "desc": "Equipamento Intacto",
-                "table": "equipment"
+                "nextTable": "equipment",
+                "selection": "random"
             }
         ]
-    },
-    {
-        "id": "medicinalResources",
-        "selection": "difficulty",
-        "entries": [
-            {
-                "name": "smallHerb",
-                "desc": "Erva Pequenina",
-                "value": 1,
-                "craft": "Erva-de-Fumo dos Pequenos"
-            },
-            {
-                "name": "greenSalt",
-                "desc": "Sais-verdes da Maresia",
-                "value": 10,
-                "craft": "Poção da Força do Marinheiro"
-            },
-            {
-                "name": "seraphBlood",
-                "desc": "Sangue de Serafim",
-                "value": 100,
-                "craft": "Poção da Vida"
-            }
-        ]
-    },
-    {
-        "id": "mineralResources",
-        "selection": "difficulty",
-        "entries": [
-            {
-                "name": "coldIron",
-                "desc": "Ferro Frio",
-                "value": 1
-            },
-            {
-                "name": "thunderStone",
-                "desc": "Pedra-Trovão",
-                "value": 10
-            },
-            {
-                "name": "infernalSteel",
-                "desc": "Aço Infernal",
-                "value": 100
-            },
-            {
-                "name": "mithril",
-                "desc": "Mithril",
-                "value": 10000
-            }
-        ]
-    },
-    {
-        "id": "magicResources",
-        "selection": "difficulty",
-        "entries": [
-            {
-                "name": "carbCrystal",
-                "desc": "Cristal de Carbúnculo",
-                "value": 1
-            },
-            {
-                "name": "shadowSilk",
-                "desc": "Seda Umbral",
-                "value": 10
-            },
-            {
-                "name": "stormBottle",
-                "desc": "Tempesatade Engarrafada",
-                "value": 100
-            },
-            {
-                "name": "cosmicCristal",
-                "desc": "Cristal Cósmico",
-                "value": 10000
-            }
-        ]
-    },
-    {
-        "id": "foodResources",
-        "selection": "difficulty",
-        "entries": [
-            {
-                "name": "ogreTruffle",
-                "desc": "Trufa Estômago-de-Ogro",
-                "value": 1,
-                "effect": "Você não sente fome ou sede."
-            },
-            {
-                "name": "eyeBerry",
-                "desc": "Frutóculos",
-                "value": 10,
-                "effect": "Você não sente sono e não pode ser emboscado."
-            },
-            {
-                "name": "witchMushroom",
-                "desc": "Congumelo Chapéu-de-Bruxa",
-                "value": 100,
-                "effect": "Você ignora a próxima condição mágica imposta a você."
-            },
-            {
-                "name": "ambrosiaHoney",
-                "desc": "Mel de Ambrósia",
-                "value": 1000,
-                "effect": "Você tem duas Vidas Extras."
-            },
-            {
-                "name": "magicFish",
-                "desc": "Magicarpa",
-                "value": 10000,
-                "effect": "???"
-            }
-        ]
-    },
-    {
-        "id": "goldResources",
-        "selection": "difficulty",
-        "entries": [
-            {
-                "name": "coin",
-                "desc": "Uma moeda",
-                "value": 1
-            },
-            {
-                "name": "handfulOfCoins",
-                "desc": "Punhado de moedas",
-                "value": 10
-            },
-            {
-                "name": "bagOfCoins",
-                "desc": "Saco de moedas",
-                "value": 100
-            },
-            {
-                "name": "chestOfCoins",
-                "desc": "Baú de Moedas",
-                "value": 1000
-            },
-            {
-                "name": "vaultOfGoldBars",
-                "desc": "Cofre com barras D'Ouro",
-                "value": 10000
-            }
-        ]
-    },
-    {
-        "id": "artResources",
-        "selection": "difficulty",
-        "entries": [
-            {
-                "name": "ivoryGraniteQuartz",
-                "desc": "Marfim, Granito ou Quartzo",
-                "value": 1
-            },
-            {
-                "name": "silverSilkAmethyst",
-                "desc": "Prata, Seda ou Ametista",
-                "value": 10
-            },
-            {
-                "name": "goldPearlsRuby",
-                "desc": "Ouro, Pérolas ou Rubi",
-                "value": 100
-            },
-            {
-                "name": "platinumSapphire",
-                "desc": "Platina ou Safira",
-                "value": 1000
-            },
-            {
-                "name": "jadeObsidianDiamond",
-                "desc": "Jade, Obsidiana ou Diamante",
-                "value": 10000
-            }
-        ]
-    }
+    }    
 ]

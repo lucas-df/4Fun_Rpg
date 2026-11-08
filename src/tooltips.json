@@ -1,177 +1,383 @@
 [
-    {
+  {
+    "id": "conditions",
+    "list": [
+      {
         "id": "immobilized",
         "name": "Imobilizado",
         "icon": "✕",
         "description": "A criatura não pode se Mover ↪."
-    },
-    {
+      },
+      {
         "id": "isolated",
         "name": "Isolado",
         "icon": "◻",
         "description": "A criatura foi separada do resto do campo e não pode afetar ou alvejar outras criaturas, nem ser alvejada ou afetada por elas."
-    },
-    {
+      },
+      {
         "id": "bleeding",
         "name": "Sangrando",
         "icon": "🩸",
         "description": "A criatura está perdendo muito sangue. Ao final de seu turno receberá dano, e este dano não pode ser negado. A condição é encerrada consumindo Suprimentos Médicos."
-    },
-    {
+      },
+      {
         "id": "exhausted",
         "name": "Exausto",
         "icon": "💧",
         "description": "A criatura faz todos os testes com CA -1 até fazer um Descanso. Essa condição é cumulativa."
-    },
-    {
+      },
+      {
         "id": "burning",
         "name": "Incendiado",
         "icon": "🔥",
         "description": "A criatura está envolta em chamas. A criatura ou um de seus aliados adjacentes pode usar sua ação para apagar as chamas e encerrar essa condição. Enquanto as chamas não forem apagadas, a criatura recebe dano ao final de seu turno."
-    },
-    {
+      },
+      {
         "id": "frozen",
         "name": "Congelado",
         "icon": "❄",
         "description": "A criatura está coberta por uma fina camada de gelo. Não pode usar reações ou se Mover ↪."
-    },
-    {
+      },
+      {
         "id": "vulnerable",
         "name": "Vulnerável",
         "description": "Ataques ⚔ contra a criatura tem CA +1. A criatura tem CA -1 nas rolagens de Defesa ⛨."
-    },
-    {
+      },
+      {
         "id": "poisoned",
         "name": "Envenenado",
         "icon": "☠",
         "description": "Um veneno letal está afetando a criatura. No início de cada um de seus turnos, ela deve rolar Espírito com DIF igual a potência da toxina. Caso falhe, recebe dano. A condição é encerrada quando a criatura passa nesse teste, ou usa Suprimentos Médicos."
-    },
-    {
+      },
+      {
         "id": "intoxicated",
         "name": "Intoxicado",
         "icon": "☠",
         "description": "Uma substância tóxica está afetando os sentidos da criatura. No início de cada um de seus turnos, ela deve rolar Espírito com DIF igual a potência da toxina. Caso falhe, todos os testes da criatura tem CA -1. A condição é encerrada quando a criatura passa nesse teste, ou usa Suprimentos Médicos."
-    },
-    {
+      },
+      {
         "id": "wounded",
         "name": "Ferido",
         "description": "A criatura tem CA -1 nas rolagens e se for ferida novamente, recebe dano. A condição é encerrada usando Suprimentos Médicos ou após dormir por 8 horas."
-    },
-    {
+      },
+      {
         "id": "unconscious",
         "name": "Inconsciente",
         "icon": "💤",
         "description": "A criatura está desacordada. Qualquer Ataque ⚔ contra ela acerta automaticamente."
-    },
-    {
+      },
+      {
         "id": "nearDeath",
         "name": "Beira da Morte",
         "icon": "✝",
         "description": "A criatura está Inconsciente 💤 e prestes a morrer. Caso não tenha sua Vida ❤ restaurada, o personagem estará Morto ☠ após o fim do combate."
-    },
-    {
+      },
+      {
         "id": "dead",
         "name": "Morto",
         "icon": "☠",
         "description": "Você está morto."
-    },
-    {
+      },
+      {
         "id": "undead",
         "name": "Morto-vivo",
         "icon": "❤",
         "description": "A criatura voltou à vida de forma incompleta. Ignora qualquer efeito de recuperação de Vida ❤ e qualquer Habilidade que conceda Vida Extra ❤."
-    },
-    {
+      },
+      {
         "id": "disarmed",
         "name": "Desarmado",
         "icon": "✋",
         "description": "Os Ataques ⚔ da criatura não causam dano, apenas podem deixar o alvo Atordoado 💫."
-    },
-    {
+      },
+      {
         "id": "stunned",
         "name": "Atordoado",
         "icon": "💫",
         "description": "Por uma rodada, a criatura tem CA -1 nas rolagens. Ataques ⚔ e Defesas ⛨ contra ela tem CA +1. Se a criatura for atordoada novamente, fica Desnorteada 💫."
-    },
-    {
+      },
+      {
         "id": "dazed",
         "name": "Desnorteado",
         "icon": "💫",
         "description": "Por uma rodada, a criatura tem CA -2 nas rolagens. Ataques ⚔ e Defesas ⛨ contra ela tem CA +2. Se a criatura for atordoada novamente, fica Inconsciente 💤."
-    },
-    {
+      },
+      {
         "id": "paralyzed",
         "name": "Paralisado",
         "description": "A criatura está completamente imóvel e não tem ações ou reações."
-    },
-    {
+      },
+      {
+        "id": "surprised",
+        "name": "Surpreso",
+        "description": "A criatura não tem reações."
+      },
+      {
+        "id": "ofuscated",
+        "name": "Ofuscado",
+        "description": "Para esta criatura, outras criaturas que não estão Próximas ficam Ocultas."
+      },
+      {
+        "id": "close",
+        "name": "Pròximo",
+        "description": "A criatura está em uma linha adjacente à sua."
+      },
+      {
         "id": "blind",
         "name": "Cego",
-        "description": "A criatura não pode enxergar outras criaturas ou usar reações que dependem da visão."
-    },
-    {
+        "description": "Para esta criatura, outras criaturas ficam Ocultas."
+      },
+      {
+        "id": "hidden",
+        "name": "Escondida",
+        "description": "A criatura não pode ser alvejada e sua posição no campo é desconhecida para inimigos. Ao fazer uma Ação ou Reação, seus Inimigos ficam Surpresos. Ser atingido ou interagir com outra criatura com uma Ação ou Reação interrompe essa condição."
+      },      
+      {
+        "id": "invisible",
+        "name": "Invisível",
+        "description": "A criatura pode ficar Oculta ao final de seu turno."
+      },
+      {
+        "id": "incorporeal",
+        "name": "Incorpórea",
+        "description": "Esta criatura não pode ser afetada físicamente por Ataques, Ações ou Reações."
+      },
+      {
         "id": "transformed",
         "name": "Transformado",
         "icon": "🐑",
         "description": "A criatura foi transformada em um animal inofensivo e não tem acesso às suas habilidades."
-    },
-    {
+      },
+      {
         "id": "frightened",
         "name": "Amedrontado",
         "icon": "👻",
         "description": "A criatura não pode se aproximar voluntariamente de quem o amedrontou e tem CA -1 enquanto puder ver a fonte de seu medo."
-    },
-    {
+      },
+      {
         "id": "confused",
         "name": "Confuso",
         "icon": "❓",
         "description": "A criatura não consegue distinguir aliados ou inimigos. Seus Ataques ⚔ têm 50% de chance de ter seu aliado mais próximo como alvo."
-    },
-    {
+      },
+      {
         "id": "captivated",
         "name": "Cativado",
         "icon": "❤",
         "description": "A criatura acredita ser aliada de quem o cativou."
-    },
-    {
+      },
+      {
         "id": "controlled",
         "name": "Controlado",
         "description": "A criatura deve agir seguindo as ordens de quem a controla."
-    },
-    {
+      },
+      {
         "id": "pacified",
         "name": "Pacificado",
         "icon": "☮",
         "description": "A criatura é incapaz de fazer Ataques ⚔ e enxerga todos ao seu redor como aliados."
-    },
-    {
+      },
+      {
         "id": "sealed",
         "name": "Selado",
         "icon": "🔒",
         "description": "A criatura não pode usar Magia ou fazer Ataques Mágicos."
-    },
-    {
+      },
+      {
         "id": "karma",
         "name": "Karma Acumulado",
         "icon": "☸",
         "description": "A criatura escapou da morte. Um ponto de Karma é acumulado cada vez que uma criatura volta dos mortos."
-    },
-    {
+      },
+      {
         "id": "hungry",
         "name": "Faminto",
         "icon": "🍗",
         "description": "A criatura não come a muito tempo. Uma vez por dia, Role Resistência com DIF igual ao número de dias desde que a criatura adquiriu essa condição. Caso falhe, todos os testes da criatura tem CA -1 até a próxima refeição."
-    },
-    {
+      },
+      {
         "id": "withering",
         "name": "Definhando",
         "icon": "💀",
         "description": "A criatura está morrendo lentamente, ficando Inconsciente 💤 e morrerá em 4d6 horas."
-    },
-    {
+      },
+      {
         "id": "flying",
         "name": "Voando",
         "icon": "🐦",
         "description": "Enquanto voa, a criatura só pode ser alvejada por ataques mágicos ou por Ataques ⚔ de Alcance ⌾ 3."
-    }
+      }
+    ]
+  },
+  {
+    "id": "rolls",
+    "list": [
+      {
+        "id": "check",
+        "name": "Teste",
+        "description": "Sempre que há incerteza se um personagem conseguirá fazer algo, significa que isso depende de um Teste. Todo teste usa um atributo e tem uma dificuldade. \n Por padrão, um jogador rola um número de dados igual ao Atributo e conta o número de Acertos, que são os resultados 4 ou mais (4+). Se esse número for igual ou maior que a dificuldade, ele tem sucesso! \n Apenas jogadores fazem Testes! Criaturas controladas pelo mestre sempre tem sucesso a não ser que sejam impedidas pelos jogadores. \n O mestre sempre decide se um teste é necessário ou não. Se não há possibilidade razoável de falha ou (de sucesso) para uma ação, não é necessário fazer um teste."
+      },
+      {
+        "id": "diff",
+        "name": "Dificuldade",
+        "icon": "DIF",
+        "description": "Número mínimo de Acertos para cumprir o objetivo do Jogador e ter sucesso em um teste."
+      },
+      {
+        "id": "hit",
+        "name": "Acerto",
+        "icon": "✔",
+        "description": "Um dado rolado que obteve resultado igual ou maior que 4."
+      },
+      {
+        "id": "criticalHit",
+        "name": "Acerto Crítico",
+        "icon": "❕",
+        "description": "Um resultado 6 obtido no dado que sempre representa um Acerto ✔. Algumas habilidades causam efeitos especiais para estes resultados."
+      },
+      {
+        "id": "miss",
+        "name": "Falha",
+        "icon": "✔",
+        "description": "O oposto de um acerto. Um dado rolado que obteve resultado menor que 4."
+      },
+      {
+        "id": "criticalMiss",
+        "name": "Erro Crítico",
+        "icon": "✘",
+        "description": "Um resultado 1 obtido no dado que sempre representa uma falha. Algumas habilidades causam efeitos especiais para estes resultados."
+      },
+      {
+        "id": "extraDice",
+        "name": "Dado Extra",
+        "icon": "🎲",
+        "description": "Um dado adicional no teste, que pode contribuir com um Acerto ✔ adicional!"
+      },
+      {
+        "id": "acc",
+        "name": "Chance de Acerto",
+        "icon": "CA",
+        "description": "Um modificador aplicado ao resultado de cada rolagem em um teste, que é adicionado ou subtraido dos resultados. \n Não gera Acertos ou Erros Críticos."
+      }
+    ]
+  },
+  {
+    "id": "basicCombat",
+    "list": [
+      {
+        "id": "attack",
+        "name": "Ataque",
+        "icon":"⚔",
+        "description": "A Ação básica de combate. Cada criatura pode escolher atacar um alvo visível dentro do seu Alcance ⌾, e vai acertá-lo se ele não puder se Defender ⛨. Ao atacar um inimigo que tenta se defender, o jogador rola Agilidade contra a Defesa ⛨ do inimigo. Com sucesso, ele o atinge e causa dano."
+      },
+      {
+        "id": "defense",
+        "name": "Defesa",
+        "icon": "⛨",
+        "description": "A Reação básica de combate. Quando um inimigo faz um ataque Visível, o alvo pode usar sua reação para tentar se defender. O jogador rola Resistência com DIF igual ao valor de Ataque ⚔ do inimigo. Com sucesso, ele evita o ataque e não recebe dano."
+      },
+      {
+        "id": "move",
+        "name": "Mover",
+        "icon": "↪",
+        "description": "Usar a Ação para trocar sua posição no campo, se movendo para uma linha adjacente à sua posição atual."
+      },
+      {
+        "id": "changeWeapon",
+        "name": "Trocar de Arma",
+        "icon": "✔",
+        "description": "Usar a Ação para guardar o que estiver segurando e equipar uma nova arma ou escudo em cada mão"
+      },
+      {
+        "id": "flee",
+        "name": "Fugir",
+        "description": "Qualquer criatura na linha de Fundo pode usar sua Ação para fugir do combate. Se não houver outros aliados na linha de Fundo, um jogador na linha de Frente também pode usar sua Ação para tentar fugir rolando Corpo contra a maior DIF dos inimigos adjacentes a ele. Inimigos só conseguem fugir se os jogadores falharem em um teste de coletivo de Corpo contra sua DIF para perseguí-lo."
+      },
+      {
+        "id": "field",
+        "name": "Campos",
+        "description": "No combate, o espaço é dividido em campos para cada grupo. Normalmente, temos o campo aliado e o campo inimigo, com um grupo de jogadores enfrentando um grupo de inimigos. O campo é dividido em duas metades: a metade mais próxima ao campo oposto é a Frente e a mais distante é o Fundo."
+      },
+      {
+        "id": "positioning",
+        "name": "Posicionamento",
+        "description": "No início do combate, cada criatura escolhe onde se posicionará no seu campo escolhendo entre as duas Linhas: a Frente ou o Fundo. \n Criaturas posicionadas na linha de Frente podem Atacar e ser atacadas pelas criaturas posicionadas à Frente no grupo inimigo. \n Criaturas posicionadas na linha de Fundo não podem fazer Ataques ⚔ contra o grupo inimigo, exceto quando uma habilidade aumenta seu Alcance ⌾. (ex: uma adaga com a habilidade Arremessar). \n Se não houver outros aliados posicionados na Frente, todas as criaturas posicionadas no Fundo são consideradas como posicionadas na Frente."
+      },
+      {
+        "id": "actionOrder",
+        "name": "Ordem de Ação",
+        "description": "Na primeira rodada do combate, o mestre rola um d6 e o resultado define a ordem dos inimigos, que vão agir em grupo de acordo com sua categoria: A ordem de Lacaios é a sua DIF; a de Oponentes é o resultado do dado; e a de Chefes é o Resultado+DIF. Cada jogador rola um d6 para definir a sua ordem de Ação e todos se posicionam em campo de acordo com essa ordem. Inimigos agem antes dos jogadores com ordem menor ou igual à sua. A rodada acaba depois que todas as criaturas tenham agido, iniciando a próxima rodada na mesma ordem."
+      },
+      {
+        "id": "reactions",
+        "name": "Reações",
+        "description": "Podem ser feitas a qualquer momento do combate. Um jogador sempre tem uma Reação no início do combate e a recupera quando chega sua vez de agir."
+      },
+      {
+        "id": "areaEffects",
+        "name": "Efeitos de Área",
+        "description": "Algumas habilidades podem afetar mais de uma criatura. Jogadores, aliados e criaturas da categoria “Lacaio” são afetadas normalmente. Porém, é mais difícil afetar criaturas mais poderosas: Criaturas da categoria “Oponente” só são afetadas com 2 Acertos e “Chefe” com 3 Acertos."
+      }
+    ]
+  },
+  {
+    "id": "exploration",
+    "list": [
+      {
+        "id": "dungeon",
+        "name": "Covil",
+        "icon":"⚔",
+        "description": "Jogadores precisam comer o equivalente a 4 rações por dia em intervalos regulares, ou recebem a condição Faminto 🍗. Após um número de dias consecutivos igual a sua Resistência com essa condição, o jogador recebe a condição Definhando 💀."
+      },
+      {
+        "id": "explore",
+        "name": "Explorar",
+        "description": "Explorar cada área dura em média meia hora. (Tempo gasto explorando, investigando, enfrentando os desafios e se deslocando cuidadosamente pela escuridão.) \n Se houverem inimigos na área, eles são alertados pelos jogadores e podem iniciar um combate. \n Se houver algum Tesouro Escondido, característica oculta ou efeito especial nessa área, os jogadores podem descobrir com um teste de Mente ao explorar. \n Quando chegam numa área, o grupo também pode escolher explorar de maneira diferente. Todos os jogadores do grupo devem estar de acordo com essa escolha."
+      },
+      {
+        "id": "rush",
+        "name": "Apressar",
+        "description": "Os jogadores podem escolher avançar mais rápido. Fazendo isso: \n Explorar a área dura metade do tempo. \n Os jogadores não podem vasculhar a área em busca de qualquer coisa que esteja escondida, como Tesouro ou passagens secretas."
+      },
+      {
+        "id": "skulk",
+        "name": "Espreitar",
+        "description": "Os jogadores podem tentar se mover cautelosamente para emboscar seus inimigos. Espreitar é um esforço conjunto e coordenado. Fazendo isso: \n Explorar a sala dura o dobro do tempo. Cada covil define um atributo que será usado nos testes para Espreitar e se Esconder. Nos casos mais comuns será Agilidade, mas existem exceções. \n Sempre que entra numa sala, o grupo faz um Teste Coletivo para Espreitar com o atributo determinado contra a DIF do Covil. Com sucesso, o grupo consegue Emboscar qualquer inimigo que esteja na sala: \n "
+      },
+      {
+        "id": "ambushed",
+        "name": "Emboscar",
+        "description": "O grupo emboscado não fica ciente da presença de seu grupo. \n Ao iniciar o combate, seu grupo têm um Dado Extra 🎲 na ordem de combate e o primeiro a agir pode escolher a posição inicial de todos os inimigos que agem depois na ordem."
+      },
+      {
+        "id": "hide",
+        "name": "Esconder",
+        "description": "Se não encontrarem abrigo seguro dentro do Covil, os jogadores podem tentar se esconder em uma área para evitar inimigos. Enquanto estiverem escondidos, o grupo pode tentar Descansar e passar o tempo que desejar no local. \n Para se esconder com sucesso, o grupo deve fazer um Teste Coletivo de Mente contra a DIF do Covil.\n Caso falhem, ainda podem tentar Descansar, mas há a chance do grupo ser encontrado por inimigos. A cada hora que passa, tem 50% de chance de um grupo de inimigos encontrar os jogadores. \n Uma vez encontrados, o grupo não pode tentar se esconder no mesmo lugar novamente, mas ainda pode tentar Descansar novamente."
+      },
+      {
+        "id": "food",
+        "name": "Comida",
+        "icon":"⚔",
+        "description": "Jogadores precisam comer o equivalente a 4 rações por dia em intervalos regulares, ou recebem a condição Faminto 🍗. Após um número de dias consecutivos igual a sua Resistência com essa condição, o jogador recebe a condição Definhando 💀."
+      },
+      {
+        "id": "drink",
+        "name": "Hidratação",
+        "icon": "⛨",
+        "description": "Jogadores podem ficar sem água por um número de dias consecutivos igual a sua Resistência, antes de receber a condição Definhando 💀."
+      },
+      {
+        "id": "rest",
+        "name": "Sono e Descanso",
+        "icon": "↪",
+        "description": "Para Descansar, um Jogador deve consumir comida equivalente a uma ração e passar pelo menos uma hora em repouso ou fazendo atividades leves. \n Alternativamente, Jogadores podem Descansar dormindo por 8 horas. Jogadores devem Dormir assim pelo menos uma vez por dia ou recebem a condição Exausto 💧."
+      },
+      {
+        "id": "breathing",
+        "name": "Respirar",
+        "icon": "✔",
+        "description": "Jogadores podem ficar sem respirar por um número de rodadas consecutivas igual a sua Resistência. Depois disso, ficam Inconscientes 💤 pelo mesmo número de rodadas antes de morrer."
+      }
+    ]
+  }
 ]

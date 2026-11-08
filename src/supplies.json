@@ -1,237 +1,290 @@
 [
-    {
-        "id": "ammo",
-        "type": "consumable",
-        "desc": "Munição",
+  {
+    "listId": "ammo",
+    "type": "supply",
+    "desc": "Munição",
+    "list": [
+      {
+        "item": "arrowPack",
+        "desc": "Conjunto de Flechas",
+        "value": 10,
+        "tag": "consumable",
+        "effect": "Permite fazer 3 Ataques ⚔ com Arcos antes de ser consumido."
+      },
+      {
+        "item": "boltPack",
+        "desc": "Conjunto de Setas",
+        "value": 25,
+        "tag": "consumable",
+        "effect": "Permite fazer 3 Ataques ⚔ com Bestas antes de ser consumido."
+      }
+    ]
+  },
+  {
+    "listId": "repairKits",
+    "type": "supply",
+    "desc": "Kits de Reparo",
+    "list": [
+      {
+        "item": "miniRepairKit",
+        "desc": "Kit de Reparo [Mini]",
+        "value": 10,
+        "tag": "consumable",
+        "effect": "Permite consertar equipamentos mundanos de até 25 DO."
+      },
+      {
+        "item": "smallRepairKit",
+        "desc": "Kit de Reparo [P]",
+        "value": 25,
+        "tag": "consumable",
+        "effect": "Permite consertar equipamentos mundanos de até 50 DO."
+      },
+      {
+        "item": "mediumRepairKit",
+        "desc": "Kit de Reparo [M]",
+        "value": 50,
+        "tag": "consumable",
+        "effect": "Permite consertar equipamentos mundanos de até 100 DO."
+      },
+      {
+        "item": "largeRepairKit",
+        "desc": "Kit de Reparo [G]",
+        "value": 100,
+        "tag": "consumable",
+        "effect": "Permite consertar equipamentos mundanos de até 200 DO."
+      }
+    ]
+  },
+  {
+    "listId": "commonSupplies",
+    "type": "supply",
+    "desc": "Suprimentos Comuns",
+    "list": [
+      {
+        "item": "rations",
+        "desc": "Pacote de Rações",
+        "value": 10,
+        "tag": "consumable",
+        "flavor": "Contém todos os nutrientes, vitaminas e minerais essenciais para um aventureiro",
+        "effect": "Comida conservada para emergência"
+      },
+      {
+        "item": "medicalSupplies",
+        "desc": "Suprimentos Médicos",
+        "value": 10,
+        "tag": "consumable",
+        "flavor": "Pomadas, bandagens e remédios diversos",
+        "effect": "Usados para recuperar jogadores de algumas condições nocivas fora de combate"
+      }
+    ]
+  },
+  {
+    "listId": "specialSupplies",
+    "type": "specialSupply",
+    "desc": "Suprimentos Especiais",
+    "list": [
+      {
+        "item": "lifePotion",
+        "desc": "Potion de Vida",
+        "value": 200,
+        "tag": "consumable",
+        "flavor": "Pequeno frasco com um elixir vermelho.",
+        "effect": "Beber essa poção restaura a Vida ❤ e Vidas Extras ❤ de uma criatura. Além disso, um jogador pode usar este elixir imediatamente após um combate para reviver um aliado que esteja à Beira da Morte ✝ sem efeitos negativos"
+      },
+      {
+        "item": "strengthPotion",
+        "desc": "Poção da Força do Marinheiro",
+        "value": 25,
+        "tag": "consumable",
+        "flavor": "Tem gosto de Espinafre",
+        "effect": "Pode ser usada em combate como parte de sua ação. Concede um Dado Extra 🎲 em todas as rolagens de Ataques ⚔, Defesa ⛨ e Corpo por 1 Hora."
+      },
+      {
+        "item": "smokeHerb",
+        "desc": "Erva-de-fumo dos Pequenos",
+        "value": 10,
+        "flavor": "Uma especialidade do povo-pequeno. Valorizada por muitos Conjuradores que dizem que a fumaça soprada é capaz de limpar a mente",
+        "effect": "Pode ser usada em combate como parte de sua ação. Ao ser consumida, concede um Dado Extra 🎲 em todas as rolagens de Ataques Mágicos ⛤ e Mente por 1 Hora.",
+        "tag": "consumable"
+      },
+      {
+        "item": "holyWater",
+        "desc": "Água Benta",
+        "value": 25,
+        "flavor": "Pequeno frasco com líquido abençoado, criado para expurgar o mal. O líquido transparente em seu interior é indistinguível de água comum.",
+        "effect": "Pode ser arremessado com uma ação de Ataque ⚔ com Alcance ⌾ 2, e caso atinja uma criatura com a condição Morto-vivo ❤, o líquido explode em uma nuvem de chamas azuladas que não podem ser apagadas normalmente, Incendiando-o 🔥.",
+        "tag": ["consumable", "action"]
+      },
+      {
+        "item": "smokeBomb",
+        "desc": "Bomba de Fumaça",
+        "value": 50,
+        "effect": "Arremessar esta pequena esfera no chão a seus pés cobre sua linha atual com uma fumaça densa por uma rodada. As criaturas nesta linha não podem ver ou ser vistas por criaturas fora da linha. Criaturas dentro da fumaça podem Fugir automaticamente do combate se não estiverem sendo vistas por inimigos, e você pode Fugir como parte desta ação.",
+        "tag": ["consumable", "action"]
+      },
+      {
+        "item": "fireBomb",
+        "desc": "Bomba Incendiária",
+        "value": 25,
+        "effect": "Você pode arremessar a bomba e fazer um Ataque ⚔ com Alcance ⌾ 2, Incendiando 🔥 o alvo se acertar.",
+        "tag": ["consumable", "action"]
+      },
+      {
+        "listId": "toxins",
+        "type": "specialSupply",
+        "desc": "Toxinas",
         "list": [
-            {
-                "id": "arrowPack",
-                "desc": "Conjunto de Flechas",
-                "value": 10,
-                "tag": "consumable",
-                "effect": "Permite fazer 3 Ataques ⚔ com Arcos antes de ser consumido."
-            },
-            {
-                "id": "boltPack",
-                "desc": "Conjunto de Setas",
-                "value": 25,
-                "tag": "consumable",
-                "effect": "Permite fazer 3 Ataques ⚔ com Bestas antes de ser consumido."
-            }
+          {
+            "item": "toxin1",
+            "desc": "Toxina [1]",
+            "value": 25,
+            "effect": "Você pode envenenar sua arma como parte de um Ataque ⚔. Na primeira vez que acertar um alvo, ele ficará Intoxicado ☠ caso sua Dificuldade seja igual ou inferior à potência da Toxina. Toda rolagem contra a criatura intoxicada tem CA +1",
+            "tag": "consumable",
+            "difficulty": 1
+          },
+          {
+            "item": "toxin2",
+            "desc": "Toxina [2]",
+            "value": 50,
+            "effect": "Você pode envenenar sua arma como parte de um Ataque ⚔. Na primeira vez que acertar um alvo, ele ficará Intoxicado ☠ caso sua Dificuldade seja igual ou inferior à potência da Toxina. Toda rolagem contra a criatura intoxicada tem CA +1",
+            "tag": "consumable",
+            "difficulty": 2
+          },
+          {
+            "item": "toxin3",
+            "desc": "Toxina [3]",
+            "value": 150,
+            "effect": "Você pode envenenar sua arma como parte de um Ataque ⚔. Na primeira vez que acertar um alvo, ele ficará Intoxicado ☠ caso sua Dificuldade seja igual ou inferior à potência da Toxina. Toda rolagem contra a criatura intoxicada tem CA +1",
+            "tag": "consumable",
+            "difficulty": 3
+          },
+          {
+            "item": "toxin4",
+            "desc": "Toxina [4]",
+            "value": 300,
+            "effect": "Você pode envenenar sua arma como parte de um Ataque ⚔. Na primeira vez que acertar um alvo, ele ficará Intoxicado ☠ caso sua Dificuldade seja igual ou inferior à potência da Toxina. Toda rolagem contra a criatura intoxicada tem CA +1",
+            "tag": "consumable",
+            "difficulty": 4
+          },
+          {
+            "item": "toxin5",
+            "desc": "Toxina [5]",
+            "value": 1000,
+            "effect": "Você pode envenenar sua arma como parte de um Ataque ⚔. Na primeira vez que acertar um alvo, ele ficará Intoxicado ☠ caso sua Dificuldade seja igual ou inferior à potência da Toxina. Toda rolagem contra a criatura intoxicada tem CA +1",
+            "tag": "consumable",
+            "difficulty": 5
+          }
         ]
-    },
-    {
-        "id": "repairKits",
-        "type": "consumable",
-        "desc": "Kits de Reparo",
+      },
+      {
+        "listId": "poisons",
+        "type": "specialSupply",
+        "desc": "Venenos",
         "list": [
-            {
-                "id": "miniRepairKit",
-                "desc": "Kit de Reparo [Mini]",
-                "value": 10,
-                "tag": "consumable",
-                "effect": "Permite consertar equipamentos mundanos de até 25 DO."
-            },
-            {
-                "id": "smallRepairKit",
-                "desc": "Kit de Reparo [P]",
-                "value": 25,
-                "tag": "consumable",
-                "effect": "Permite consertar equipamentos mundanos de até 50 DO."
-            },
-            {
-                "id": "mediumRepairKit",
-                "desc": "Kit de Reparo [M]",
-                "value": 50,
-                "tag": "consumable",
-                "effect": "Permite consertar equipamentos mundanos de até 100 DO."
-            },
-            {
-                "id": "largeRepairKit",
-                "desc": "Kit de Reparo [G]",
-                "value": 100,
-                "tag": "consumable",
-                "effect": "Permite consertar equipamentos mundanos de até 200 DO."
-            }
+          {
+            "item": "poison1",
+            "desc": "Veneno [1]",
+            "value": 25,
+            "effect": "Você pode envenenar sua arma como parte de um Ataque ⚔. Na primeira vez que acertar um alvo, ele ficará Envenenado ☠ caso sua Dificuldade seja igual ou inferior à potência do Veneno.",
+            "tag": "consumable",
+            "difficulty": 1
+          },
+          {
+            "item": "poison2",
+            "desc": "Veneno [2]",
+            "value": 50,
+            "effect": "Você pode envenenar sua arma como parte de um Ataque ⚔. Na primeira vez que acertar um alvo, ele ficará Envenenado ☠ caso sua Dificuldade seja igual ou inferior à potência do Veneno.",
+            "tag": "consumable",
+            "difficulty": 2
+          },
+          {
+            "item": "poison3",
+            "desc": "Veneno [3]",
+            "value": 150,
+            "effect": "Você pode envenenar sua arma como parte de um Ataque ⚔. Na primeira vez que acertar um alvo, ele ficará Envenenado ☠ caso sua Dificuldade seja igual ou inferior à potência do Veneno.",
+            "tag": "consumable",
+            "difficulty": 3
+          },
+          {
+            "item": "poison4",
+            "desc": "Veneno [4]",
+            "value": 300,
+            "effect": "Você pode envenenar sua arma como parte de um Ataque ⚔. Na primeira vez que acertar um alvo, ele ficará Envenenado ☠ caso sua Dificuldade seja igual ou inferior à potência do Veneno.",
+            "tag": "consumable",
+            "difficulty": 4
+          },
+          {
+            "item": "poison5",
+            "desc": "Veneno [5]",
+            "value": 1000,
+            "effect": "Você pode envenenar sua arma como parte de um Ataque ⚔. Na primeira vez que acertar um alvo, ele ficará Envenenado ☠ caso sua Dificuldade seja igual ou inferior à potência do Veneno.",
+            "tag": "consumable",
+            "difficulty": 5
+          }
         ]
-    },
-    {
-        "id": "commonSupplies",
-        "type": "consumable",
-        "desc": "Suprimentos Comuns",
+      },
+      {
+        "listId": "magicSupplies",
+        "type": "magic",
+        "desc": "Suprimentos Mágicos",
         "list": [
-            {
-                "id": "rations",
-                "desc": "Pacote de Rações",
-                "value": 10,
-                "tag": "consumable",
-                "flavor": "Contém todos os nutrientes, vitaminas e minerais essenciais para um aventureiro",
-                "effect": "Comida conservada para emergência"
-            },
-            {
-                "id": "medicalSupplies",
-                "desc": "Suprimentos Médicos",
-                "value": 10,
-                "tag": "consumable",
-                "flavor": "Pomadas, bandagens e remédios diversos",
-                "effect": "Usados para recuperar jogadores de algumas condições nocivas fora de combate"
-            }
+          {
+            "item": "magicCristal",
+            "desc": "Cristal Mágico",
+            "value": 50,
+            "flavor": "Pode ser encontrado encravado em cajados, varinhas e outros adereços de Conjuradores ou convertido em tinta mágica para Grimórios",
+            "effect": "Principal componente dos feitiços dos Conjuradores.",
+            "tag": "magic"
+          },
+          {
+            "item": "sacredRelic",
+            "desc": "Relíquia Sagrada",
+            "value": 75,
+            "flavor": "Um catalizador de pequenos milagres. Este artefato abriga uma centelha divina e pode ser encontrado nas mais diversas formas.",
+            "effect": "Um jogador pode consumir a centelha para obter o número máximo de Acertos em uma rolagem.",
+            "tag": "magic"
+          }
         ]
-    },
-    {
-        "id": "specialSupplies",
-        "type": "consumable",
-        "desc": "Suprimentos Especiais",
+      },
+      {
+        "listId": "runes",
+        "type": "magic",
+        "desc": "Runas Mágicas",
         "list": [
-            {
-                "id": "lifePotion",
-                "desc": "Potion de Vida",
-                "value": 200,
-                "tag": "consumable",
-                "flavor": "Pequeno frasco com um elixir vermelho.",
-                "effect": "Beber essa poção restaura a Vida ❤ e Vidas Extras ❤ de uma criatura. Além disso, um jogador pode usar este elixir imediatamente após um combate para reviver um aliado que esteja à Beira da Morte ✝ sem efeitos negativos"
-            },
-            {
-                "id": "strengthPotion",
-                "desc": "Poção da Força do Marinheiro",
-                "value": 25,
-                "tag": "consumable",
-                "flavor": "Tem gosto de Espinafre",
-                "effect": "Pode ser usada em combate como parte de sua ação. Concede um Dado Extra 🎲 em todas as rolagens de Ataques ⚔, Defesa ⛨ e Corpo por 1 Hora."
-            },
-            {
-                "id": "smokeHerb",
-                "desc": "Erva-de-fumo dos Pequenos",
-                "value": 10,
-                "flavor": "Uma especialidade do povo-pequeno. Valorizada por muitos Conjuradores que dizem que a fumaça soprada é capaz de limpar a mente",
-                "effect": "Pode ser usada em combate como parte de sua ação. Ao ser consumida, concede um Dado Extra 🎲 em todas as rolagens de Ataques Mágicos ⛤ e Mente por 1 Hora.",
-                "tag": "consumable"
-            },
-            {
-                "id": "holyWater",
-                "desc": "Água Benta",
-                "value": 25,
-                "flavor": "Pequeno frasco com líquido abençoado, criado para expurgar o mal. O líquido transparente em seu interior é indistinguível de água comum.",
-                "effect": "Pode ser arremessado com uma ação de Ataque ⚔ com Alcance ⌾ 2, e caso atinja uma criatura com a condição Morto-vivo ❤, o líquido explode em uma nuvem de chamas azuladas que não podem ser apagadas normalmente, Incendiando-o 🔥.",
-                "tag": [
-                    "consumable",
-                    "action"
-                ]
-            },
-            {
-                "id": "smokeBomb",
-                "desc": "Bomba de Fumaça",
-                "value": 50,
-                "effect": "Arremessar esta pequena esfera no chão a seus pés cobre sua linha atual com uma fumaça densa por uma rodada. As criaturas nesta linha não podem ver ou ser vistas por criaturas fora da linha. Criaturas dentro da fumaça podem Fugir automaticamente do combate se não estiverem sendo vistas por inimigos, e você pode Fugir como parte desta ação.",
-                "tag": [
-                    "consumable",
-                    "action"
-                ]
-            },
-            {
-                "id": "fireBomb",
-                "desc": "Bomba Incendiária",
-                "value": 25,
-                "effect": "Você pode arremessar a bomba e fazer um Ataque ⚔ com Alcance ⌾ 2, Incendiando 🔥 o alvo se acertar.",
-                "tag": [
-                    "consumable",
-                    "action"
-                ]
-            },
-            {
-                "id": "toxins",
-                "type": "consumable",
-                "desc": "Toxinas",
-                "list": [
-                    {
-                        "id": "toxin1",
-                        "desc": "Toxina [1]",
-                        "value": 25,
-                        "effect": "Você pode envenenar sua arma como parte de um Ataque ⚔. Na primeira vez que acertar um alvo, ele ficará Intoxicado ☠ caso sua Dificuldade seja igual ou inferior à potência da Toxina. Toda rolagem contra a criatura intoxicada tem CA +1",
-                        "tag": "consumable",
-                        "difficulty": 1
-                    },
-                    {
-                        "id": "toxin2",
-                        "desc": "Toxina [2]",
-                        "value": 50,
-                        "effect": "Você pode envenenar sua arma como parte de um Ataque ⚔. Na primeira vez que acertar um alvo, ele ficará Intoxicado ☠ caso sua Dificuldade seja igual ou inferior à potência da Toxina. Toda rolagem contra a criatura intoxicada tem CA +1",
-                        "tag": "consumable",
-                        "difficulty": 2
-                    },
-                    {
-                        "id": "toxin3",
-                        "desc": "Toxina [3]",
-                        "value": 150,
-                        "effect": "Você pode envenenar sua arma como parte de um Ataque ⚔. Na primeira vez que acertar um alvo, ele ficará Intoxicado ☠ caso sua Dificuldade seja igual ou inferior à potência da Toxina. Toda rolagem contra a criatura intoxicada tem CA +1",
-                        "tag": "consumable",
-                        "difficulty": 3
-                    },
-                    {
-                        "id": "toxin4",
-                        "desc": "Toxina [4]",
-                        "value": 300,
-                        "effect": "Você pode envenenar sua arma como parte de um Ataque ⚔. Na primeira vez que acertar um alvo, ele ficará Intoxicado ☠ caso sua Dificuldade seja igual ou inferior à potência da Toxina. Toda rolagem contra a criatura intoxicada tem CA +1",
-                        "tag": "consumable",
-                        "difficulty": 4
-                    },
-                    {
-                        "id": "toxin5",
-                        "desc": "Toxina [5]",
-                        "value": 1000,
-                        "effect": "Você pode envenenar sua arma como parte de um Ataque ⚔. Na primeira vez que acertar um alvo, ele ficará Intoxicado ☠ caso sua Dificuldade seja igual ou inferior à potência da Toxina. Toda rolagem contra a criatura intoxicada tem CA +1",
-                        "tag": "consumable",
-                        "difficulty": 5
-                    }
-                ]
-            },
-            {
-                "id": "poisons",
-                "type": "consumable",
-                "desc": "Venenos",
-                "list": [
-                    {
-                        "id": "poison1",
-                        "desc": "Veneno [1]",
-                        "value": 25,
-                        "effect": "Você pode envenenar sua arma como parte de um Ataque ⚔. Na primeira vez que acertar um alvo, ele ficará Envenenado ☠ caso sua Dificuldade seja igual ou inferior à potência do Veneno.",
-                        "tag": "consumable",
-                        "difficulty": 1
-                    },
-                    {
-                        "id": "poison2",
-                        "desc": "Veneno [2]",
-                        "value": 50,
-                        "effect": "Você pode envenenar sua arma como parte de um Ataque ⚔. Na primeira vez que acertar um alvo, ele ficará Envenenado ☠ caso sua Dificuldade seja igual ou inferior à potência do Veneno.",
-                        "tag": "consumable",
-                        "difficulty": 2
-                    },
-                    {
-                        "id": "poison3",
-                        "desc": "Veneno [3]",
-                        "value": 150,
-                        "effect": "Você pode envenenar sua arma como parte de um Ataque ⚔. Na primeira vez que acertar um alvo, ele ficará Envenenado ☠ caso sua Dificuldade seja igual ou inferior à potência do Veneno.",
-                        "tag": "consumable",
-                        "difficulty": 3
-                    },
-                    {
-                        "id": "poison4",
-                        "desc": "Veneno [4]",
-                        "value": 300,
-                        "effect": "Você pode envenenar sua arma como parte de um Ataque ⚔. Na primeira vez que acertar um alvo, ele ficará Envenenado ☠ caso sua Dificuldade seja igual ou inferior à potência do Veneno.",
-                        "tag": "consumable",
-                        "difficulty": 4
-                    },
-                    {
-                        "id": "poison5",
-                        "desc": "Veneno [5]",
-                        "value": 1000,
-                        "effect": "Você pode envenenar sua arma como parte de um Ataque ⚔. Na primeira vez que acertar um alvo, ele ficará Envenenado ☠ caso sua Dificuldade seja igual ou inferior à potência do Veneno.",
-                        "tag": "consumable",
-                        "difficulty": 5
-                    }
-                ]
-            }
+          {
+            "item": "powerRune",
+            "desc": "Runa do Poder",
+            "value": 25,
+            "flavor": "Uma runa que permite potencializar a conjuração de magias. Pode ser encontrada entalhada em talismãs, ou em pequenos acessórios, como anéis. Uma vez consumida, a runa desaparece do objeto sem deixar rastros.",
+            "effect": "Ao fazer um Ataque Mágico ⛤, os efeitos imediatos da magia são duplicados. Se o efeito da magia causa uma condição, ela é prolongada por uma rodada adicional.",
+            "tag": ["magic", "consumable"]
+          },
+          {
+            "item": "speedRune",
+            "desc": "Runa da Agilidade",
+            "value": 25,
+            "flavor": "Uma runa que permite potencializar a conjuração de magias. Pode ser encontrada entalhada em talismãs, ou em pequenos acessórios, como anéis. Uma vez consumida, a runa desaparece do objeto sem deixar rastros.",
+            "effect": "Você pode conjurar uma magia usando sua Reação. Fazendo isso, além dos efeitos de conjurar uma magia imediatamente, você se esgota e não pode usar Ataques Mágicos ⛤ na sua próxima Ação.",
+            "tag": ["magic", "consumable"]
+          },
+          {
+            "item": "focusRune",
+            "desc": "Runa do Foco",
+            "value": 25,
+            "flavor": "Uma runa que permite potencializar a conjuração de magias. Pode ser encontrada entalhada em talismãs, ou em pequenos acessórios, como anéis. Uma vez consumida, a runa desaparece do objeto sem deixar rastros.",
+            "effect": "Os efeitos de Erros Críticos ❌ de um Ataque Mágico ⛤ são ignorados e você considera qualquer resultado 5+ como um Acerto Crítico ❕.",
+            "tag": ["magic", "consumable"]
+          },
+          {
+            "item": "infiniteRune",
+            "desc": "Runa do Infinito",
+            "value": 25,
+            "flavor": "Uma runa que permite potencializar a conjuração de magias. Pode ser encontrada entalhada em talismãs, ou em pequenos acessórios, como anéis. Uma vez consumida, a runa desaparece do objeto sem deixar rastros.",
+            "effect": "Você faz um Ataque Mágico ⛤ com poder além dos seus limites, rolando com CA-1, mas o total de Acertos ✔ é duplicado ao fim das rolagens.",
+            "tag": ["magic", "consumable"]
+          }
         ]
-    }
+      }
+    ]
+  }
 ]

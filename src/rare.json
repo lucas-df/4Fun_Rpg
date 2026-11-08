@@ -1,0 +1,213 @@
+[
+  {
+    "listId": "magic1hWeapons",
+    "list": [
+      {
+        "item": "magicDagger",
+        "desc": "Adaga Encantada",
+        "value": 100,
+        "skillName": "Degolar",
+        "skillEffect": ["Se você emboscar um inimigo antes que ele tenha sua ação em combate, ou consiga atacá-lo sem que ele note sua presença, você pode acertar automaticamente.","Esse item pode ser usado o dobro de vezes antes de ser danificado."],
+        "tags": ["1M", "magic"]
+      },
+      {
+        "item": "magicDuelistDagger",
+        "desc": "Adaga de Duelista Encantada",
+        "value": 250,
+        "skillName": "Revidar",
+        "skillEffect": ["Após uma Defesa ⛨ bem sucedida, você pode desequilibrar o inimigo para um contra-ataque, deixando-o Vulnerável.","Esse item pode ser usado o dobro de vezes antes de ser danificado."],
+        "tags": ["1M", "magic"]
+      },
+      {
+        "item": "magicRapier",
+        "desc": "Rapieira Encantada",
+        "value": 500,
+        "skillName": "Perfurar",
+        "skillEffect": ["Você pode atacar inimigos no ponto crítico, rolando um Dado Extra 🎲 para cada Acerto Crítico ❕.","Esse item pode ser usado o dobro de vezes antes de ser danificado."],
+        "tags": ["1M", "magic"]
+      },
+      {
+        "item": "magicLongSword",
+        "desc": "Espada Longa Encantada",
+        "value": 500,
+        "skillName": "Aparar",
+        "skillEffect": ["Quando você é atacado, você pode rolar Agilidade no teste de Defesa ⛨.","Esse item pode ser usado o dobro de vezes antes de ser danificado."],
+        "tags": ["1M", "magic"]
+      },
+      {
+        "item": "magicThrowingDagger",
+        "desc": "Adaga de Arremesso do Retorno",
+        "value": 150,
+        "skillName": "Arremessar",
+        "skillEffect": ["Você pode sacar esta arma fazendo um único Ataque ⚔ com Alcance ⌾ 2 para arremessá-la.","Após ser arremessada, essa arma não é danificada e retorna ao usuário ao final do combate."],
+        "tags": ["1M", "magic"]
+      },
+      {
+        "item": "magicAxe",
+        "desc": "Machado Encantado",
+        "value": 250,
+        "skillName": "Brutalizar",
+        "skillEffect": ["Após uma rolagem de Ataque ⚔ com esta arma, você pode escolher rolar novamente cada Erro Crítico ❌.","Esse item pode ser usado o dobro de vezes antes de ser danificado."],
+        "tags": ["1M", "magic"]
+      },
+      {
+        "item": "magicShortSpear",
+        "desc": "Lança Curta Encantada",
+        "value": 250,
+        "skillName": "Lançar",
+        "skillEffect": ["Você pode arremessar essa arma e fazer um único Ataque ⚔ com Alcance ⌾ 3.","Após ser arremessada, essa arma não é danificada e retorna ao usuário ao final do combate."],
+        "tags": ["1M", "magic"]
+      },
+      {
+        "item": "magicSerratedBlade",
+        "desc": "Lâmina Serrada Encantada",
+        "value": 250,
+        "skillName": "Rasgar",
+        "skillEffect": ["Alvos acertados por seu Ataque ⚔ são incapazes de recuperar Vida ou Vida Extra até o fim da próxima rodada.","Esse item pode ser usado o dobro de vezes antes de ser danificado."],
+        "tags": ["1M", "magic"]
+      },
+      {
+        "item": "magicMace",
+        "desc": "Porrete Encantado",
+        "value": 100,
+        "skillName": "Atordoar",
+        "skillEffect": ["Alvos acertados por seu Ataque ⚔ ficam Atordoados 💫.","Esse item pode ser usado o dobro de vezes antes de ser danificado."],
+        "tags": ["1M", "magic"]
+      },
+      {
+        "item": "magicHammer",
+        "desc": "Martelo Encantado",
+        "value": 250,
+        "skillName": "Impactar",
+        "skillEffect": ["Quando um inimigo nega o dano do seu Ataque ⚔, você pode atingir o oponente com maior impacto, causando duas ocorrências de dano.","Esse item pode ser usado o dobro de vezes antes de ser danificado."],
+        "tags": ["1M", "magic"]
+      }
+    ]
+  },
+  {
+    "listId": "magic2hWeapons",
+    "list": [
+      {
+        "item": "magicStaff",
+        "desc": "Bastão Encantada",
+        "value": 250,
+        "skillName": "Afastar",
+        "skillEffect": ["Após um Ataque ⚔, você se Move para a linha de Fundo.","Esse item pode ser usado o dobro de vezes antes de ser danificado."],
+        "tags": ["2M", "magic"]
+      },
+      {
+        "item": "magicGreatAxe",
+        "desc": "Machado Grande Encantado",
+        "value": 500,
+        "skillName": "Trespassar",
+        "skillEffect": ["Ao acertar um inimigo, você usa a mesma rolagem para Atacar ⚔ outro Inimigo na mesma linha.","Esse item pode ser usado o dobro de vezes antes de ser danificado."],
+        "tags": ["2M", "magic"]
+      },
+      {
+        "item": "magicGreatSword",
+        "desc": "Espadão Encantado",
+        "value": 750,
+        "skillName": "Retaliar",
+        "skillEffect": ["Após uma Defesa ⛨, você imediatamente pode fazer um Ataque ⚔.","Esse item pode ser usado o dobro de vezes antes de ser danificado."],
+        "tags": ["2M", "magic"]
+      },
+      {
+        "item": "magicKatana",
+        "desc": "Katana Encantada",
+        "value": 1000,
+        "skillName": "Retalhar",
+        "skillEffect": ["Enquanto estiver afiada, você rola dois Dados Extras 🎲 para cada Acerto Crítico ❕ em seus Ataques ⚔. Esta arma exótica exige técnica e precisão nos cortes: seus Ataques ⚔ tem CA -1 e o fio delicado desta arma é danificado se você errar um Ataque ⚔."],
+        "tags": ["2M", "magic"]
+      },
+      {
+        "item": "magicMaul",
+        "desc": "Malho Encantado",
+        "value": 1000,
+        "skillName": "Empurrar",
+        "skillEffect": ["Alvos acertados por seu Ataque ⚔ são empurrados, sendo movidos para a linha de Fundo.","Esse item pode ser usado o dobro de vezes antes de ser danificado."],
+        "tags": ["2M", "magic"]
+      },
+      {
+        "item": "magicWarPick",
+        "desc": "Picareta de Guerra Encantada",
+        "value": 750,
+        "skillName": "Penetrar",
+        "skillEffect": ["Quando inimigos negam o dano do seu Ataque ⚔, você pode ignorar esse efeito.","Esse item pode ser usado o dobro de vezes antes de ser danificado."],
+        "tags": ["2M", "magic"]
+      },
+      {
+        "item": "magicHalberd",
+        "desc": "Alabarda Encantada",
+        "value": 1000,
+        "skillName": "Dizimar",
+        "skillEffect": ["Você pode fazer um Ataque ⚔ contra todos os inimigos em uma linha ao mesmo tempo. Você faz um único Ataque ⚔ contra o oponente de maior Defesa ⛨ na linha. Se acertar, este ataque acerta também todos os outros inimigos na linha.","Esse item pode ser usado o dobro de vezes antes de ser danificado."],
+        "tags": ["2M", "magic"]
+      },
+      {
+        "item": "magicLongSpear",
+        "desc": "Lança Longa Encantada",
+        "value": 500,
+        "skillName": "Empalar",
+        "skillEffect": ["Você pode fazer um Ataque ⚔ com Alcance ⌾ 3.","Esse item pode ser usado o dobro de vezes antes de ser danificado."],
+        "tags": ["2M", "magic"]
+      },
+      {
+        "item": "magicBow",
+        "desc": "Arco Encantado",
+        "value": 1000,
+        "flavor": "Um arco de madeira encantada, fabricado com precisão por artesãos élficos.",
+        "skillName": "Disparar",
+        "skillEffect": ["Você pode fazer Ataques ⚔ com Alcance ⌾ 3 enquanto tiver Flechas. Você não pode alvejar inimigos que estejam Próximos a você. Flechas precisam ser certeiras para infligir golpes letais, por isso, rolagens de Ataque ⚔ desta arma tem CA -1.","Suas flechas são mais potentes. Atacar com essa arma não impõe penalidade de CA."],
+        "tags": ["2M", "Recurso", "magic"]
+      },
+      {
+        "item": "magicCrossbow",
+        "desc": "Besta Encantada",
+        "value": 1000,
+        "flavor": "Um instrumento letal, fruto da cruel engenhosidade humana.",
+        "skillName": "Cravar",
+        "skillEffect": ["Você pode fazer Ataques ⚔ com Alcance ⌾ 3 enquanto tiver Setas. Você não pode alvejar inimigos que estejam Próximos a você. Bestas precisam ser recarregadas com uma Reação após cada Ataques ⚔.","Pode disparar um pacote inteiro de Setas antes de precisar recarregar."],
+        "tags": ["2M", "Recurso", "magic"]
+      }
+    ]
+  },
+  {
+    "listId": "rareEquipment",
+    "type": "magic",
+    "desc": "Equipamento Raro",
+    "list": [
+      {
+        "item": "magicLightArmor",
+        "desc": "Armadura Leve Encantada",
+        "value": 750,
+        "skillName": "Proteger",
+        "skillEffect": ["Quando vestida, permite negar uma ocorrência de dano antes de ser danificada.","Esse item pode ser usado o dobro de vezes antes de ser danificado."],
+        "tags": ["magic"]
+      },
+      {
+        "item": "magicMediumArmor",
+        "desc": "Armadura Média Encantada",
+        "value": 1500,
+        "skillName": "Proteger 2",
+        "skillEffect": [
+          "Requer Treinamento Marcial(id)","Quando vestida, permite negar duas ocorrências de dano antes de ser danificada.","Esse item pode ser usado o dobro de vezes antes de ser danificado."],
+        "tags": ["magic"]
+      },
+      {
+        "item": "magicHeavyArmor",
+        "desc": "Armadura Pesada Encantada",
+        "value": 5000,
+        "skillName": "Proteger 3",
+        "skillEffect": [
+          "Requer Treinamento Marcial(id)",
+          "Quando vestida, permite negar três ocorrências de dano.",
+          "Esse item pode ser usado o dobro de vezes antes de ser danificado."
+        ],
+        "tags": ["magic"]
+      }
+    ]
+  }
+]
+
+  
+  

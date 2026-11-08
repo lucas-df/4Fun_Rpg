@@ -1,0 +1,170 @@
+[
+  {
+    "listId": "medicinalResources",
+    "list": [
+      {
+        "item": "smallHerb",
+        "name": "Erva Pequenina",
+        "value": 1,
+        "craft": "Erva-de-Fumo dos Pequenos"
+      },
+      {
+        "item": "greenSalt",
+        "name": "Sais-verdes da Maresia",
+        "value": 10,
+        "craft": "Poção da Força do Marinheiro"
+      },
+      {
+        "item": "seraphBlood",
+        "name": "Sangue de Serafim",
+        "value": 100,
+        "craft": "Poção da Vida"
+      }
+    ]
+  },
+  {
+    "listId": "mineralResources",
+    "list": [
+      {
+        "item": "coldIron",
+        "name": "Ferro Frio",
+        "value": 1
+      },
+      {
+        "item": "thunderStone",
+        "name": "Pedra-Trovão",
+        "value": 10
+      },
+      {
+        "item": "infernalSteel",
+        "name": "Aço Infernal",
+        "value": 100
+      },
+      {
+        "item": "mithril",
+        "name": "Mithril",
+        "value": 10000
+      }
+    ]
+  },
+  {
+    "listId": "magicResources",
+    "list": [
+      {
+        "item": "carbCrystal",
+        "name": "Cristal de Carbúnculo",
+        "value": 1
+      },
+      {
+        "item": "shadowSilk",
+        "name": "Seda Umbral",
+        "value": 10
+      },
+      {
+        "item": "stormBottle",
+        "name": "Tempesatade Engarrafada",
+        "value": 100
+      },
+      {
+        "item": "cosmicCristal",
+        "name": "Cristal Cósmico",
+        "value": 10000
+      }
+    ]
+  },
+  {
+    "listId": "foodResources",
+    "list": [
+      {
+        "item": "ogreTruffle",
+        "name": "Trufa Estômago-de-Ogro",
+        "value": 1,
+        "effect": "Você não sente fome ou sede."
+      },
+      {
+        "item": "eyeBerry",
+        "name": "Frutóculos",
+        "value": 10,
+        "effect": "Você não sente sono e não pode ser emboscado."
+      },
+      {
+        "item": "witchMushroom",
+        "name": "Congumelo Chapéu-de-Bruxa",
+        "value": 100,
+        "effect": "Você ignora a próxima condição mágica imposta a você."
+      },
+      {
+        "item": "ambrosiaHoney",
+        "name": "Mel de Ambrósia",
+        "value": 1000,
+        "effect": "Você tem duas Vidas Extras."
+      },
+      {
+        "item": "magicFish",
+        "name": "Magicarpa",
+        "value": 10000,
+        "effect": "???"
+      }
+    ]
+  },
+  {
+    "listId": "goldResources",
+    "list": [
+      {
+        "item": "coin",
+        "name": "Uma moeda",
+        "value": 1
+      },
+      {
+        "item": "handfulOfCoins",
+        "name": "Punhado de moedas",
+        "value": 10
+      },
+      {
+        "item": "bagOfCoins",
+        "name": "Saco de moedas",
+        "value": 100
+      },
+      {
+        "item": "chestOfCoins",
+        "name": "Baú de Moedas",
+        "value": 1000
+      },
+      {
+        "item": "vaultOfGoldBars",
+        "name": "Cofre com barras D'Ouro",
+        "value": 10000
+      }
+    ]
+  },
+  {
+    "listId": "artResources",
+    "list": [
+      {
+        "item": "ivoryGraniteQuartz",
+        "name": "Marfim, Granito ou Quartzo",
+        "value": 1
+      },
+      {
+        "item": "silverSilkAmethyst",
+        "name": "Prata, Seda ou Ametista",
+        "value": 10
+      },
+      {
+        "item": "goldPearlsRuby",
+        "name": "Ouro, Pérolas ou Rubi",
+        "value": 100
+      },
+      {
+        "item": "platinumSapphire",
+        "name": "Platina ou Safira",
+        "value": 1000
+      },
+      {
+        "item": "jadeObsidianDiamond",
+        "name": "Jade, Obsidiana ou Diamante",
+        "value": 10000
+      }
+    ]
+  }
+]
