@@ -24,13 +24,42 @@
             },
             {
                 "desc": "Item Mundano",
-                "nextTable": "civilized",
+                "nextTable": "civilizedTableRestricted",
                 "selection": "random",
-                "quantity": "1d6"
+                "rolls": "1d6"
             },
             {   "desc": "Recurso Único",
                 "nextTable": "uniqueResources",                
-                "value": "difficulty"
+                "selection": "difficulty"
+            }
+        ]
+    },
+    {
+        "tableId": "naturalTableRestricted",
+        "entries": [
+            {
+                "desc": "Recurso Medicinal",
+                "nextTable": "medicinalResources",
+                "selection": "difficulty"
+            },
+            {
+                "desc": "Minério Mítico",
+                "nextTable": "mineralResources",
+                "selection": "difficulty"
+            },
+            {
+                "desc": "Material Mágico",
+                "nextTable": "magicResources",
+                "selection": "difficulty"
+            },
+            {
+                "desc": "Iguaria Comestível",
+                "nextTable": "foodResources",
+                "selection": "difficulty"
+            },
+            {   "desc": "Recurso Único",
+                "nextTable": "uniqueResources",                
+                "selection": "difficulty"
             }
         ]
     },
@@ -56,15 +85,48 @@
                 "quantity": "1d6"
             },
             {
-                "nextTable": "equipmentTable",
+                "nextTable": "brkEquipmentTable",
                 "desc": "Equipamento (Quebrado)",
                 "selection": "weightedRandom"
             },
             {
-                "nextTable": "naturalTable",
+                "nextTable": "naturalTableRestricted",
                 "desc": "Recurso Natural",
                 "selection": "random",
                 "quantity": "1d6"
+            },
+            {
+                "nextTable": "specialItemTable",
+                "desc": "Item Especial",
+                "selection": "random"
+            }
+        ]
+    },
+    {
+        "tableId": "civilizedTableRestricted",
+        "entries": [
+            {
+                "nextTable": "goldResources",
+                "desc": "Tesouro: Ouro",
+                "selection": "difficulty",
+                "quantity": "1d6"
+            },
+            {
+                "nextTable": "artResources",
+                "desc": "Tesouro: Obra de Arte",
+                "selection": "difficulty",
+                "quantity": "1d6"
+            },
+            {
+                "nextTable": "suppliesTable",
+                "selection": "random",
+                "desc": "Suprimento",
+                "quantity": "1d6"
+            },
+            {
+                "nextTable": "brkEquipmentTable",
+                "desc": "Equipamento (Quebrado)",
+                "selection": "weightedRandom"
             },
             {
                 "nextTable": "specialItemTable",
@@ -152,8 +214,38 @@
             },
             {
                 "item": "sacredRelic",
-                "desc": "Relíquia Sagrada",
-                "value": 75
+                "desc": "Relíquia Sagrada"
+            }
+        ]
+    },
+    {
+        "tableId": "brkEquipmentTable",
+        "entries": [
+            {
+                "desc": "Escudo",
+                "nextTable": "shields",
+                "selection": "random"
+            },
+            {
+                "desc": "Armadura",
+                "nextTable": "armors",
+                "selection": "random"
+            },
+            {
+                "desc": "Arma 1 Mão",
+                "weight": 2,
+                "nextTable": "1hWeapons",
+                "selection": "random"
+            },
+            {
+                "desc": "Arma 2 Mãos",
+                "nextTable": "2hWeapons",
+                "selection": "random"
+            },
+            {
+                "desc": "Equipamento Intacto",
+                "nextTable": "equipmentTable",
+                "selection": "random"
             }
         ]
     },
@@ -179,11 +271,6 @@
             {
                 "desc": "Arma 2 Mãos",
                 "nextTable": "2hWeapons",
-                "selection": "random"
-            },
-            {
-                "desc": "Equipamento Intacto",
-                "nextTable": "equipment",
                 "selection": "random"
             }
         ]

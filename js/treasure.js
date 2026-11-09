@@ -3,10 +3,15 @@
  *
  * Estrutura dos dados (JSON):
  * - Tabelas de geração (loot_tables.json): "tableId" + "entries". Cada entrada referencia um item
- *   ("item") ou uma tabela/lista seguinte ("nextTable"), com o método de seleção nela
- *   ("selection") e a quantidade obtida ("quantity").
+ *   ("item") ou uma tabela/lista seguinte ("nextTable"). O método de seleção na tabela/lista
+ *   seguinte ("selection") e a quantidade obtida ("quantity") ficam na entrada que aponta para ela.
+ *   O "desc" da entrada descreve esse passo e forma o caminho exibido (ex.: Item Mundano > Suprimento).
  * - Listas de itens (demais arquivos): "listId" + "list".
  * - Itens: identificados pelo campo "item".
+ *
+ * As tabelas não podem formar ciclos (uma tabela que, seguindo "nextTable", volta a si mesma).
+ * Por isso existem versões restritas (ex.: naturalTableRestricted e civilizedTableRestricted),
+ * sem as entradas que levariam de volta à tabela de origem. validarDados avisa se houver ciclos.
  */
 const TreasureDataModule = {
     generationType: null,
@@ -113,8 +118,8 @@ const TreasureDataModule = {
         const selecaoInvalida = selecao => selecao !== undefined && !this.SELECOES.includes(selecao);
 
         for (const tabela of tabelas.values()) {
-            if (selecaoInvalida(tabela.selection)) {
-                problemas.push(`Tabela "${tabela.tableId}": selection inválido "${tabela.selection}"`);
+            if (tabela.selection !== undefined) {
+                problemas.push(`Tabela "${tabela.tableId}": "selection" na tabela é ignorado; ele deve ficar na entrada que aponta para ela`);
             }
 
             for (const entrada of tabela.entries) {
@@ -134,7 +139,38 @@ const TreasureDataModule = {
                 }
             }
         }
+
+        for (const ciclo of this.encontrarCiclos()) {
+            problemas.push(`Ciclo entre tabelas: ${ciclo}`);
+        }
         return problemas;
+    },
+
+    /**
+     * Procura ciclos entre as tabelas de geração, seguindo o campo "nextTable".
+     * Retorna o caminho de cada ciclo encontrado (ex.: "tabelaA > tabelaB > tabelaA").
+     */
+    encontrarCiclos() {
+        const { tabelas } = this.dados;
+        const ciclos = [];
+        const estados = new Map(); // id da tabela -> 'visitando' | 'concluida'
+
+        const visitar = (id, caminho) => {
+            if (estados.get(id) === 'concluida') return;
+            if (estados.get(id) === 'visitando') {
+                ciclos.push([...caminho.slice(caminho.indexOf(id)), id].join(' > '));
+                return;
+            }
+
+            estados.set(id, 'visitando');
+            for (const entrada of tabelas.get(id).entries) {
+                if (tabelas.has(entrada.nextTable)) visitar(entrada.nextTable, [...caminho, id]);
+            }
+            estados.set(id, 'concluida');
+        };
+
+        for (const id of tabelas.keys()) visitar(id, []);
+        return ciclos;
     },
 
     /**
@@ -219,20 +255,15 @@ const TreasureDataModule = {
      * Escolhe um candidato (entrada de tabela ou item de lista) conforme o método de seleção:
      * "random" sorteia com chances iguais (padrão); "weightedRandom" sorteia conforme o "weight"
      * de cada candidato; "difficulty" segue a dificuldade do covil.
-     * Candidatos cujo "nextTable" está em tabelasProibidas não participam da escolha.
-     * Retorna null se não sobrar nenhum candidato.
      */
-    escolherEntre(candidatos, selecao, dificuldade, tabelasProibidas = new Set()) {
-        const opcoes = candidatos.filter(candidato => !tabelasProibidas.has(candidato.nextTable));
-        if (opcoes.length === 0) return null;
-
+    escolherEntre(candidatos, selecao, dificuldade) {
         switch (selecao ?? 'random') {
             case 'random':
-                return this.sortearAleatorio(opcoes);
+                return this.sortearAleatorio(candidatos);
             case 'weightedRandom':
-                return this.sortearPonderado(opcoes);
+                return this.sortearPonderado(candidatos);
             case 'difficulty':
-                return this.escolherPorDificuldade(opcoes, dificuldade);
+                return this.escolherPorDificuldade(candidatos, dificuldade);
             default:
                 throw new Error(`Seleção desconhecida: "${selecao}"`);
         }
@@ -240,11 +271,11 @@ const TreasureDataModule = {
 
     /**
      * Procura o destino de um "nextTable": uma tabela de geração (tableId) ou uma lista de
-     * itens (listId). "selection" é o método próprio da tabela, quando ela define um.
+     * itens (listId).
      */
     buscarDestino(id) {
         const tabela = this.dados.tabelas.get(id);
-        if (tabela) return { tipo: 'tabela', candidatos: tabela.entries, selection: tabela.selection };
+        if (tabela) return { tipo: 'tabela', candidatos: tabela.entries };
 
         const lista = this.dados.listas.get(id);
         if (lista) return { tipo: 'lista', candidatos: lista };
@@ -254,42 +285,25 @@ const TreasureDataModule = {
 
     /**
      * Segue a entrada até um item. Se a entrada tem "item", ele é buscado pelo identificador.
-     * Se tem "nextTable", escolhe um candidato nessa tabela/lista e repete o processo:
-     * o método de seleção é o "selection" da própria tabela ou, se ela não define, o da entrada.
+     * Se tem "nextTable", escolhe um candidato nessa tabela/lista, com o método de seleção
+     * ("selection") da própria entrada, e repete o processo.
      * Retorna as entradas de tabela percorridas (da inicial até a última) e o item obtido
-     * (null se a cadeia terminou sem item).
-     *
-     * Failsafe contra loops: a tabela de origem (tabelaInicial) e as já percorridas não podem ser
-     * revisitadas, pois as entradas que apontam para elas deixam de ser sorteáveis
-     * (ex.: natural <-> civilized).
-     * Exceção: uma entrada que aponta para a própria tabela em que foi sorteada manda rolar
-     * de novo nela (ex.: "Equipamento Intacto" em equipment). A tabela só entra na lista de
-     * visitadas depois do primeiro sorteio, então essa entrada pode sair uma vez; na nova rolagem
-     * a tabela já está visitada e a entrada deixa de ser sorteável, evitando repetição.
-     * Para também se o destino não existe ou se não sobra nenhum candidato nele.
+     * (null se a cadeia terminou sem item). Para se o destino não existe ou está vazio.
      */
-    resolverCadeia(entrada, dificuldade, tabelaInicial) {
+    resolverCadeia(entrada, dificuldade) {
         const entradas = [entrada];
-        const visitadas = new Set(tabelaInicial ? [tabelaInicial] : []);
-        let tabelaAtual = tabelaInicial;
         let item = null;
 
-        while (entrada.nextTable && (entrada.nextTable === tabelaAtual || !visitadas.has(entrada.nextTable))) {
+        while (entrada.nextTable) {
             const destino = this.buscarDestino(entrada.nextTable);
             if (!destino?.candidatos.length) break;
 
-            const escolhido = this.escolherEntre(
-                destino.candidatos, destino.selection ?? entrada.selection, dificuldade, visitadas
-            );
-            if (!escolhido) break;
-
+            const escolhido = this.escolherEntre(destino.candidatos, entrada.selection, dificuldade);
             if (destino.tipo === 'lista') {
                 item = escolhido;
                 break;
             }
 
-            visitadas.add(entrada.nextTable);
-            tabelaAtual = entrada.nextTable;
             entradas.push(escolhido);
             entrada = escolhido;
         }
@@ -320,15 +334,43 @@ const TreasureDataModule = {
     },
 
     /**
-     * Texto da quantidade obtida a partir das rolagens (vazio se não houve rolagem)
+     * Segue a cadeia a partir de uma categoria sorteada e calcula o que foi obtido: o recurso final,
+     * o caminho percorrido, a quantidade (a definida pela cadeia, se houver; senão quantidadeBase)
+     * e o valor unitário em DO (undefined se o recurso não tem valor).
+     * "recurso" é null quando a cadeia terminou na própria categoria, sem item.
      */
-    descreverQuantidade(rolagens) {
-        if (rolagens.length === 0) return '';
+    obterRecurso(categoria, dificuldade, quantidadeBase) {
+        const { entradas, item } = this.resolverCadeia(categoria, dificuldade);
+        const recurso = item ?? (entradas.length > 1 ? entradas.at(-1) : null);
+        const definida = recurso ? this.rolarQuantidadeDaCadeia(entradas) : null;
 
-        const soma = rolagens.reduce((total, rolagem) => total + rolagem, 0);
-        return rolagens.length === 1
-            ? ` (quantidade: ${soma})`
-            : ` (quantidade: ${rolagens.join(' + ')} = ${soma})`;
+        return {
+            recurso,
+            definida,
+            caminho: this.caminhoDe(entradas, item),
+            quantidade: definida ? definida.total : quantidadeBase,
+            valorUnitario: recurso ? (this.valorDe(recurso) ?? this.valorDe(entradas.at(-1))) : undefined
+        };
+    },
+
+    /**
+     * Monta uma linha por rolagem, na ordem em que ocorreram, com o caminho percorrido, a quantidade
+     * e o valor em DO. Retorna as linhas e o valor total dos itens.
+     */
+    descreverObtidos(obtidos) {
+        let valorItens = 0;
+
+        const linhas = obtidos.map((obtido, i) => {
+            const linha = `${i + 1}. ${obtido.caminho.join(' > ')}`;
+            if (!obtido.recurso) return `${linha} (sem itens)`;
+
+            const valor = (obtido.valorUnitario ?? 0) * obtido.quantidade;
+            valorItens += valor;
+
+            const dados = obtido.definida ? ` (${obtido.definida.origem.quantity})` : '';
+            return `${linha} x ${obtido.quantidade}${dados}${valor > 0 ? ` — ${valor} DO` : ''}`;
+        });
+        return { linhas, valorItens };
     },
 
     // ===== Geração =====
@@ -347,11 +389,10 @@ const TreasureDataModule = {
     },
 
     /**
-     * Civilizado: a rolagem define o valor total. A cada VALOR_POR_ITEM DO desse valor,
-     * sorteia-se uma categoria de item. Categorias com o campo "quantity" (ex.: "1d6")
-     * rolam esses dados para cada item sorteado, definindo a quantidade obtida.
-     * (Futuro: usar o valor para escolher itens específicos a partir da categoria,
-     * seguindo o campo "nextTable" com resolverCadeia.)
+     * Civilizado: a rolagem define o valor total (DO). A cada VALOR_POR_ITEM DO desse valor,
+     * faz-se uma geração: sorteia-se uma categoria e segue-se a cadeia até o recurso, com a
+     * quantidade definida pelo "quantity" da cadeia (1 se não houver). Depois de todas as gerações,
+     * o valor dos itens é subtraído do valor total; se sobrar dinheiro, ele também faz parte do tesouro.
      */
     gerarCivilizado() {
         const tabela = this.dados.tabelas.get(this.TABELA_CIVILIZADA);
@@ -363,41 +404,56 @@ const TreasureDataModule = {
         const dificuldade = this.lerNumero('covilDificuldade');
         const rolagem = this.rolarDado();
         const valorTotal = rolagem * this.VALOR_POR_ROLAGEM * dificuldade;
-        const quantidadeItens = Math.floor(valorTotal / this.VALOR_POR_ITEM);
+        const geracoes = Math.floor(valorTotal / this.VALOR_POR_ITEM);
+
+        const obtidos = Array.from({ length: geracoes }, () => {
+            const categoria = this.escolherEntre(tabela.entries, 'random', dificuldade);
+            return this.obterRecurso(categoria, dificuldade, 1);
+        });
+        const { linhas: linhasItens, valorItens } = this.descreverObtidos(obtidos);
 
         const linhas = [`Rolagem: ${rolagem}`, `Valor total: ${valorTotal} DO`];
 
-        if (quantidadeItens === 0) {
+        if (geracoes === 0) {
             linhas.push(`Nenhum item (valor abaixo de ${this.VALOR_POR_ITEM} DO)`);
-            this.exibirResultado(linhas);
-            return;
+        } else {
+            linhas.push(`Itens: ${geracoes}`, ...linhasItens, `Valor dos itens: ${valorItens} DO`);
         }
 
-        // categoria -> { itens: nº de itens sorteados, rolagens: dados de quantidade rolados }
-        const resultados = new Map();
-        for (let i = 0; i < quantidadeItens; i++) {
-            const categoria = this.escolherEntre(tabela.entries, tabela.selection, dificuldade);
-            if (!resultados.has(categoria)) resultados.set(categoria, { itens: 0, rolagens: [] });
-
-            const resultado = resultados.get(categoria);
-            resultado.itens++;
-            if (categoria.quantity) resultado.rolagens.push(...this.rolarNotacao(categoria.quantity));
+        const dinheiroRestante = valorTotal - valorItens;
+        if (dinheiroRestante > 0) {
+            linhas.push(`Dinheiro restante: ${dinheiroRestante} DO`);
         }
-
-        linhas.push(`Itens: ${quantidadeItens}`);
-        [...resultados]
-            .sort(([a], [b]) => tabela.entries.indexOf(a) - tabela.entries.indexOf(b))
-            .forEach(([categoria, { itens, rolagens }]) => {
-                linhas.push(`${this.nomeDe(categoria)} x ${itens}${this.descreverQuantidade(rolagens)}`);
-            });
 
         this.exibirResultado(linhas);
+    },
+
+    /**
+     * Categoria com "rolls" (ex.: "1d6"): rola-se esse número de vezes na tabela seguinte,
+     * como nas gerações do modo civilizado, com quantidade 1 quando a cadeia não define "quantity".
+     */
+    gerarRolagensNaTabela(categoria, dificuldade) {
+        const nome = this.nomeDe(categoria);
+        const rolagens = this.rolarNotacao(categoria.rolls);
+        const quantidadeRolagens = rolagens.reduce((soma, rolagem) => soma + rolagem, 0);
+
+        const obtidos = Array.from({ length: quantidadeRolagens }, () => this.obterRecurso(categoria, dificuldade, 1));
+        const { linhas, valorItens } = this.descreverObtidos(obtidos);
+
+        this.exibirResultado([
+            `Tipo: ${nome}`,
+            `Rolagens: ${quantidadeRolagens} (${categoria.rolls} de ${nome})`,
+            ...linhas,
+            `Valor dos itens: ${valorItens} DO`
+        ]);
     },
 
     /**
      * Selvagem: a rolagem define a quantidade de recursos (cada 6 rola outro dado, limitado
      * ao andar do covil). Uma categoria é sorteada e o recurso vem de seguir a cadeia de
      * tabelas (campo "nextTable"). Se a cadeia define "quantity", ele substitui a quantidade rolada.
+     * Exceção: se a categoria tem o campo "rolls" (ex.: Item Mundano, "1d6"), a quantidade de
+     * recursos é ignorada e a tabela seguinte é rolada esse número de vezes (ver gerarRolagensNaTabela).
      */
     gerarSelvagem() {
         const tabela = this.dados.tabelas.get(this.TABELA_SELVAGEM);
@@ -414,9 +470,14 @@ const TreasureDataModule = {
         }
         const quantidade = rolagens.reduce((soma, rolagem) => soma + rolagem, 0);
 
-        const categoria = this.escolherEntre(tabela.entries, tabela.selection, dificuldade);
-        const { entradas, item } = this.resolverCadeia(categoria, dificuldade, this.TABELA_SELVAGEM);
-        const recurso = item ?? (entradas.length > 1 ? entradas.at(-1) : null);
+        const categoria = this.escolherEntre(tabela.entries, 'random', dificuldade);
+        if (categoria.rolls) {
+            this.gerarRolagensNaTabela(categoria, dificuldade);
+            return;
+        }
+
+        const { recurso, definida, caminho, quantidade: quantidadeFinal, valorUnitario } =
+            this.obterRecurso(categoria, dificuldade, quantidade);
 
         const linhas = [
             `Rolagens: ${rolagens.join(' + ')}`,
@@ -424,10 +485,6 @@ const TreasureDataModule = {
         ];
 
         if (recurso) {
-            const definida = this.rolarQuantidadeDaCadeia(entradas);
-            const quantidadeFinal = definida ? definida.total : quantidade;
-            const caminho = this.caminhoDe(entradas, item);
-
             if (caminho.length > 2) {
                 linhas.push(`Caminho: ${caminho.join(' > ')}`);
             }
@@ -436,11 +493,10 @@ const TreasureDataModule = {
             }
             linhas.push(`Recurso: ${this.nomeDe(recurso)} x ${quantidadeFinal}`);
 
-            const valor = this.valorDe(recurso) ?? this.valorDe(entradas.at(-1));
-            if (valor !== undefined) {
+            if (valorUnitario !== undefined) {
                 linhas.push(
-                    `Preço unitário: ${valor} DO`,
-                    `Preço total: ${valor * quantidadeFinal} DO`
+                    `Preço unitário: ${valorUnitario} DO`,
+                    `Preço total: ${valorUnitario * quantidadeFinal} DO`
                 );
             }
         }

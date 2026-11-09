@@ -1,6 +1,6 @@
 [
   {
-    "listId": "ammo",
+    "listId": "projectiles",
     "type": "supply",
     "desc": "Munição",
     "list": [
