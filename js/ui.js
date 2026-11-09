@@ -9,7 +9,7 @@ const UIModule = {
      * Inicializa o sistema de abas, configurando o estado inicial
      */
     initTabs() {
-        this.showTab('create');
+        this.showTab('guide');
         document.querySelectorAll('.tab[data-tab]').forEach(tab => {
             tab.addEventListener('click', () => {
                 this.showTab(tab.dataset.tab);

@@ -106,6 +106,7 @@
         }
         .tabs {
             display: flex;
+            flex-wrap: wrap;
             border-bottom: 2px solid #ddd;
             margin-bottom: 20px;
         }
@@ -189,18 +190,93 @@
         .skill-group .form-group {
             margin-bottom: 0;
         }
+        .guide {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .guide h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        .guide-intro {
+            margin-top: 0;
+            color: #555;
+        }
+        .guide-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        .guide-terms:empty {
+            display: none;
+        }
+        .guide-button {
+            background-color: #e0e0e0;
+            color: #333;
+            border: 1px solid #ccc;
+        }
+        .guide-button:hover {
+            background-color: #d0d0d0;
+        }
+        .guide-button.active,
+        .guide-button.active:hover {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+            color: white;
+        }
+        .guide-category {
+            padding: 12px 20px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .guide-term {
+            padding: 7px 14px;
+        }
+        .guide-detail {
+            min-height: 60px;
+            padding: 15px;
+            background-color: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .guide-detail h3 {
+            margin: 0 0 8px 0;
+            color: #333;
+        }
+        .guide-detail p {
+            margin: 0;
+            line-height: 1.5;
+            white-space: pre-line;
+        }
+        .guide-detail .guide-hint {
+            color: #888;
+        }
     </style>
 </head>
 <body>
     <h1>Gerador de Monstros</h1>
 
 <div class="tabs">
-        <button class="tab active" data-tab="create">Criar Monstro</button>
+        <button class="tab active" data-tab="guide">Regras</button>
+        <button class="tab" data-tab="create">Criar Monstro</button>
         <button class="tab" data-tab="bestiary">Bestiário</button>
         <button class="tab" data-tab="treasure">Tesouros</button>
     </div>
 
-    <div id="create" class="tab-content active">
+    <div id="guide" class="tab-content active">
+        <div class="guide">
+            <h2>Guia de Regras</h2>
+            <p class="guide-intro">Consulte os termos e regras do jogo: escolha uma categoria e depois um termo.</p>
+            <div id="guideCategories" class="guide-buttons" role="group" aria-label="Categorias de regras"></div>
+            <div id="guideTerms" class="guide-buttons guide-terms" role="group" aria-label="Termos da categoria"></div>
+            <div id="guideDetail" class="guide-detail" aria-live="polite"></div>
+        </div>
+    </div>
+
+    <div id="create" class="tab-content">
         <form id="monsterForm">
         <div class="form-group">
             <label for="name">Nome:</label>
@@ -303,8 +379,10 @@
     <script src="js/bestiario.js"></script>
     <script src="js/ui.js"></script>
     <script src="js/treasure.js"></script>
+    <script src="js/guide.js"></script>
     <script>
         UIModule.init();
+        GuideModule.init();
     </script>
 </body>
 </html>
