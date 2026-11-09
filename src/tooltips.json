@@ -1,6 +1,211 @@
 [
   {
+    "id": "system",
+    "title": "Conceitos Básicos: O que esperar do Sistema?",
+    "list": [
+      {
+        "name": "O que esperar?",
+        "description": "Um sistema de RPG de mesa com mecânicas simples e combate rápido. O foco não é realismo, e sim jogadas momento a momento, um jogo casual que tenta destacar os pontos fortes e fracos de cada função/personagem."
+      },
+      {
+        "name": "O combate: direto ao ponto",
+        "description": "O combate é o ponto central do sistema, com foco em combates curtos e rápidos (1 ou 2 turnos em média), sem grid e com o mínimo de gestão de recursos."
+      },
+      {
+        "name": "Mortalidade.",
+        "description": "Todo combate tem alta mortalidade. Tanto Jogadores como Inimigos tem apenas um \"ponto de vida\" ou Vida. Acertar um ataque e receber dano geralmente significa causar uma morte. Sobreviver a um covil é algo realmente significativo."
+      },
+      {
+        "name": "Ações e Reações sempre tem impacto e consequências.",
+        "description": "O sistema é centrado em ações e reações, cada jogador tem uma de cada em cada turno. A dinâmica do jogo é que os jogadores escolhem momentos para atacar e defender. Gastar equipamentos e usar habilidades ativamente é o único jeito de evitar mortes."
+      },
+      {
+        "name": "Personagens e Funções.",
+        "description": "Os personagens são “modulares”: Basicamente montados como um conjunto de atributos e habilidades. Função (ou Classes) funcionam como pacotes de habilidades, dando acesso a conjuntos de habilidade únicos focados em um estilo de jogo específico. "
+      },
+      {
+        "name": "Habilidades.",
+        "description": "Não existe nível de personagem. A força do personagem vem principalmente das habilidades que ele adquire. Habilidades tem efeitos muito impactantes e definem seu personagem. (Algo mais como as habilidades de um personagem de MOBA em vez de \"+2 nos testes para cavar buracos numa quarta-feira.\")"
+      }
+    ]
+  },
+  {
+    "id": "rolls",
+    "title": "Conceitos Básicos: O que esperar do Sistema?",
+    "list": [
+      {
+        "id": "check",
+        "name": "Teste",
+        "description": "Sempre que há incerteza se um personagem conseguirá fazer algo, significa que isso depende de um Teste. Todo teste usa um atributo e tem uma dificuldade. \n Por padrão, um jogador rola um número de dados igual ao Atributo e conta o número de Acertos, que são os resultados 4 ou mais (4+). Se esse número for igual ou maior que a dificuldade, ele tem sucesso! \n Apenas jogadores fazem Testes! Criaturas controladas pelo mestre sempre tem sucesso a não ser que sejam impedidas pelos jogadores. \n O mestre sempre decide se um teste é necessário ou não. Se não há possibilidade razoável de falha ou (de sucesso) para uma ação, não é necessário fazer um teste."
+      },
+      {
+        "id": "diff",
+        "name": "Dificuldade",
+        "icon": "DIF",
+        "description": "Número mínimo de Acertos para cumprir o objetivo do Jogador e ter sucesso em um teste."
+      },
+      {
+        "id": "hit",
+        "name": "Acerto",
+        "icon": "✔",
+        "description": "Um dado rolado que obteve resultado igual ou maior que 4."
+      },
+      {
+        "id": "criticalHit",
+        "name": "Acerto Crítico",
+        "icon": "❕",
+        "description": "Um resultado 6 obtido no dado que sempre representa um Acerto ✔. Algumas habilidades causam efeitos especiais para estes resultados."
+      },
+      {
+        "id": "miss",
+        "name": "Falha",
+        "icon": "✔",
+        "description": "O oposto de um acerto. Um dado rolado que obteve resultado menor que 4."
+      },
+      {
+        "id": "criticalMiss",
+        "name": "Erro Crítico",
+        "icon": "✘",
+        "description": "Um resultado 1 obtido no dado que sempre representa uma falha. Algumas habilidades causam efeitos especiais para estes resultados."
+      },
+      {
+        "id": "extraDice",
+        "name": "Dado Extra",
+        "icon": "🎲",
+        "description": "Um dado adicional no teste, que pode contribuir com um Acerto ✔ adicional!"
+      },
+      {
+        "id": "acc",
+        "name": "Chance de Acerto",
+        "icon": "CA",
+        "description": "Um modificador aplicado ao resultado de cada rolagem em um teste, que é adicionado ou subtraido dos resultados. \n Não gera Acertos ou Erros Críticos."
+      }
+    ]
+  },
+  {
+    "id": "basicCombat",
+    "title": "Combate Básico",
+    "list": [
+      {
+        "id": "attack",
+        "name": "Ataque",
+        "icon": "⚔",
+        "description": "A Ação básica de combate. Cada criatura pode escolher atacar um alvo visível dentro do seu Alcance ⌾, e vai acertá-lo se ele não puder se Defender ⛨. Ao atacar um inimigo que tenta se defender, o jogador rola Agilidade contra a Defesa ⛨ do inimigo. Com sucesso, ele o atinge e causa dano."
+      },
+      {
+        "id": "defense",
+        "name": "Defesa",
+        "icon": "⛨",
+        "description": "A Reação básica de combate. Quando um inimigo faz um ataque Visível, o alvo pode usar sua reação para tentar se defender. O jogador rola Resistência com DIF igual ao valor de Ataque ⚔ do inimigo. Com sucesso, ele evita o ataque e não recebe dano."
+      },
+      {
+        "id": "move",
+        "name": "Mover",
+        "icon": "↪",
+        "description": "Usar a Ação para trocar sua posição no campo, se movendo para uma linha adjacente à sua posição atual."
+      },
+      {
+        "id": "changeWeapon",
+        "name": "Trocar de Arma",
+        "icon": "✔",
+        "description": "Usar a Ação para guardar o que estiver segurando e equipar uma nova arma ou escudo em cada mão"
+      },
+      {
+        "id": "flee",
+        "name": "Fugir",
+        "description": "Qualquer criatura na linha de Fundo pode usar sua Ação para fugir do combate. Se não houver outros aliados na linha de Fundo, um jogador na linha de Frente também pode usar sua Ação para tentar fugir rolando Corpo contra a maior DIF dos inimigos adjacentes a ele. Inimigos só conseguem fugir se os jogadores falharem em um teste de coletivo de Corpo contra sua DIF para perseguí-lo."
+      },
+      {
+        "id": "field",
+        "name": "Campos",
+        "description": "No combate, o espaço é dividido em campos para cada grupo. Normalmente, temos o campo aliado e o campo inimigo, com um grupo de jogadores enfrentando um grupo de inimigos. O campo é dividido em duas metades: a metade mais próxima ao campo oposto é a Frente e a mais distante é o Fundo."
+      },
+      {
+        "id": "positioning",
+        "name": "Posicionamento",
+        "description": "No início do combate, cada criatura escolhe onde se posicionará no seu campo escolhendo entre as duas Linhas: a Frente ou o Fundo. \n Criaturas posicionadas na linha de Frente podem Atacar e ser atacadas pelas criaturas posicionadas à Frente no grupo inimigo. \n Criaturas posicionadas na linha de Fundo não podem fazer Ataques ⚔ contra o grupo inimigo, exceto quando uma habilidade aumenta seu Alcance ⌾. (ex: uma adaga com a habilidade Arremessar). \n Se não houver outros aliados posicionados na Frente, todas as criaturas posicionadas no Fundo são consideradas como posicionadas na Frente."
+      },
+      {
+        "id": "actionOrder",
+        "name": "Ordem de Ação",
+        "description": "Na primeira rodada do combate, o mestre rola um d6 e o resultado define a ordem dos inimigos, que vão agir em grupo de acordo com sua categoria: A ordem de Lacaios é a sua DIF; a de Oponentes é o resultado do dado; e a de Chefes é o Resultado+DIF. Cada jogador rola um d6 para definir a sua ordem de Ação e todos se posicionam em campo de acordo com essa ordem. Inimigos agem antes dos jogadores com ordem menor ou igual à sua. A rodada acaba depois que todas as criaturas tenham agido, iniciando a próxima rodada na mesma ordem."
+      },
+      {
+        "id": "reactions",
+        "name": "Reações",
+        "description": "Podem ser feitas a qualquer momento do combate. Um jogador sempre tem uma Reação no início do combate e a recupera quando chega sua vez de agir."
+      },
+      {
+        "id": "areaEffects",
+        "name": "Efeitos de Área",
+        "description": "Algumas habilidades podem afetar mais de uma criatura. Jogadores, aliados e criaturas da categoria “Lacaio” são afetadas normalmente. Porém, é mais difícil afetar criaturas mais poderosas: Criaturas da categoria “Oponente” só são afetadas com 2 Acertos e “Chefe” com 3 Acertos."
+      }
+    ]
+  },
+  {
+    "id": "exploration",
+    "title": "Exploração",
+    "list": [
+      {
+        "id": "dungeon",
+        "name": "Covil",
+        "icon": "⚔",
+        "description": "Jogadores precisam comer o equivalente a 4 rações por dia em intervalos regulares, ou recebem a condição Faminto 🍗. Após um número de dias consecutivos igual a sua Resistência com essa condição, o jogador recebe a condição Definhando 💀."
+      },
+      {
+        "id": "explore",
+        "name": "Explorar",
+        "description": "Explorar cada área dura em média meia hora. (Tempo gasto explorando, investigando, enfrentando os desafios e se deslocando cuidadosamente pela escuridão.) \n Se houverem inimigos na área, eles são alertados pelos jogadores e podem iniciar um combate. \n Se houver algum Tesouro Escondido, característica oculta ou efeito especial nessa área, os jogadores podem descobrir com um teste de Mente ao explorar. \n Quando chegam numa área, o grupo também pode escolher explorar de maneira diferente. Todos os jogadores do grupo devem estar de acordo com essa escolha."
+      },
+      {
+        "id": "rush",
+        "name": "Apressar",
+        "description": "Os jogadores podem escolher avançar mais rápido. Fazendo isso: \n Explorar a área dura metade do tempo. \n Os jogadores não podem vasculhar a área em busca de qualquer coisa que esteja escondida, como Tesouro ou passagens secretas."
+      },
+      {
+        "id": "skulk",
+        "name": "Espreitar",
+        "description": "Os jogadores podem tentar se mover cautelosamente para emboscar seus inimigos. Espreitar é um esforço conjunto e coordenado. Fazendo isso: \n Explorar a sala dura o dobro do tempo. Cada covil define um atributo que será usado nos testes para Espreitar e se Esconder. Nos casos mais comuns será Agilidade, mas existem exceções. \n Sempre que entra numa sala, o grupo faz um Teste Coletivo para Espreitar com o atributo determinado contra a DIF do Covil. Com sucesso, o grupo consegue Emboscar qualquer inimigo que esteja na sala: \n "
+      },
+      {
+        "id": "ambushed",
+        "name": "Emboscar",
+        "description": "O grupo emboscado não fica ciente da presença de seu grupo. \n Ao iniciar o combate, seu grupo têm um Dado Extra 🎲 na ordem de combate e o primeiro a agir pode escolher a posição inicial de todos os inimigos que agem depois na ordem."
+      },
+      {
+        "id": "hide",
+        "name": "Esconder",
+        "description": "Se não encontrarem abrigo seguro dentro do Covil, os jogadores podem tentar se esconder em uma área para evitar inimigos. Enquanto estiverem escondidos, o grupo pode tentar Descansar e passar o tempo que desejar no local. \n Para se esconder com sucesso, o grupo deve fazer um Teste Coletivo de Mente contra a DIF do Covil.\n Caso falhem, ainda podem tentar Descansar, mas há a chance do grupo ser encontrado por inimigos. A cada hora que passa, tem 50% de chance de um grupo de inimigos encontrar os jogadores. \n Uma vez encontrados, o grupo não pode tentar se esconder no mesmo lugar novamente, mas ainda pode tentar Descansar novamente."
+      },
+      {
+        "id": "food",
+        "name": "Comida",
+        "icon": "⚔",
+        "description": "Jogadores precisam comer o equivalente a 4 rações por dia em intervalos regulares, ou recebem a condição Faminto 🍗. Após um número de dias consecutivos igual a sua Resistência com essa condição, o jogador recebe a condição Definhando 💀."
+      },
+      {
+        "id": "drink",
+        "name": "Hidratação",
+        "icon": "⛨",
+        "description": "Jogadores podem ficar sem água por um número de dias consecutivos igual a sua Resistência, antes de receber a condição Definhando 💀."
+      },
+      {
+        "id": "rest",
+        "name": "Sono e Descanso",
+        "icon": "↪",
+        "description": "Para Descansar, um Jogador deve consumir comida equivalente a uma ração e passar pelo menos uma hora em repouso ou fazendo atividades leves. \n Alternativamente, Jogadores podem Descansar dormindo por 8 horas. Jogadores devem Dormir assim pelo menos uma vez por dia ou recebem a condição Exausto 💧."
+      },
+      {
+        "id": "breathing",
+        "name": "Respirar",
+        "icon": "✔",
+        "description": "Jogadores podem ficar sem respirar por um número de rodadas consecutivas igual a sua Resistência. Depois disso, ficam Inconscientes 💤 pelo mesmo número de rodadas antes de morrer."
+      }
+    ]
+  },
+  {
     "id": "conditions",
+    "title": "Condições",
     "list": [
       {
         "id": "immobilized",
@@ -131,7 +336,7 @@
         "id": "hidden",
         "name": "Escondida",
         "description": "A criatura não pode ser alvejada e sua posição no campo é desconhecida para inimigos. Ao fazer uma Ação ou Reação, seus Inimigos ficam Surpresos. Ser atingido ou interagir com outra criatura com uma Ação ou Reação interrompe essa condição."
-      },      
+      },
       {
         "id": "invisible",
         "name": "Invisível",
@@ -206,177 +411,6 @@
         "name": "Voando",
         "icon": "🐦",
         "description": "Enquanto voa, a criatura só pode ser alvejada por ataques mágicos ou por Ataques ⚔ de Alcance ⌾ 3."
-      }
-    ]
-  },
-  {
-    "id": "rolls",
-    "list": [
-      {
-        "id": "check",
-        "name": "Teste",
-        "description": "Sempre que há incerteza se um personagem conseguirá fazer algo, significa que isso depende de um Teste. Todo teste usa um atributo e tem uma dificuldade. \n Por padrão, um jogador rola um número de dados igual ao Atributo e conta o número de Acertos, que são os resultados 4 ou mais (4+). Se esse número for igual ou maior que a dificuldade, ele tem sucesso! \n Apenas jogadores fazem Testes! Criaturas controladas pelo mestre sempre tem sucesso a não ser que sejam impedidas pelos jogadores. \n O mestre sempre decide se um teste é necessário ou não. Se não há possibilidade razoável de falha ou (de sucesso) para uma ação, não é necessário fazer um teste."
-      },
-      {
-        "id": "diff",
-        "name": "Dificuldade",
-        "icon": "DIF",
-        "description": "Número mínimo de Acertos para cumprir o objetivo do Jogador e ter sucesso em um teste."
-      },
-      {
-        "id": "hit",
-        "name": "Acerto",
-        "icon": "✔",
-        "description": "Um dado rolado que obteve resultado igual ou maior que 4."
-      },
-      {
-        "id": "criticalHit",
-        "name": "Acerto Crítico",
-        "icon": "❕",
-        "description": "Um resultado 6 obtido no dado que sempre representa um Acerto ✔. Algumas habilidades causam efeitos especiais para estes resultados."
-      },
-      {
-        "id": "miss",
-        "name": "Falha",
-        "icon": "✔",
-        "description": "O oposto de um acerto. Um dado rolado que obteve resultado menor que 4."
-      },
-      {
-        "id": "criticalMiss",
-        "name": "Erro Crítico",
-        "icon": "✘",
-        "description": "Um resultado 1 obtido no dado que sempre representa uma falha. Algumas habilidades causam efeitos especiais para estes resultados."
-      },
-      {
-        "id": "extraDice",
-        "name": "Dado Extra",
-        "icon": "🎲",
-        "description": "Um dado adicional no teste, que pode contribuir com um Acerto ✔ adicional!"
-      },
-      {
-        "id": "acc",
-        "name": "Chance de Acerto",
-        "icon": "CA",
-        "description": "Um modificador aplicado ao resultado de cada rolagem em um teste, que é adicionado ou subtraido dos resultados. \n Não gera Acertos ou Erros Críticos."
-      }
-    ]
-  },
-  {
-    "id": "basicCombat",
-    "list": [
-      {
-        "id": "attack",
-        "name": "Ataque",
-        "icon":"⚔",
-        "description": "A Ação básica de combate. Cada criatura pode escolher atacar um alvo visível dentro do seu Alcance ⌾, e vai acertá-lo se ele não puder se Defender ⛨. Ao atacar um inimigo que tenta se defender, o jogador rola Agilidade contra a Defesa ⛨ do inimigo. Com sucesso, ele o atinge e causa dano."
-      },
-      {
-        "id": "defense",
-        "name": "Defesa",
-        "icon": "⛨",
-        "description": "A Reação básica de combate. Quando um inimigo faz um ataque Visível, o alvo pode usar sua reação para tentar se defender. O jogador rola Resistência com DIF igual ao valor de Ataque ⚔ do inimigo. Com sucesso, ele evita o ataque e não recebe dano."
-      },
-      {
-        "id": "move",
-        "name": "Mover",
-        "icon": "↪",
-        "description": "Usar a Ação para trocar sua posição no campo, se movendo para uma linha adjacente à sua posição atual."
-      },
-      {
-        "id": "changeWeapon",
-        "name": "Trocar de Arma",
-        "icon": "✔",
-        "description": "Usar a Ação para guardar o que estiver segurando e equipar uma nova arma ou escudo em cada mão"
-      },
-      {
-        "id": "flee",
-        "name": "Fugir",
-        "description": "Qualquer criatura na linha de Fundo pode usar sua Ação para fugir do combate. Se não houver outros aliados na linha de Fundo, um jogador na linha de Frente também pode usar sua Ação para tentar fugir rolando Corpo contra a maior DIF dos inimigos adjacentes a ele. Inimigos só conseguem fugir se os jogadores falharem em um teste de coletivo de Corpo contra sua DIF para perseguí-lo."
-      },
-      {
-        "id": "field",
-        "name": "Campos",
-        "description": "No combate, o espaço é dividido em campos para cada grupo. Normalmente, temos o campo aliado e o campo inimigo, com um grupo de jogadores enfrentando um grupo de inimigos. O campo é dividido em duas metades: a metade mais próxima ao campo oposto é a Frente e a mais distante é o Fundo."
-      },
-      {
-        "id": "positioning",
-        "name": "Posicionamento",
-        "description": "No início do combate, cada criatura escolhe onde se posicionará no seu campo escolhendo entre as duas Linhas: a Frente ou o Fundo. \n Criaturas posicionadas na linha de Frente podem Atacar e ser atacadas pelas criaturas posicionadas à Frente no grupo inimigo. \n Criaturas posicionadas na linha de Fundo não podem fazer Ataques ⚔ contra o grupo inimigo, exceto quando uma habilidade aumenta seu Alcance ⌾. (ex: uma adaga com a habilidade Arremessar). \n Se não houver outros aliados posicionados na Frente, todas as criaturas posicionadas no Fundo são consideradas como posicionadas na Frente."
-      },
-      {
-        "id": "actionOrder",
-        "name": "Ordem de Ação",
-        "description": "Na primeira rodada do combate, o mestre rola um d6 e o resultado define a ordem dos inimigos, que vão agir em grupo de acordo com sua categoria: A ordem de Lacaios é a sua DIF; a de Oponentes é o resultado do dado; e a de Chefes é o Resultado+DIF. Cada jogador rola um d6 para definir a sua ordem de Ação e todos se posicionam em campo de acordo com essa ordem. Inimigos agem antes dos jogadores com ordem menor ou igual à sua. A rodada acaba depois que todas as criaturas tenham agido, iniciando a próxima rodada na mesma ordem."
-      },
-      {
-        "id": "reactions",
-        "name": "Reações",
-        "description": "Podem ser feitas a qualquer momento do combate. Um jogador sempre tem uma Reação no início do combate e a recupera quando chega sua vez de agir."
-      },
-      {
-        "id": "areaEffects",
-        "name": "Efeitos de Área",
-        "description": "Algumas habilidades podem afetar mais de uma criatura. Jogadores, aliados e criaturas da categoria “Lacaio” são afetadas normalmente. Porém, é mais difícil afetar criaturas mais poderosas: Criaturas da categoria “Oponente” só são afetadas com 2 Acertos e “Chefe” com 3 Acertos."
-      }
-    ]
-  },
-  {
-    "id": "exploration",
-    "list": [
-      {
-        "id": "dungeon",
-        "name": "Covil",
-        "icon":"⚔",
-        "description": "Jogadores precisam comer o equivalente a 4 rações por dia em intervalos regulares, ou recebem a condição Faminto 🍗. Após um número de dias consecutivos igual a sua Resistência com essa condição, o jogador recebe a condição Definhando 💀."
-      },
-      {
-        "id": "explore",
-        "name": "Explorar",
-        "description": "Explorar cada área dura em média meia hora. (Tempo gasto explorando, investigando, enfrentando os desafios e se deslocando cuidadosamente pela escuridão.) \n Se houverem inimigos na área, eles são alertados pelos jogadores e podem iniciar um combate. \n Se houver algum Tesouro Escondido, característica oculta ou efeito especial nessa área, os jogadores podem descobrir com um teste de Mente ao explorar. \n Quando chegam numa área, o grupo também pode escolher explorar de maneira diferente. Todos os jogadores do grupo devem estar de acordo com essa escolha."
-      },
-      {
-        "id": "rush",
-        "name": "Apressar",
-        "description": "Os jogadores podem escolher avançar mais rápido. Fazendo isso: \n Explorar a área dura metade do tempo. \n Os jogadores não podem vasculhar a área em busca de qualquer coisa que esteja escondida, como Tesouro ou passagens secretas."
-      },
-      {
-        "id": "skulk",
-        "name": "Espreitar",
-        "description": "Os jogadores podem tentar se mover cautelosamente para emboscar seus inimigos. Espreitar é um esforço conjunto e coordenado. Fazendo isso: \n Explorar a sala dura o dobro do tempo. Cada covil define um atributo que será usado nos testes para Espreitar e se Esconder. Nos casos mais comuns será Agilidade, mas existem exceções. \n Sempre que entra numa sala, o grupo faz um Teste Coletivo para Espreitar com o atributo determinado contra a DIF do Covil. Com sucesso, o grupo consegue Emboscar qualquer inimigo que esteja na sala: \n "
-      },
-      {
-        "id": "ambushed",
-        "name": "Emboscar",
-        "description": "O grupo emboscado não fica ciente da presença de seu grupo. \n Ao iniciar o combate, seu grupo têm um Dado Extra 🎲 na ordem de combate e o primeiro a agir pode escolher a posição inicial de todos os inimigos que agem depois na ordem."
-      },
-      {
-        "id": "hide",
-        "name": "Esconder",
-        "description": "Se não encontrarem abrigo seguro dentro do Covil, os jogadores podem tentar se esconder em uma área para evitar inimigos. Enquanto estiverem escondidos, o grupo pode tentar Descansar e passar o tempo que desejar no local. \n Para se esconder com sucesso, o grupo deve fazer um Teste Coletivo de Mente contra a DIF do Covil.\n Caso falhem, ainda podem tentar Descansar, mas há a chance do grupo ser encontrado por inimigos. A cada hora que passa, tem 50% de chance de um grupo de inimigos encontrar os jogadores. \n Uma vez encontrados, o grupo não pode tentar se esconder no mesmo lugar novamente, mas ainda pode tentar Descansar novamente."
-      },
-      {
-        "id": "food",
-        "name": "Comida",
-        "icon":"⚔",
-        "description": "Jogadores precisam comer o equivalente a 4 rações por dia em intervalos regulares, ou recebem a condição Faminto 🍗. Após um número de dias consecutivos igual a sua Resistência com essa condição, o jogador recebe a condição Definhando 💀."
-      },
-      {
-        "id": "drink",
-        "name": "Hidratação",
-        "icon": "⛨",
-        "description": "Jogadores podem ficar sem água por um número de dias consecutivos igual a sua Resistência, antes de receber a condição Definhando 💀."
-      },
-      {
-        "id": "rest",
-        "name": "Sono e Descanso",
-        "icon": "↪",
-        "description": "Para Descansar, um Jogador deve consumir comida equivalente a uma ração e passar pelo menos uma hora em repouso ou fazendo atividades leves. \n Alternativamente, Jogadores podem Descansar dormindo por 8 horas. Jogadores devem Dormir assim pelo menos uma vez por dia ou recebem a condição Exausto 💧."
-      },
-      {
-        "id": "breathing",
-        "name": "Respirar",
-        "icon": "✔",
-        "description": "Jogadores podem ficar sem respirar por um número de rodadas consecutivas igual a sua Resistência. Depois disso, ficam Inconscientes 💤 pelo mesmo número de rodadas antes de morrer."
       }
     ]
   }
