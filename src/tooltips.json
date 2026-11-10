@@ -1,48 +1,142 @@
 [
   {
     "id": "system",
-    "title": "Conceitos Básicos: O que esperar do Sistema?",
+    "title": "O que esperar do Sistema?",
     "list": [
       {
-        "name": "O que esperar?",
+        "name": "Como é o jogo?",
         "description": "Um sistema de RPG de mesa com mecânicas simples e combate rápido. O foco não é realismo, e sim jogadas momento a momento, um jogo casual que tenta destacar os pontos fortes e fracos de cada função/personagem."
       },
       {
-        "name": "O combate: direto ao ponto",
-        "description": "O combate é o ponto central do sistema, com foco em combates curtos e rápidos (1 ou 2 turnos em média), sem grid e com o mínimo de gestão de recursos."
+        "name": "O Combate",
+        "description": "O combate é o ponto central do jogo, com foco em combates curtos e rápidos (1 ou 2 turnos em média), sem grid e com o mínimo de gestão de recursos."
       },
       {
-        "name": "Mortalidade.",
-        "description": "Todo combate tem alta mortalidade. Tanto Jogadores como Inimigos tem apenas um \"ponto de vida\" ou Vida. Acertar um ataque e receber dano geralmente significa causar uma morte. Sobreviver a um covil é algo realmente significativo."
+        "name": "Mortalidade",
+        "description": "Todo combate tem alta mortalidade. Tanto Jogadores como Inimigos tem apenas um \"ponto de vida\" ou Vida. Acertar um ataque e causar dano geralmente significa uma morte. Sobreviver a um Covil (ou Dungeon) é algo realmente significativo."
       },
       {
-        "name": "Ações e Reações sempre tem impacto e consequências.",
-        "description": "O sistema é centrado em ações e reações, cada jogador tem uma de cada em cada turno. A dinâmica do jogo é que os jogadores escolhem momentos para atacar e defender. Gastar equipamentos e usar habilidades ativamente é o único jeito de evitar mortes."
+        "name": "Ações e Reações",
+        "description": "O sistema é centrado em ações e reações, cada jogador tem uma de cada em cada turno e elas sempre tem impacto e consequências. A dinâmica do jogo é que os jogadores devem escolher os momentos para atacar e defender usando seus recursos a cada turno. Gastar equipamentos e usar habilidades ativamente é o único jeito de evitar mortes."
       },
       {
-        "name": "Personagens e Funções.",
+        "name": "Personagens",
         "description": "Os personagens são “modulares”: Basicamente montados como um conjunto de atributos e habilidades. Função (ou Classes) funcionam como pacotes de habilidades, dando acesso a conjuntos de habilidade únicos focados em um estilo de jogo específico. "
       },
       {
-        "name": "Habilidades.",
-        "description": "Não existe nível de personagem. A força do personagem vem principalmente das habilidades que ele adquire. Habilidades tem efeitos muito impactantes e definem seu personagem. (Algo mais como as habilidades de um personagem de MOBA em vez de \"+2 nos testes para cavar buracos numa quarta-feira.\")"
+        "name": "Atributos",
+        "description": "Personagens possuem apenas 4 atributos gerais: \n Agilidade (Físico. Ofensivo.) \n Astúcia (Mental. Ofensivo.) \n Resistência (Físico. Defensivo.) \n  Espírito (Mental. Defensivo.) \n No geral, as Ações se baseiam em atributos ofensivos e Reações nos defensivos."
+      },
+      {
+        "name": "Habilidades",
+        "description": "Não existe \"nível\" de personagem. A força do personagem vem principalmente das habilidades que ele adquire. Habilidades tem efeitos muito impactantes e definem seu personagem. (Algo mais parecido com as habilidades de um personagem de MOBA em vez de \"+2 nos testes para cavar buracos numa quarta-feira.\")"
+      },
+      {
+        "name": "Itens",
+        "description": "A maioria das Habilidades de personagens não se esgotam e são utilizadas turno a turno ou uma vez por descanso. Equipamentos e outros itens encontrados na aventura podem oferecer vantagens ainda maiores que as habilidades, mas são recursos finitos com uso e durabilidade limitada e com custos de fabricação, aquisição ou reparo."
+      }
+    ]
+  },
+
+  {
+    "id": "characters",
+    "title": "Conceitos Básicos: Personagens",
+    "list": [
+      {
+        "id": "characterElementos",
+        "name": "Elementos do Personagem",
+        "description": "Todo personagem é composto por: \n Atributos \n Espécie \n Função \n Habilidades"
+      },
+      {
+        "id": "attributes",
+        "name": "Atributos",
+        "description": "Os atributos definem a quantidade de dados rolados pelo jogador para tarefas específicas. "
+      },
+      {
+        "id": "agility",
+        "name": "Agilidade",
+        "description": "Representa a destreza e habilidades físicas de um personagem. Usado para principalmente para fazer Ataques ⚔ e ações físicas."
+      },
+      {
+        "id": "wit",
+        "name": "Astúcia",
+        "description": "Representa a acuidade mental e intelecto de um personagem. Usada principalmente para fazer Ataques Mágicos ⛤ e ações mentais."
+      },
+      {
+        "id": "resistance",
+        "name": "Resistência",
+        "description": "Representa o vigor e robustez de um personagem. Usada para resistir a Ataques ⚔ e efeitos físicos."
+      },
+      {
+        "id": "spirit",
+        "name": "Espírito",
+        "description": "Representa a força de vontade e determinação de um personagem. Usado para resistir a Magias ⛤ e efeitos mentais."
+      },
+      {
+        "id": "species",
+        "name": "Espécie",
+        "description": "Define as características físicas e ancestralidade do personagem. Cada Espécie concede uma habilidade única. As opções de espécies disponíveis para os jogadores são: Humano, Povo-pequeno, Elfo, Bestial, Ogro e (Subterrâneo)."
+      },
+      {
+        "id": "function",
+        "name": "Função",
+        "description": "Cada personagem tem uma Função, com foco em um estilo de jogo: \n Assassino: Atacar ⚔ e causar dano. \n Baluarte: Proteger aliados e resistir a Ataques ⚔ inimigos. \n Conjurador: Conjurar Magias ⛤ contra múltiplos inimigos. \n Devoto: Controlar o campo e fortalecer aliados."
+      },
+      {
+        "id": "skills",
+        "name": "Habilidades",
+        "description": "Habilidades descrevem tudo que um personagem pode fazer e definem a identidade de um personagem."
+      }
+    ]
+  },
+  {
+    "id": "characterCreation",
+    "title": "Passo-a-Passo: Criação de Personagem",
+    "list": [
+      {
+        "name": "1 - Escolha uma Espécie",
+        "description": "Você recebe uma Habilidade da Espécie escolhida para seu personagem."
+      },
+      {
+        "name": "2 -  Escolha uma das 4 Funções",
+        "description": "Você recebe as Habilidades Básicas de sua Função."
+      },
+      {
+        "name": "3 - Escolha um atributo principal e um secundário",
+        "description": "Recomenda-se escolher o atributo principal de acordo com sua função. \n O valor de seu atributo principal é 3 e o secundário é 2. O valor dos demais atributos é 1."
+      },
+      {
+        "name": "4 - Escolha 4 Habilidades",
+        "description": "Você pode escolher qualquer Habilidade Comum ou da lista de sua Função, desde que cumpra os requisitos. Você pode receber também a habilidade básica de uma Expansão caso cumpra com seus requisitos."
+      },
+      {
+        "name": "5 - Você tem 6 Rações e 200 PO para comprar equipamentos iniciais",
+        "description": "Você pode comprar o equipamento inicial recomendado da sua Função ou qualquer outro item a sua escolha e mantém o dinheiro restante."
+      },
+      {
+        "name": "6 - Anote sua lista de Feitos",
+        "description": "A principal maneira de fortalecer seu personagem é realizando Feitos. Ao cumprir um dos Feitos descritos em sua Função, no seu próximo Descanso você poderá aumentar um dos seus atributos em 1 e pode adiquirir uma Habilidade de sua Função e uma Habilidade Comum. Cada Feito só pode ser cumprido uma única vez."
+      },
+      {
+        "name": "Evolução de Personagem",
+        "description": "Além de Feitos, existem outros meios mais incomuns para adquirir Habilidades durante uma aventura: Alguns itens mágicos, rituais específicos, tutores ou até criaturas mágicas podem ser capazes de conceder novas habilidades aos personagens."
       }
     ]
   },
   {
     "id": "rolls",
-    "title": "Conceitos Básicos: O que esperar do Sistema?",
+    "title": "Regras: Testes e Rolagens",
     "list": [
       {
         "id": "check",
-        "name": "Teste",
-        "description": "Sempre que há incerteza se um personagem conseguirá fazer algo, significa que isso depende de um Teste. Todo teste usa um atributo e tem uma dificuldade. \n Por padrão, um jogador rola um número de dados igual ao Atributo e conta o número de Acertos, que são os resultados 4 ou mais (4+). Se esse número for igual ou maior que a dificuldade, ele tem sucesso! \n Apenas jogadores fazem Testes! Criaturas controladas pelo mestre sempre tem sucesso a não ser que sejam impedidas pelos jogadores. \n O mestre sempre decide se um teste é necessário ou não. Se não há possibilidade razoável de falha ou (de sucesso) para uma ação, não é necessário fazer um teste."
+        "name": "Testes",
+        "description": "Sempre que há incerteza se um personagem conseguirá fazer algo, significa que isso depende de um Teste. Todo teste é feito com um atributo e contra uma dificuldade. \n Por padrão, um jogador rola um número de dados igual ao atributo e conta o número de Acertos, que são os resultados 4 ou mais (4+). Se esse número for igual ou maior que a dificuldade, ele tem sucesso. \n Apenas jogadores fazem Testes! Criaturas controladas pelo mestre sempre tem sucesso a não ser que sejam impedidas pelos jogadores. \n O mestre sempre decide se um teste é necessário ou não. Se não há possibilidade razoável de falha ou (de sucesso) para uma ação, não é necessário fazer um teste."
       },
       {
         "id": "diff",
         "name": "Dificuldade",
         "icon": "DIF",
-        "description": "Número mínimo de Acertos para cumprir o objetivo do Jogador e ter sucesso em um teste."
+        "description": "Número mínimo de Acertos para cumprir o objetivo do Jogador e ter sucesso em um teste. \n Se um teste tem DIF 0, o jogador sempre terá no mínimo um número de Acertos ✔ igual ao atributo usado no teste, independente da sua rolagem. "
       },
       {
         "id": "hit",
@@ -59,7 +153,6 @@
       {
         "id": "miss",
         "name": "Falha",
-        "icon": "✔",
         "description": "O oposto de um acerto. Um dado rolado que obteve resultado menor que 4."
       },
       {
@@ -79,13 +172,74 @@
         "name": "Chance de Acerto",
         "icon": "CA",
         "description": "Um modificador aplicado ao resultado de cada rolagem em um teste, que é adicionado ou subtraido dos resultados. \n Não gera Acertos ou Erros Críticos."
+      },
+      {
+        "id": "challenge",
+        "name": "Desafios",
+        "description": "Qualquer Teste que não envolva alguma das regras de combate é tratado como um desafio. Um desafio é uma oportunidade para os jogadores resolverem um problema de forma criativa, seja para evitar um obstáculo ou alcançar uma recompensa. \n Geralmente existem apenas dois tipos de desafios: Físicos ou Mentais. O jogador define como quer agir e cabe ao mestre definir a dificuldade. Um mesmo desafio pode ser superado de maneiras diferentes, contanto que a solução faça sentido. Uma porta trancada pode ser arrombada à força ou destrancada com as ferramentas certas na mão de alguém habilidoso."
+      },
+      {
+        "id": "physChallenge",
+        "name": "Desafios Físicos: Teste de Corpo",
+        "description": "Em um desafio Físico, o jogador faz uma rolagem de Corpo, e pode rolar usando o maior atributo entre Agilidade e Resistência. Exemplos: Quebrar uma parede. Atravessar um Pântano. Se esconder da guarda da cidade. Correr de um dinossauro faminto."
+      },
+      {
+        "id": "mentalChallenge",
+        "name": "Desafios Mentais: Teste de Mente",
+        "description": "Em um desafio Mental, o jogador faz uma rolagem de Mente, usando o maior atributo entre Astúcia e Espírito. Exemplos: Deduzir uma história retratada em um mural antigo. Rastrear criaturas escondidas em um pântano. Subornar o chefe da guarda da cidade. Convencer um dinossauro que seu aliado é mais saboroso do que você."
+      },
+      {
+        "id": "collectiveTest",
+        "name": "Teste Coletivo",
+        "description": "Quando o sucesso de uma tarefa depende obrigatóriamente de dois ou mais jogadores, o teste será considerado um Teste Coletivo. (Por exemplo, se o grupo inteiro precisa passar despercebido por um guarda). Nesse caso, cada jogador faz o teste separadamente, mas cada jogador que falha nesse teste subtrai um Acerto ✔ de um ou mais jogadores que tenham o maior número de Acertos ✔. No fim, se algum jogador ainda tiver sucesso no teste, significa que o grupo tem sucesso na tarefa como um todo. Mesmo com o sucesso do grupo, alguns desafios podem ter efeitos impostos aos jogadores que falharam."
+      },
+      {
+        "id": "fiftyFifty",
+        "name": "50% de Chance",
+        "description": "Quando alguma habilidade ou efeito tem 50% de chance de ocorrer, role um d6 sem efeitos adicionais. Com um Acerto ✔, o efeito ocorre. Alternativamente, à preferência dos jogadores, vocês podem escolher entre um resultado par ou ímpar, ou jogar uma moeda e escolher cara ou coroa."
       }
     ]
   },
   {
     "id": "basicCombat",
-    "title": "Combate Básico",
+    "title": "Regras: O Combate",
     "list": [
+      {
+        "id": "actionOrder",
+        "name": "Combate",
+        "description": "O combate é rápido e letal. A maioria dos inimigos (e os jogadores) têm apenas uma Vida ❤, então cada golpe é a diferença entre vitória e derrota. Por padrão, os inimigos usam atributos fixos de Ataque ⚔ e Defesa ⛨, deixando as rolagens para os jogadores."
+      },
+      {
+        "id": "actionOrder",
+        "name": "Ordem de Ação",
+        "description": "Na primeira rodada do combate, o mestre rola um d6 e o resultado define a ordem dos inimigos, que vão agir em grupo de acordo com sua categoria: A ordem de Lacaios é a sua DIF; a de Oponentes é o resultado do dado; e a de Chefes é o Resultado+DIF. Cada jogador rola um d6 para definir a sua ordem de Ação e todos se posicionam em campo de acordo com essa ordem. Inimigos agem antes dos jogadores com ordem menor ou igual à sua. A rodada acaba depois que todas as criaturas tenham agido, iniciando a próxima rodada na mesma ordem."
+      },
+      {
+        "id": "reactions",
+        "name": "Reações",
+        "description": "Podem ser feitas a qualquer momento do combate. Um jogador sempre tem uma Reação no início do combate e a recupera quando chega sua vez de agir."
+      },
+      {
+        "id": "field",
+        "name": "Campos",
+        "description": "No combate, o espaço é dividido em campos para cada grupo. Normalmente, temos o campo aliado e o campo inimigo, com um grupo de jogadores enfrentando um grupo de inimigos. O campo é dividido em duas metades chamadas de Linhas: a metade mais próxima ao campo oposto é a Frente e a mais distante é o Fundo."
+      },
+      {
+        "id": "positioning",
+        "name": "Posicionamento",
+        "description": "No início do combate, cada criatura escolhe onde se posicionará no seu campo escolhendo entre as duas Linhas: a Frente ou o Fundo. \n Se não houver outros aliados posicionados na Frente, todas as criaturas posicionadas no Fundo são consideradas como posicionadas na Frente."
+      },
+      {
+        "id": "reach",
+        "name": "Alcance",
+        "icon": "⌾",
+        "description": "O Alcance ⌾ de uma criatura representa quais linhas podem ser afetadas por seu Ataque ⚔. Normalmente, criaturas têm um Alcance ⌾ igual a 1, então só podem possível atacar alvos em uma linha adjacente à sua linha atual (Próximos). \n Em situações normais, criaturas posicionadas na linha de Frente podem Atacar e ser atacadas pelas criaturas posicionadas à Frente no grupo inimigo. \n Criaturas posicionadas na linha de Fundo não podem fazer Ataques ⚔ contra o grupo inimigo, exceto quando uma habilidade aumenta seu Alcance ⌾."
+      },
+      {
+        "id": "areaEffects",
+        "name": "Efeitos de Área",
+        "description": "Algumas habilidades, como Ataques Mágicos, podem afetar mais de uma criatura em certa área. Jogadores, aliados e criaturas da categoria “Lacaio” são afetadas normalmente. Porém, é mais difícil afetar criaturas mais poderosas: Criaturas da categoria “Oponente” só são afetadas com 2 Acertos e “Chefe” com 3 Acertos."
+      },
       {
         "id": "attack",
         "name": "Ataque",
@@ -114,31 +268,6 @@
         "id": "flee",
         "name": "Fugir",
         "description": "Qualquer criatura na linha de Fundo pode usar sua Ação para fugir do combate. Se não houver outros aliados na linha de Fundo, um jogador na linha de Frente também pode usar sua Ação para tentar fugir rolando Corpo contra a maior DIF dos inimigos adjacentes a ele. Inimigos só conseguem fugir se os jogadores falharem em um teste de coletivo de Corpo contra sua DIF para perseguí-lo."
-      },
-      {
-        "id": "field",
-        "name": "Campos",
-        "description": "No combate, o espaço é dividido em campos para cada grupo. Normalmente, temos o campo aliado e o campo inimigo, com um grupo de jogadores enfrentando um grupo de inimigos. O campo é dividido em duas metades: a metade mais próxima ao campo oposto é a Frente e a mais distante é o Fundo."
-      },
-      {
-        "id": "positioning",
-        "name": "Posicionamento",
-        "description": "No início do combate, cada criatura escolhe onde se posicionará no seu campo escolhendo entre as duas Linhas: a Frente ou o Fundo. \n Criaturas posicionadas na linha de Frente podem Atacar e ser atacadas pelas criaturas posicionadas à Frente no grupo inimigo. \n Criaturas posicionadas na linha de Fundo não podem fazer Ataques ⚔ contra o grupo inimigo, exceto quando uma habilidade aumenta seu Alcance ⌾. (ex: uma adaga com a habilidade Arremessar). \n Se não houver outros aliados posicionados na Frente, todas as criaturas posicionadas no Fundo são consideradas como posicionadas na Frente."
-      },
-      {
-        "id": "actionOrder",
-        "name": "Ordem de Ação",
-        "description": "Na primeira rodada do combate, o mestre rola um d6 e o resultado define a ordem dos inimigos, que vão agir em grupo de acordo com sua categoria: A ordem de Lacaios é a sua DIF; a de Oponentes é o resultado do dado; e a de Chefes é o Resultado+DIF. Cada jogador rola um d6 para definir a sua ordem de Ação e todos se posicionam em campo de acordo com essa ordem. Inimigos agem antes dos jogadores com ordem menor ou igual à sua. A rodada acaba depois que todas as criaturas tenham agido, iniciando a próxima rodada na mesma ordem."
-      },
-      {
-        "id": "reactions",
-        "name": "Reações",
-        "description": "Podem ser feitas a qualquer momento do combate. Um jogador sempre tem uma Reação no início do combate e a recupera quando chega sua vez de agir."
-      },
-      {
-        "id": "areaEffects",
-        "name": "Efeitos de Área",
-        "description": "Algumas habilidades podem afetar mais de uma criatura. Jogadores, aliados e criaturas da categoria “Lacaio” são afetadas normalmente. Porém, é mais difícil afetar criaturas mais poderosas: Criaturas da categoria “Oponente” só são afetadas com 2 Acertos e “Chefe” com 3 Acertos."
       }
     ]
   },
@@ -147,30 +276,29 @@
     "title": "Exploração",
     "list": [
       {
-        "id": "dungeon",
-        "name": "Covil",
-        "icon": "⚔",
-        "description": "Jogadores precisam comer o equivalente a 4 rações por dia em intervalos regulares, ou recebem a condição Faminto 🍗. Após um número de dias consecutivos igual a sua Resistência com essa condição, o jogador recebe a condição Definhando 💀."
-      },
-      {
         "id": "explore",
         "name": "Explorar",
-        "description": "Explorar cada área dura em média meia hora. (Tempo gasto explorando, investigando, enfrentando os desafios e se deslocando cuidadosamente pela escuridão.) \n Se houverem inimigos na área, eles são alertados pelos jogadores e podem iniciar um combate. \n Se houver algum Tesouro Escondido, característica oculta ou efeito especial nessa área, os jogadores podem descobrir com um teste de Mente ao explorar. \n Quando chegam numa área, o grupo também pode escolher explorar de maneira diferente. Todos os jogadores do grupo devem estar de acordo com essa escolha."
+        "description": "Explorar cada área dura em média meia hora. (Tempo gasto explorando, investigando, enfrentando os desafios e se deslocando cuidadosamente.) \n Se houverem inimigos na área, eles são alertados pelos jogadores e podem iniciar um combate. \n Se houver algum Tesouro Escondido, característica oculta ou efeito especial nessa área, os jogadores podem descobrir com um teste de Mente ao explorar. \n Quando chegam numa área, o grupo também pode escolher explorar de maneira diferente. Todos os jogadores do grupo devem estar de acordo com essa escolha."
       },
       {
         "id": "rush",
         "name": "Apressar",
-        "description": "Os jogadores podem escolher avançar mais rápido. Fazendo isso: \n Explorar a área dura metade do tempo. \n Os jogadores não podem vasculhar a área em busca de qualquer coisa que esteja escondida, como Tesouro ou passagens secretas."
+        "description": "Os jogadores podem escolher avançar mais rápido. Fazendo isso: \n Explorar a área dura metade do tempo. \n Os jogadores não podem vasculhar a área em busca de qualquer coisa que esteja escondida, como recursos ou passagens secretas."
       },
       {
         "id": "skulk",
         "name": "Espreitar",
-        "description": "Os jogadores podem tentar se mover cautelosamente para emboscar seus inimigos. Espreitar é um esforço conjunto e coordenado. Fazendo isso: \n Explorar a sala dura o dobro do tempo. Cada covil define um atributo que será usado nos testes para Espreitar e se Esconder. Nos casos mais comuns será Agilidade, mas existem exceções. \n Sempre que entra numa sala, o grupo faz um Teste Coletivo para Espreitar com o atributo determinado contra a DIF do Covil. Com sucesso, o grupo consegue Emboscar qualquer inimigo que esteja na sala: \n "
+        "description": "Os jogadores podem tentar se mover cautelosamente para emboscar seus inimigos. Espreitar é um esforço conjunto e coordenado. Fazendo isso: \n Explorar a área dura o dobro do tempo. \n Sempre que entra numa área, o grupo faz um Teste Coletivo para Espreitar com o atributo determinado contra a DIF do Covil. Com sucesso, o grupo consegue Emboscar qualquer inimigo que esteja na área. "
       },
       {
         "id": "ambushed",
         "name": "Emboscar",
         "description": "O grupo emboscado não fica ciente da presença de seu grupo. \n Ao iniciar o combate, seu grupo têm um Dado Extra 🎲 na ordem de combate e o primeiro a agir pode escolher a posição inicial de todos os inimigos que agem depois na ordem."
+      },
+      {
+        "id": "ambushed",
+        "name": "Atributo para Espreitar",
+        "description": "Cada covil define um atributo que será usado nos testes para Espreitar e se Esconder. Nos casos mais comuns será Agilidade, mas existem exceções. \n Exemplos: Resistência para atravessar um pântano traiçoeiro; Astúcia para evitar armadilhas no lar de um mago louco; Espírito para percorrer um cemitério assombrado sem perturbar os espíritos."
       },
       {
         "id": "hide",
@@ -193,13 +321,116 @@
         "id": "rest",
         "name": "Sono e Descanso",
         "icon": "↪",
-        "description": "Para Descansar, um Jogador deve consumir comida equivalente a uma ração e passar pelo menos uma hora em repouso ou fazendo atividades leves. \n Alternativamente, Jogadores podem Descansar dormindo por 8 horas. Jogadores devem Dormir assim pelo menos uma vez por dia ou recebem a condição Exausto 💧."
+        "description": "Para Descansar, um Jogador deve consumir comida equivalente a uma ração e passar pelo menos uma hora em repouso ou fazendo atividades leves. \n Alternativamente, Jogadores podem Descansar apenas dormindo por 8 horas. Jogadores devem Dormir assim pelo menos uma vez por dia ou recebem a condição Exausto 💧."
       },
       {
         "id": "breathing",
         "name": "Respirar",
         "icon": "✔",
         "description": "Jogadores podem ficar sem respirar por um número de rodadas consecutivas igual a sua Resistência. Depois disso, ficam Inconscientes 💤 pelo mesmo número de rodadas antes de morrer."
+      }
+    ]
+  },
+  {
+    "id": "skillTypes",
+    "title": "Tipos de Habilidades",
+    "list": [
+      {
+        "id": "speciesSkill",
+        "name": "Habilidade de Espécie",
+        "description": "Habilidade única concedida pela espécie do personagem."
+      },
+      {
+        "id": "commonSkill",
+        "name": "Habilidade Comum",
+        "description": "Habilidades que podem ser adquiridas por personagens de qualquer função."
+      },
+      {
+        "id": "functionSkill",
+        "name": "Habilidade de Função",
+        "description": "Cada função tem uma lista de habilidades exclusivas que só podem ser adquiridas por um personagens dessa função."
+      },
+      {
+        "id": "basicFunctionSkill",
+        "name": "Habilidade Básica de Função:",
+        "description": "É a principal habilidade da Função, que define seu estilo de jogo. Todo personagem com a função possui essa Habilidade. "
+      },
+      {
+        "id": "expansion",
+        "name": "Expansão",
+        "description": "São habilidades especiais que permitem adquirir aspectos de outras funções. Um personagem só pode ter no máximo uma Expansão."
+      },
+      {
+        "id": "doom",
+        "name": "Sina",
+        "description": "São habilidades que representam efeitos negativos impostos a um personagem e só são adquiridas sob condições especiais."
+      },
+      {
+        "id": "itemSkills",
+        "name": "Habilidades de Itens e Equipamentos",
+        "description": "Ao contrário das habilidades do jogador, as habilidades de Itens e Equipamentos têm uso limitado. Um jogador pode usar estas habilidades enquanto estiver empunhando ou usando o equipamento, mas isso geralmente consome ou danifica o item até que seja reparado."
+      },
+      {
+        "id": "skillKeywords",
+        "name": "Palavras chave de Habilidades",
+        "description": "[Ação] - Dá uma nova opção de Ação. \n [Reação] - Dá uma nova opção de Reação. \n [Fabricação] - Permite fabricar itens a partir de materiais.  \n [+] - Melhora ou sobrepõe o efeito de outra Habilidade. \n (1/Descanso) - Pode ser usada uma vez por Descanso."
+      }
+    ]
+  },
+  {
+    "id": "species",
+    "title": "Espécies",
+    "list": [
+      {
+        "id": "human",
+        "name": "Humano",
+        "flavor": "Adaptáveis. Perseverantes. Versáteis.",
+        "description": "Nativos da terra perdida de Huma. Humanos são conhecidos por sua adaptabilidade, encontrando prosperidade mesmo nas situações mais precárias, e frequentemente se encontram convivendo com outras espécies.",
+        "skillName": "Espírito Indomável",
+        "skillEffect": "Quando você falha em uma rolagem, você pode escolher rolar novamente todos os dados que não obtiveram Acertos ✔ e usar esse novo resultado.",
+        "tag": "1rest"
+      },
+      {
+        "id": "elf",
+        "name": "Elfo",
+        "flavor": "Exóticos. Independentes. Solitários.",
+        "description": "Seres misteriosos, nativos de outro mundo. Elfos vivem vidas muito longas em relação às outras espécies. Por isso, costumam viver em comunidades pequenas e reservadas, protegendo seus costumes e artes secretas de olhos alheios.",
+        "skillName": "Maestria Élfica",
+        "skillEffect": "Antes de fazer uma rolagem, você pode escolher fazer isso com foco absoluto, adicionando +1 a cada resultado. Isso transforma qualquer Erro Crítico ❌ em um erro comum e resultados 5 se tornam Acertos Críticos ❕.",
+        "tag": "1rest"
+      },
+      {
+        "id": "smallfolk",
+        "name": "Povo-pequeno",
+        "flavor": "Solidários. Inventivos. Prestativos.",
+        "description": "Nome dado aos povos de tamanho diminuto que se abrigam nas profundezas das florestas e no subsolo.  Apesar dá uma desconfiança com os gigantes forasteiros, sua sociedade acredita que cooperação é a chave para a sobrevivência, valorizando a prática de artes e ofícios.",
+        "skillName": "Habilidoso",
+        "skillEffect": "Ao receber essa Habilidade, você recebe uma Habilidade à sua escolha."
+      },
+      {
+        "id": "beastfolk",
+        "name": "Bestial",
+        "flavor": "Leais. Honrados. Tenazes.",
+        "description": "Seres com características de animais, com costumes e origens tão variados quanto sua fisionomia. Apesar da aparência selvagem, sua cultura valoriza a civilidade e diplomacia. Se destacam como comerciantes confiáveis por sua disposição a sempre cumprir com a palavra a todo custo. Como consequência de serem frequentemente tratados como ingênuos ou bárbaros por outras espécies, costumam ser cautelosos com desconhecidos.",
+        "skillName": "Herança Bestial",
+        "skillEffect": "Suas características animalescas te dão vantagens em certas tarefas. Escolha um atributo relacionado às suas características. \n Em Desafios ou uma vez por rodada em combate, quando você usa esse Atributo, você pode rolar um Dado Extra 🎲."
+      },
+      {
+        "id": "ogre",
+        "name": "Ogro",
+        "flavor": "Adaptáveis. Perseverantes. Versáteis.",
+        "description": "Seres corpulentos de pele colorida e apetite voraz. A maioria dos Ogros vive como nômade, procurando locais com recursos em abundância. São famosos por tomarem o que desejam com sua força descomunal, no entanto, muitos Ogros só querem mesmo é ser deixados em paz.",
+        "skillName": "Devorador de Almas",
+        "skillEffect": "Imediatamente após receber dano e ficar à Beira da Morte ✝, você pode tentar fazer um Ataque ⚔ contra o inimigo que o atingiu. Se este ataque matar o inimigo, você recupera sua Vida ❤.",
+        "tag": "1rest"
+      },
+      {
+        "id": "subterranean",
+        "name": "Subterrâno",
+        "flavor": "Forasteiro.",
+        "description": "Uma raça insectóide que habita o subterrâneo. Apesar do contato limitado com outras raças, alguns indivíduos ficam estranhamente fascinados pelas luzes da superfície.",
+        "skillName": "Hexapoda",
+        "skillEffect": "Você possui um par de braços adicional capaz de empunhar equipamentos e armas. Porém, armaduras comuns são incompatíveis com sua anatomia e devem ser adaptadas por um artesão hábil, custando o dobro do preço comum."
       }
     ]
   },

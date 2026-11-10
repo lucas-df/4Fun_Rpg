@@ -1,22 +1,19 @@
 /**
  * Módulo do guia de regras
- * Carrega os termos do jogo (tooltips.json) e os exibe em categorias de botões interativos
+ * Carrega os termos do jogo (tooltips.json) e exibe cada categoria como uma página única,
+ * com um botão de navegação para cada tópico
  */
 const GuideModule = {
     ARQUIVO: 'src/tooltips.json',
 
-    // Nome exibido de cada categoria (ids do tooltips.json)
-    NOMES_CATEGORIAS: {
-        conditions: 'Condições',
-        rolls: 'Testes e Rolagens',
-        basicCombat: 'Combate',
-        exploration: 'Exploração'
-    },
-
     categorias: [],
+    topicos: [],          // { botao, secao } de cada tópico da categoria aberta
+    topicoAtual: null,
+    observador: null,
+    atualizando: false,
 
     /**
-     * Carrega os termos e mostra as categorias
+     * Carrega os termos, mostra as categorias e acompanha a rolagem da página
      */
     async init() {
         try {
@@ -30,35 +27,44 @@ const GuideModule = {
 
         this.renderizarCategorias();
         this.mostrarDica('Escolha uma categoria para começar.');
+        window.addEventListener('scroll', () => this.aoRolar(), { passive: true });
     },
 
     // ===== Elementos =====
 
     /**
-     * Cria um botão que chama aoClicar(botao) quando clicado
+     * Cria um botão que chama aoClicar() quando clicado
      */
     criarBotao(texto, classe, aoClicar) {
         const botao = document.createElement('button');
         botao.type = 'button';
         botao.className = classe;
         botao.textContent = texto;
-        botao.setAttribute('aria-pressed', 'false');
-        botao.addEventListener('click', () => aoClicar(botao));
+        botao.addEventListener('click', aoClicar);
         return botao;
     },
 
     /**
-     * Destaca o botão escolhido dentro do container e remove o destaque dos demais
+     * Nome do termo com o ícone, quando houver
      */
-    marcarSelecionado(container, selecionado) {
-        container.querySelectorAll('button').forEach(botao => {
-            const ativo = botao === selecionado;
-            botao.classList.toggle('active', ativo);
-            botao.setAttribute('aria-pressed', String(ativo));
-        });
+    tituloDe(termo) {
+        return [termo.icon, termo.name].filter(Boolean).join(' ');
     },
 
-    // ===== Renderização =====
+    /**
+     * Mostra uma mensagem no lugar do conteúdo
+     */
+    mostrarDica(texto) {
+        const dica = document.createElement('p');
+        dica.className = 'guide-hint';
+        dica.textContent = texto;
+
+        document.getElementById('guideContent').replaceChildren(dica);
+        this.topicos = [];
+        this.topicoAtual = null;
+    },
+
+    // ===== Categorias =====
 
     /**
      * Mostra um botão para cada categoria
@@ -67,57 +73,134 @@ const GuideModule = {
         const container = document.getElementById('guideCategories');
 
         container.replaceChildren(...this.categorias.map(categoria => {
-            const nome = this.NOMES_CATEGORIAS[categoria.id] ?? categoria.id;
-            return this.criarBotao(`${nome} (${categoria.list.length})`, 'guide-button guide-category', botao => {
-                this.marcarSelecionado(container, botao);
-                this.renderizarTermos(categoria);
+            const botao = this.criarBotao(categoria.title, 'guide-button guide-category', () => {
+                container.querySelectorAll('button').forEach(outro => {
+                    outro.classList.toggle('active', outro === botao);
+                    outro.setAttribute('aria-pressed', String(outro === botao));
+                });
+                this.abrirCategoria(categoria);
             });
+            botao.setAttribute('aria-pressed', 'false');
+            return botao;
         }));
     },
 
     /**
-     * Mostra um botão para cada termo da categoria
+     * Mostra todos os tópicos da categoria numa página só, com a navegação por botões
      */
-    renderizarTermos(categoria) {
-        const container = document.getElementById('guideTerms');
+    abrirCategoria(categoria) {
+        const conteudo = document.getElementById('guideContent');
 
-        container.replaceChildren(...categoria.list.map(termo =>
-            this.criarBotao(this.tituloDe(termo), 'guide-button guide-term', botao => {
-                this.marcarSelecionado(container, botao);
-                this.mostrarDescricao(termo);
-            })
-        ));
-        this.mostrarDica('Escolha um termo para ver a descrição.');
+        const titulo = document.createElement('h3');
+        titulo.className = 'guide-page-title';
+        titulo.textContent = categoria.title;
+
+        const navegacao = document.createElement('nav');
+        navegacao.className = 'guide-nav';
+        navegacao.setAttribute('aria-label', `Tópicos: ${categoria.title}`);
+
+        const secoes = document.createElement('div');
+        secoes.className = 'guide-topics';
+
+        this.topicos = categoria.list.map(termo => {
+            const item = { secao: this.criarSecao(termo) };
+            item.botao = this.criarBotao(this.tituloDe(termo), 'guide-button guide-term', () => this.irParaTopico(item));
+            return item;
+        });
+
+        navegacao.append(...this.topicos.map(item => item.botao));
+        secoes.append(...this.topicos.map(item => item.secao));
+        conteudo.replaceChildren(titulo, navegacao, secoes);
+
+        // a navegação fica fixa no topo; as seções ajustam a margem de rolagem à altura dela
+        this.observador?.disconnect();
+        this.observador = new ResizeObserver(() => {
+            conteudo.style.setProperty('--guide-nav-height', `${navegacao.offsetHeight}px`);
+        });
+        this.observador.observe(navegacao);
+
+        this.topicoAtual = null;
+        this.atualizarTopicoAtual();
     },
 
     /**
-     * Mostra o nome e a descrição de um termo
+     * Cria a seção de um tópico, com o nome e a descrição
      */
-    mostrarDescricao(termo) {
-        const titulo = document.createElement('h3');
+    criarSecao(termo) {
+        const secao = document.createElement('article');
+        secao.className = 'guide-topic';
+
+        const titulo = document.createElement('h4');
         titulo.textContent = this.tituloDe(termo);
 
         const descricao = document.createElement('p');
         descricao.textContent = termo.description;
 
-        document.getElementById('guideDetail').replaceChildren(titulo, descricao);
+        secao.append(titulo, descricao);
+        return secao;
+    },
+
+    // ===== Navegação =====
+
+    /**
+     * Rola suavemente até o tópico e o destaca na navegação
+     */
+    irParaTopico(item) {
+        this.marcarTopico(item);
+        item.secao.scrollIntoView({ behavior: 'smooth', block: 'start' });
     },
 
     /**
-     * Mostra uma mensagem no painel de descrição
+     * Destaca o botão do tópico atual e o mantém visível dentro da navegação
      */
-    mostrarDica(texto) {
-        const dica = document.createElement('p');
-        dica.className = 'guide-hint';
-        dica.textContent = texto;
+    marcarTopico(atual) {
+        if (!atual || atual === this.topicoAtual) return;
+        this.topicoAtual = atual;
 
-        document.getElementById('guideDetail').replaceChildren(dica);
+        this.topicos.forEach(item => {
+            const ativo = item === atual;
+            item.botao.classList.toggle('active', ativo);
+            ativo ? item.botao.setAttribute('aria-current', 'true') : item.botao.removeAttribute('aria-current');
+        });
+
+        const navegacao = atual.botao.parentElement;
+        const areaNav = navegacao.getBoundingClientRect();
+        const areaBotao = atual.botao.getBoundingClientRect();
+        if (areaBotao.top < areaNav.top) {
+            navegacao.scrollTop -= areaNav.top - areaBotao.top + 4;
+        } else if (areaBotao.bottom > areaNav.bottom) {
+            navegacao.scrollTop += areaBotao.bottom - areaNav.bottom + 4;
+        }
     },
 
     /**
-     * Nome do termo com o ícone, quando houver
+     * Agrupa os eventos de rolagem em uma atualização por quadro
      */
-    tituloDe(termo) {
-        return [termo.icon, termo.name].filter(Boolean).join(' ');
+    aoRolar() {
+        if (this.atualizando) return;
+        this.atualizando = true;
+        requestAnimationFrame(() => {
+            this.atualizando = false;
+            this.atualizarTopicoAtual();
+        });
+    },
+
+    /**
+     * Descobre qual tópico está sendo lido: o último que já passou da navegação fixa
+     * (o primeiro, se nenhum passou; o último, se a página chegou ao fim)
+     */
+    atualizarTopicoAtual() {
+        const navegacao = document.querySelector('#guideContent .guide-nav');
+        if (!navegacao?.offsetParent || this.topicos.length === 0) return;
+
+        const limite = navegacao.getBoundingClientRect().bottom + 20;
+        let atual = this.topicos[0];
+        for (const item of this.topicos) {
+            if (item.secao.getBoundingClientRect().top > limite) break;
+            atual = item;
+        }
+
+        const noFim = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+        this.marcarTopico(noFim ? this.topicos.at(-1) : atual);
     }
 };
