@@ -24,7 +24,7 @@
         "description": "Os personagens são “modulares”: Basicamente montados como um conjunto de atributos e habilidades. Função (ou Classes) funcionam como pacotes de habilidades, dando acesso a conjuntos de habilidade únicos focados em um estilo de jogo específico. "
       },
       {
-        "name": "Atributos",
+        "name": "Atributos e Funções",
         "description": "Personagens possuem apenas 4 atributos gerais: \n Agilidade (Físico. Ofensivo.) \n Astúcia (Mental. Ofensivo.) \n Resistência (Físico. Defensivo.) \n  Espírito (Mental. Defensivo.) \n No geral, as Ações se baseiam em atributos ofensivos e Reações nos defensivos."
       },
       {
@@ -37,7 +37,6 @@
       }
     ]
   },
-
   {
     "id": "characters",
     "title": "Conceitos Básicos: Personagens",
@@ -55,22 +54,22 @@
       {
         "id": "agility",
         "name": "Agilidade",
-        "description": "Representa a destreza e habilidades físicas de um personagem. Usado para principalmente para fazer Ataques ⚔ e ações físicas."
+        "description": "Representa a destreza e habilidades físicas de um personagem. Usado para principalmente para fazer Ataques ⚔ e ações físicas. Atributo principal dos Assassinos."
       },
       {
         "id": "wit",
         "name": "Astúcia",
-        "description": "Representa a acuidade mental e intelecto de um personagem. Usada principalmente para fazer Ataques Mágicos ⛤ e ações mentais."
+        "description": "Representa a acuidade mental e intelecto de um personagem. Usada principalmente para fazer Ataques Mágicos ⛤ e ações mentais. Atributo principal dos Conjuradores."
       },
       {
         "id": "resistance",
         "name": "Resistência",
-        "description": "Representa o vigor e robustez de um personagem. Usada para resistir a Ataques ⚔ e efeitos físicos."
+        "description": "Representa o vigor e robustez de um personagem. Usada para resistir a Ataques ⚔ e efeitos físicos. Atributo principal dos Brutamontes."
       },
       {
         "id": "spirit",
         "name": "Espírito",
-        "description": "Representa a força de vontade e determinação de um personagem. Usado para resistir a Magias ⛤ e efeitos mentais."
+        "description": "Representa a força de vontade e determinação de um personagem. Usado para resistir a Magias ⛤ e efeitos mentais. Atributo principal dos Devotos."
       },
       {
         "id": "species",
@@ -431,6 +430,100 @@
         "description": "Uma raça insectóide que habita o subterrâneo. Apesar do contato limitado com outras raças, alguns indivíduos ficam estranhamente fascinados pelas luzes da superfície.",
         "skillName": "Hexapoda",
         "skillEffect": "Você possui um par de braços adicional capaz de empunhar equipamentos e armas. Porém, armaduras comuns são incompatíveis com sua anatomia e devem ser adaptadas por um artesão hábil, custando o dobro do preço comum."
+      }
+    ]
+  },
+  {
+    "id": "assassin",
+    "title": "Função: Assassino",
+    "list": [
+      {
+        "id": "assassinFlavor",
+        "name": "Assassino",
+        "description": "Dano. Mobilidade. Ações.\n Atributo base: Agilidade"
+      },
+      {
+        "id": "assassinBasic",
+        "name": "Habilidade Básica",
+        "skillName": "Eficiência Letal",
+        "skillEffect": "Quando você faz um Ataque ⚔,  você rola um Dado Extra 🎲 para cada Acerto Crítico ❕. Caso o número de Acertos ✔ supere a Defesa ⛨ do oponente, você pode usar o número de Acertos ✔ restantes para outro Ataque ⚔ na mesma Ação."
+      },
+      {
+        "id": "assassinItems",
+        "name": "Itens Iniciais Recomendados",
+        "description": "Arma de Duas Mãos \n Armadura Leve \n Kits de Reparo"
+      }
+    ]
+  },
+  {
+    "id": "bulwark",
+    "title": "Função: Baluarte",
+    "list": [
+      {
+        "id": "bulwarkFlavor",
+        "name": "Baluarte",
+        "description": "Sobrevivência. Controle. Reações.\n Atributo base: Resistência"
+      },
+      {
+        "id": "bulwarkBasic",
+        "name": "Habilidade Básica",
+        "skillName": "Guarda-Costas",
+        "skillEffect": "Quando você faz uma Defesa ⛨, você rola um Dado Extra 🎲 para cada Acerto Crítico ❕. Quando você tem sucesso em um teste de Defesa ⛨, você recupera a sua Reação. Seu número máximo de Defesas ⛨ por rodada é igual a sua Resistência. [Reação]: Quando um aliado adjacente a você é acertado por um Ataque ⚔, você pode se interpor ao ataque. Faça uma reação de Defesa ⛨ no lugar do aliado ou, se ele já fez uma rolagem, adicione seu número de Acertos ✔ à rolagem dele. Com sucesso, ambos evitam o dano. Caso contrário, você é acertado no lugar de seu aliado."
+      },
+      {
+        "id": "bulwarkItems",
+        "name": "Itens Iniciais Recomendados",
+        "description": "Arma de Uma Mão \n Escudo \n Armadura Leve \n Kits de Reparo"
+      }
+    ]
+  },
+  {
+    "id": "conjurer",
+    "title": "Função: Conjurador",
+    "list": [
+      {
+        "id": "conjurerFlavor",
+        "name": "Conjurador",
+        "description": "Ataques Mágicos. Efeitos de Área. Ações. \n Atributo base: Astúcia"
+      },
+      {
+        "id": "conjurerBasic",
+        "name": "Habilidade Básica",
+        "skillName": "Estudioso Arcano",
+        "skillEffect": "Ao receber essa Habilidade, você recebe a Habilidade Básica: Ataque Mágico ⛤ e um Arcano à sua escolha. \n Você tem a opção de adquirir novos Arcanos em vez de uma habilidade. \n [+] - Quando você faz um Ataque Mágico ⛤, para cada Acerto Crítico ❕ obtido você multiplica o número total de Acertos ✔ por 2. \n [Fabricação] - Você pode fabricar Cristais Mágicos convertendo Tesouro equivalente ao dobro de seu custo."
+      },
+      {
+        "id": "conjurerBasic2",
+        "name": "Habilidade Básica",
+        "skillName": "Ataque Mágico ⛤",
+        "skillEffect": "Para fazer um Ataque Mágico ⛤, o conjurador deve ter ambas as mãos livres ou estar empunhando um Catalisador Mágico e é necessário gastar um número de Cristais Mágicos igual ao nível da magia. \n [Ação] - Role Astúcia e para cada Acerto ✔ a magia conjurada pode afetar um inimigo visível à sua escolha. Conjurar normalmente leva tempo, você gasta os recursos imediatamente mas só causa os efeitos da magia ao final da rodada atual. Usar sua reação ou ser atingido interrompe a conjuração e os recursos gastos são perdidos. \n Você pode escolher conjurar a magia imediatamente na sua Ação, fazendo isso, cada Erro Crítico ❌ na rolagem anula um Acerto ✔ devido à natureza volátil da Magia."
+      },
+      {
+        "id": "conjurerItems",
+        "name": "Itens Iniciais Recomendados",
+        "description": "Catalisador Arcano \n 2x Cristais Mágicos"
+      }
+    ]
+  },
+  {
+    "id": "devout",
+    "title": "Função: Devoto",
+    "list": [
+      {
+        "id": "devoutFlavor",
+        "name": "Devoto",
+        "description": "Assistência. Proteção Mágica. Reações \n Atributo base: Espírito"
+      },
+      {
+        "id": "devoutBasic",
+        "name": "Habilidade Básica",
+        "skillName": "Intervenção Divina",
+        "skillEffect": "Sempre que você ou um aliado que você pode ver faz uma Ação ou Reação, você pode conceder um Dado Extra 🎲 àquela criatura por uma rodada. Você pode conceder um número máximo de dados por rodada igual ao seu Espírito. \n Gastando um Dado Extra 🎲 concedido por você, você e seus aliados podem fazer uma Defesa ⛨ sem precisar de uma Reação. \n [Reação] -  Quando você ou um aliado que você pode ver falha em um Ataque ⚔, Defesa ⛨, ou qualquer teste para resistir a uma condição ou efeito mágico durante o combate, você pode canalizar poderes divinos na forma de uma benção sutil. Você rola Espírito e soma seu número de Acertos ✔ aos já obtidos no teste. Para cada Acerto Crítico ❕, você também concede ao alvo um Dado Extra 🎲 por uma rodada."
+      },
+      {
+        "id": "devoutItems",
+        "name": "Itens Iniciais Recomendados",
+        "description": "Relíquia Sagrada \n Uma Arma com Munição ou Alcance \n Armadura Leve"
       }
     ]
   },
