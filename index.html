@@ -274,6 +274,42 @@
         .guide-hint {
             color: #888;
         }
+        .tooltip-term,
+        [data-tooltip] {
+            border-bottom: 1px dotted #4CAF50;
+            cursor: help;
+        }
+        .tooltip-term:hover,
+        .tooltip-term:focus-visible,
+        [data-tooltip]:hover,
+        [data-tooltip]:focus-visible {
+            background-color: #e8f5e9;
+            outline: none;
+        }
+        .tooltip-box {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            box-sizing: border-box;
+            max-width: min(340px, calc(100vw - 16px));
+            padding: 10px 12px;
+            background-color: #333;
+            color: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            font-size: 13px;
+            line-height: 1.45;
+            white-space: pre-line;
+            pointer-events: none;
+        }
+        .tooltip-box strong {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+        .tooltip-box p {
+            margin: 0;
+        }
     </style>
 </head>
 <body>
@@ -291,7 +327,7 @@
             <h2>Guia de Regras</h2>
             <p class="guide-intro">Escolha uma categoria para ler os tópicos em sequência, ou use os botões para ir direto a um tópico.</p>
             <div id="guideCategories" class="guide-buttons" role="group" aria-label="Categorias de regras"></div>
-            <div id="guideContent"></div>
+            <div id="guideContent" data-tooltips></div>
         </div>
     </div>
 
@@ -316,12 +352,12 @@
 
         <div>
             <div class="form-group" style ="width: 20%; float: left;">
-                <label for="attack">Ataque:</label>
+                <label for="attack"><span data-tooltip="attack">Ataque</span>:</label>
                 <input type="number" id="attack" min="0" required>
             </div>
 
             <div class="form-group" style ="width: 20%; float: left; margin-left: 10%;">
-                <label for="defense">Defesa:</label>
+                <label for="defense"><span data-tooltip="defense">Defesa</span>:</label>
                 <input type="number" id="defense" min="0" required>
             </div>
             <div class="form-group" style ="width: 15%; float: right; margin-left: 10%; margin-right: 15%;">
@@ -345,7 +381,7 @@
         <button type="submit">Criar Monstro</button>
     </form>
 
-    <div id="result"></div>
+    <div id="result" data-tooltips></div>
     </div>
 
     <div id="bestiary" class="tab-content">
@@ -360,7 +396,7 @@
                 <button class="secondary" data-action="exportar">Exportar JSON</button>
                 <button class="danger" data-action="limpar">Limpar Bestiário</button>
             </div>
-            <div id="bestiaryList"></div>
+            <div id="bestiaryList" data-tooltips></div>
         </div>
     </div>
 
@@ -391,7 +427,7 @@
 
             <button class="secondary" id="gerarTesouroBtn" onclick="TreasureDataModule.gerar().catch(err => console.error(err))" disabled>Gerar Tesouro</button>
 
-            <div id="treasureResult" class="treasure-result" style="display: none; margin-top: 15px; padding: 15px; background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; font-weight: bold;"></div>
+            <div id="treasureResult" class="treasure-result" data-tooltips style="display: none; margin-top: 15px; padding: 15px; background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; font-weight: bold;"></div>
         </div>
     </div>
 
@@ -399,9 +435,11 @@
     <script src="js/ui.js"></script>
     <script src="js/treasure.js"></script>
     <script src="js/guide.js"></script>
+    <script src="js/tooltip.js"></script>
     <script>
         UIModule.init();
         GuideModule.init();
+        TooltipModule.init();
     </script>
 </body>
 </html>

@@ -1,283 +1,188 @@
 /**
  * Módulo de tooltips
- * Marca as palavras-chave do jogo (termos do tooltips.json) nos textos da página e mostra a
- * descrição do termo ao passar o mouse, focar ou tocar na palavra.
+ * Mostra a descrição de um termo do jogo (tooltips.json) ao passar o mouse, focar ou tocar
+ * em qualquer elemento marcado com o atributo data-tooltip.
  *
- * Só são processados os elementos com o atributo "data-tooltips", inclusive o que for
- * adicionado a eles depois. Dentro deles, "data-tooltip-skip" com o id de um termo impede que
- * esse termo seja marcado no próprio texto (ex.: a seção do termo no guia de regras).
- * As palavras são reconhecidas com a mesma grafia do tooltips.json (maiúsculas incluídas),
- * no singular e no plural, e também pelos nomes extras do campo opcional "aliases" do termo.
+ * Uso no HTML: <span data-tooltip="stunned">atordoados</span>
+ * O valor é o "id" do termo no tooltips.json; o texto visível pode ser qualquer palavra.
  */
 const TooltipModule = {
     ARQUIVO: 'src/tooltips.json',
+    MARGEM: 8,
 
-    // Categorias cujos termos não são palavras-chave (são tópicos explicativos)
-    CATEGORIAS_IGNORADAS: ['system'],
-
-    // Elementos cujo texto nunca é marcado
-    SELETOR_EXCLUIDO: 'button, a, h1, h2, h3, h4, h5, h6, textarea, input, select, script, style, code, pre, .tooltip-term',
-
-    // Palavras que não vão para o plural em nomes compostos (ex.: "Ordem de Ação")
-    PALAVRAS_DE_LIGACAO: ['a', 'o', 'e', 'de', 'da', 'do', 'das', 'dos', 'em'],
-
-    ID_CAIXA: 'tooltipBox',
-
-    termos: new Map(),    // id do termo -> termo
-    formas: new Map(),    // palavra escrita no texto -> termo
-    expressao: null,
+    categorias: [],
+    termos: new Map(),      // id do termo -> termo
+    promessa: null,
     caixa: null,
     alvoAtual: null,
-    observador: null,
+    tipoPonteiro: null,
+    avisados: new Set(),
+
+    // ===== Dados =====
 
     /**
-     * Carrega os termos, prepara a caixa de tooltip e começa a marcar as palavras-chave
+     * Carrega o tooltips.json uma única vez e indexa os termos pelo id.
+     * Retorna as categorias (também usadas pelo guia de regras).
      */
-    async init() {
-        try {
-            const response = await fetch(this.ARQUIVO);
-            this.prepararTermos(await response.json());
-        } catch (error) {
-            console.error('Erro ao carregar os termos dos tooltips:', error);
+    carregar() {
+        this.promessa ??= fetch(this.ARQUIVO)
+            .then(response => response.json())
+            .then(categorias => {
+                this.categorias = categorias;
+                this.termos = new Map();
+                categorias.flatMap(categoria => categoria.list).forEach(termo => {
+                    if (this.termos.has(termo.id)) console.warn(`Tooltip: id de termo duplicado "${termo.id}"`);
+                    this.termos.set(termo.id, termo);
+                });
+                return categorias;
+            })
+            .catch(error => {
+                this.promessa = null;
+                throw error;
+            });
+        return this.promessa;
+    },
+
+    // ===== Inicialização =====
+
+    /**
+     * Cria a caixa de tooltip, registra os eventos e prepara os elementos marcados
+     */
+    init() {
+        this.caixa = document.createElement('div');
+        this.caixa.className = 'tooltip-box';
+        this.caixa.id = 'tooltipBox';
+        this.caixa.setAttribute('role', 'tooltip');
+        document.body.appendChild(this.caixa);
+
+        const alvoDe = evento => evento.target.closest?.('[data-tooltip]');
+
+        // Um toque dispara vários eventos (mouseover emulado, foco, clique). Por isso o último tipo de
+        // interação ('mouse', 'touch', 'pen' ou 'teclado') decide quais eventos mostram ou escondem
+        // o tooltip: no toque, só o clique, que alterna entre mostrar e esconder.
+        ['pointerover', 'pointerdown'].forEach(tipo => {
+            document.addEventListener(tipo, evento => { this.tipoPonteiro = evento.pointerType; });
+        });
+
+        document.addEventListener('mouseover', evento => {
+            const alvo = alvoDe(evento);
+            if (alvo && this.tipoPonteiro !== 'touch') this.mostrar(alvo);
+        });
+        document.addEventListener('mouseout', evento => {
+            const alvo = alvoDe(evento);
+            if (alvo && !alvo.contains(evento.relatedTarget) && this.tipoPonteiro !== 'touch') this.esconder();
+        });
+        document.addEventListener('focusin', evento => {
+            const alvo = alvoDe(evento);
+            if (alvo && this.tipoPonteiro !== 'touch') this.mostrar(alvo);
+        });
+        document.addEventListener('focusout', evento => {
+            if (alvoDe(evento) && this.tipoPonteiro !== 'touch') this.esconder();
+        });
+        document.addEventListener('click', evento => {
+            if (this.tipoPonteiro !== 'touch') return;
+
+            const alvo = alvoDe(evento);
+            if (alvo && alvo !== this.alvoAtual) {
+                this.mostrar(alvo);
+            } else if (alvo || evento.target !== this.alvoAtual?.closest('label')?.control) {
+                // (o clique que um <label> repassa ao seu campo não conta como toque fora)
+                this.esconder();
+            }
+        });
+        document.addEventListener('keydown', evento => {
+            this.tipoPonteiro = 'teclado';
+            if (evento.key === 'Escape') this.esconder();
+        });
+        window.addEventListener('scroll', () => this.esconder(), { passive: true, capture: true });
+        window.addEventListener('resize', () => this.esconder());
+
+        this.preparar(document.body);
+        new MutationObserver(mutacoes => {
+            mutacoes.forEach(mutacao => mutacao.addedNodes.forEach(no => {
+                if (no.nodeType === Node.ELEMENT_NODE) this.preparar(no);
+            }));
+        }).observe(document.body, { childList: true, subtree: true });
+
+        this.carregar().catch(error => console.error('Erro ao carregar os tooltips:', error));
+    },
+
+    /**
+     * Torna os elementos marcados alcançáveis pelo teclado (os que já são focáveis ficam como estão)
+     */
+    preparar(raiz) {
+        const marcados = [...raiz.querySelectorAll('[data-tooltip]')];
+        if (raiz.matches('[data-tooltip]')) marcados.push(raiz);
+
+        marcados.forEach(elemento => {
+            if (!elemento.matches('a[href], button, input, select, textarea, [tabindex]')) {
+                elemento.tabIndex = 0;
+            }
+        });
+    },
+
+    // ===== Exibição =====
+
+    /**
+     * Mostra o tooltip do termo indicado em data-tooltip, perto do elemento
+     */
+    mostrar(alvo) {
+        const id = alvo.dataset.tooltip;
+        const termo = this.termos.get(id);
+
+        if (!termo) {
+            if (this.termos.size > 0 && !this.avisados.has(id)) {
+                this.avisados.add(id);
+                console.warn(`Tooltip: termo "${id}" não encontrado no tooltips.json`);
+            }
             return;
         }
-
-        this.caixa = this.criarCaixa();
-        this.observador = new MutationObserver(registros => this.aoMudar(registros));
-        document.querySelectorAll('[data-tooltips]').forEach(container => this.observar(container));
-        this.registrarEventos();
-    },
-
-    // ===== Termos =====
-
-    /**
-     * Monta o índice de termos e a expressão que reconhece todas as palavras-chave
-     */
-    prepararTermos(categorias) {
-        for (const categoria of categorias) {
-            if (this.CATEGORIAS_IGNORADAS.includes(categoria.id)) continue;
-
-            for (const termo of categoria.list) {
-                this.termos.set(termo.id, termo);
-                for (const forma of this.formasDe(termo)) {
-                    if (!this.formas.has(forma)) this.formas.set(forma, termo);
-                }
-            }
-        }
-
-        // as formas mais longas primeiro, para "Acerto Crítico" vencer "Acerto"
-        const alternativas = [...this.formas.keys()]
-            .sort((a, b) => b.length - a.length)
-            .map(forma => forma.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
-
-        // limites de palavra com letras acentuadas (o \b do JavaScript só conhece ASCII)
-        this.expressao = new RegExp(`(^|[^\\p{L}\\p{N}])(${alternativas.join('|')})(?![\\p{L}\\p{N}])`, 'gu');
-    },
-
-    /**
-     * Palavras que representam o termo no texto: o nome, o plural, o feminino e o plural do
-     * feminino (nomes de uma palavra terminados em "o") e os "aliases" do termo
-     */
-    formasDe(termo) {
-        const formas = new Set([termo.name, ...(termo.aliases ?? [])]);
-        const palavras = termo.name.split(' ');
-
-        if (!termo.name.includes('-')) {
-            formas.add(palavras
-                .map(palavra => this.PALAVRAS_DE_LIGACAO.includes(palavra.toLowerCase()) ? palavra : this.plural(palavra))
-                .join(' '));
-        }
-        if (palavras.length === 1 && termo.name.endsWith('o')) {
-            const radical = termo.name.slice(0, -1);
-            formas.add(`${radical}a`).add(`${radical}as`);
-        }
-        return formas;
-    },
-
-    /**
-     * Plural de uma palavra (regras gerais do português)
-     */
-    plural(palavra) {
-        if (palavra.endsWith('s')) return palavra;
-        if (palavra.endsWith('ão')) return `${palavra.slice(0, -2)}ões`;
-        if (palavra.endsWith('al') || palavra.endsWith('el') || palavra.endsWith('ol') || palavra.endsWith('ul')) {
-            return `${palavra.slice(0, -1)}is`;
-        }
-        if (palavra.endsWith('il')) return `${palavra.slice(0, -2)}is`;
-        if (palavra.endsWith('m')) return `${palavra.slice(0, -1)}ns`;
-        if (/[rz]$/.test(palavra)) return `${palavra}es`;
-        return `${palavra}s`;
-    },
-
-    // ===== Marcação do texto =====
-
-    /**
-     * Começa a marcar o texto do elemento, agora e a cada conteúdo adicionado a ele
-     */
-    observar(container) {
-        this.aplicar(container);
-        this.observador.observe(container, { childList: true, subtree: true });
-    },
-
-    /**
-     * Marca o que foi adicionado à página (as marcações feitas aqui não disparam nova passagem)
-     */
-    aoMudar(registros) {
-        registros.forEach(registro => registro.addedNodes.forEach(no => this.aplicar(no)));
-        this.observador.takeRecords();
-    },
-
-    /**
-     * Marca as palavras-chave de todos os textos dentro do nó
-     */
-    aplicar(raiz) {
-        const nos = [];
-        if (raiz.nodeType === Node.TEXT_NODE) {
-            nos.push(raiz);
-        } else if (raiz.nodeType === Node.ELEMENT_NODE) {
-            const percurso = document.createTreeWalker(raiz, NodeFilter.SHOW_TEXT);
-            while (percurso.nextNode()) nos.push(percurso.currentNode);
-        }
-
-        // a lista é montada antes de alterar a página, que muda durante a marcação
-        nos.filter(no => this.podeMarcar(no)).forEach(no => this.marcarTexto(no));
-    },
-
-    /**
-     * Um texto pode ser marcado se tem conteúdo e não está num elemento excluído
-     */
-    podeMarcar(no) {
-        const pai = no.parentElement;
-        return pai && no.nodeValue.trim() !== '' && !pai.closest(this.SELETOR_EXCLUIDO);
-    },
-
-    /**
-     * Troca cada palavra-chave do texto por um elemento marcado
-     */
-    marcarTexto(no) {
-        const texto = no.nodeValue;
-        const proprio = no.parentElement.closest('[data-tooltip-skip]')?.dataset.tooltipSkip;
-        const partes = [];
-        let fim = 0;
-
-        this.expressao.lastIndex = 0;
-        let achado;
-        while ((achado = this.expressao.exec(texto))) {
-            const inicio = achado.index + achado[1].length;
-            const termo = this.formas.get(achado[2]);
-            if (termo.id === proprio) continue;
-
-            partes.push(document.createTextNode(texto.slice(fim, inicio)), this.criarPalavra(achado[2], termo));
-            fim = inicio + achado[2].length;
-        }
-
-        if (partes.length === 0) return;
-        partes.push(document.createTextNode(texto.slice(fim)));
-        no.replaceWith(...partes);
-    },
-
-    /**
-     * Elemento que marca a palavra-chave no texto
-     */
-    criarPalavra(texto, termo) {
-        const palavra = document.createElement('span');
-        palavra.className = 'tooltip-term';
-        palavra.dataset.tooltip = termo.id;
-        palavra.tabIndex = 0;
-        palavra.textContent = texto;
-        return palavra;
-    },
-
-    // ===== Caixa de tooltip =====
-
-    criarCaixa() {
-        const caixa = document.createElement('div');
-        caixa.id = this.ID_CAIXA;
-        caixa.className = 'tooltip-box';
-        caixa.setAttribute('role', 'tooltip');
-        document.body.appendChild(caixa);
-        return caixa;
-    },
-
-    /**
-     * Mostra o nome e a descrição do termo ao lado da palavra
-     */
-    mostrar(alvo, evento) {
-        const termo = this.termos.get(alvo.dataset.tooltip);
-        if (!termo) return;
+        if (alvo === this.alvoAtual) return;
         this.esconder();
 
         const titulo = document.createElement('strong');
         titulo.textContent = [termo.icon, termo.name].filter(Boolean).join(' ');
-        const descricao = document.createElement('span');
+        const descricao = document.createElement('p');
         descricao.textContent = termo.description;
-
         this.caixa.replaceChildren(titulo, descricao);
-        this.caixa.style.display = 'block';
-        this.posicionar(alvo, evento);
 
         this.alvoAtual = alvo;
-        alvo.setAttribute('aria-describedby', this.ID_CAIXA);
-    },
-
-    esconder() {
-        this.caixa.style.display = 'none';
-        this.alvoAtual?.removeAttribute('aria-describedby');
-        this.alvoAtual = null;
+        alvo.setAttribute('aria-describedby', this.caixa.id);
+        this.posicionar(alvo);
     },
 
     /**
-     * Posiciona a caixa acima da palavra (ou abaixo, se não couber), dentro da tela.
-     * Se a palavra quebra de linha, usa o trecho sob o mouse.
+     * Posiciona a caixa abaixo do elemento (ou acima, se faltar espaço), dentro da tela
      */
-    posicionar(alvo, evento) {
-        const trechos = [...alvo.getClientRects()];
-        const area = (evento && trechos.find(r =>
-            evento.clientX >= r.left && evento.clientX <= r.right && evento.clientY >= r.top && evento.clientY <= r.bottom
-        )) || trechos[0];
+    posicionar(alvo) {
+        const caixa = this.caixa;
+        caixa.style.display = 'block';
 
-        const margem = 8;
-        this.caixa.style.left = '0px';
-        this.caixa.style.top = '0px';
-        const { width, height } = this.caixa.getBoundingClientRect();
+        const area = alvo.getBoundingClientRect();
+        const { width, height } = caixa.getBoundingClientRect();
 
-        const esquerda = area.left + area.width / 2 - width / 2;
-        let topo = area.top - height - margem;
-        if (topo < margem) topo = area.bottom + margem;
+        const esquerda = Math.min(
+            Math.max(area.left + area.width / 2 - width / 2, this.MARGEM),
+            window.innerWidth - width - this.MARGEM
+        );
+        let topo = area.bottom + this.MARGEM;
+        if (topo + height > window.innerHeight - this.MARGEM && area.top - height - this.MARGEM >= this.MARGEM) {
+            topo = area.top - height - this.MARGEM;
+        }
 
-        this.caixa.style.left = `${Math.max(margem, Math.min(esquerda, window.innerWidth - width - margem))}px`;
-        this.caixa.style.top = `${Math.max(margem, Math.min(topo, window.innerHeight - height - margem))}px`;
+        topo = Math.max(this.MARGEM, Math.min(topo, window.innerHeight - height - this.MARGEM));
+
+        caixa.style.left = `${esquerda}px`;
+        caixa.style.top = `${topo}px`;
     },
 
-    // ===== Eventos =====
-
-    registrarEventos() {
-        const palavraDe = evento => evento.target.closest?.('.tooltip-term');
-
-        document.addEventListener('mouseover', evento => {
-            const alvo = palavraDe(evento);
-            if (alvo && alvo !== this.alvoAtual) this.mostrar(alvo, evento);
-        });
-        document.addEventListener('mouseout', evento => {
-            const alvo = palavraDe(evento);
-            if (alvo && !alvo.contains(evento.relatedTarget)) this.esconder();
-        });
-        document.addEventListener('focusin', evento => {
-            const alvo = palavraDe(evento);
-            if (alvo) this.mostrar(alvo);
-        });
-        document.addEventListener('focusout', evento => {
-            if (palavraDe(evento)) this.esconder();
-        });
-        // toque: tocar na palavra mostra a descrição; tocar fora esconde
-        document.addEventListener('click', evento => {
-            const alvo = palavraDe(evento);
-            alvo ? this.mostrar(alvo, evento) : this.esconder();
-        });
-        document.addEventListener('keydown', evento => {
-            if (evento.key === 'Escape') this.esconder();
-        });
-        window.addEventListener('scroll', () => this.esconder(), { capture: true, passive: true });
-        window.addEventListener('resize', () => this.esconder());
+    /**
+     * Esconde o tooltip
+     */
+    esconder() {
+        if (!this.alvoAtual) return;
+        this.alvoAtual.removeAttribute('aria-describedby');
+        this.alvoAtual = null;
+        this.caixa.style.display = 'none';
     }
 };

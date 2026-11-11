@@ -1,11 +1,9 @@
 /**
  * Módulo do guia de regras
- * Carrega os termos do jogo (tooltips.json) e exibe cada categoria como uma página única,
- * com um botão de navegação para cada tópico
+ * Exibe os termos do jogo (tooltips.json, carregado pelo TooltipModule) em categorias, cada uma como
+ * uma página única, com um botão de navegação para cada tópico
  */
 const GuideModule = {
-    ARQUIVO: 'src/tooltips.json',
-
     categorias: [],
     topicos: [],          // { botao, secao } de cada tópico da categoria aberta
     topicoAtual: null,
@@ -17,8 +15,7 @@ const GuideModule = {
      */
     async init() {
         try {
-            const response = await fetch(this.ARQUIVO);
-            this.categorias = await response.json();
+            this.categorias = await TooltipModule.carregar();
         } catch (error) {
             console.error('Erro ao carregar o guia de regras:', error);
             this.mostrarDica('Não foi possível carregar o guia de regras.');
@@ -129,6 +126,7 @@ const GuideModule = {
     criarSecao(termo) {
         const secao = document.createElement('article');
         secao.className = 'guide-topic';
+        secao.dataset.tooltipSkip = termo.id;
 
         const titulo = document.createElement('h4');
         titulo.textContent = this.tituloDe(termo);
