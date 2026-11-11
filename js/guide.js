@@ -132,7 +132,7 @@ const GuideModule = {
         titulo.textContent = this.tituloDe(termo);
 
         const descricao = document.createElement('p');
-        descricao.textContent = termo.description;
+        descricao.append(TooltipModule.formatar(termo.description));
 
         secao.append(titulo, descricao);
         return secao;

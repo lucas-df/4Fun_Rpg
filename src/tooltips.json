@@ -3,35 +3,35 @@
     "id": "system",
     "title": "O que esperar do Sistema?",
     "list": [
-      {
+      { "id": "system1",
         "name": "Como é o jogo?",
         "description": "Um sistema de RPG de mesa com mecânicas simples e combate rápido. O foco não é realismo, e sim jogadas momento a momento, um jogo casual que tenta destacar os pontos fortes e fracos de cada função/personagem."
       },
-      {
+      { "id": "system2",
         "name": "O Combate",
         "description": "O combate é o ponto central do jogo, com foco em combates curtos e rápidos (1 ou 2 turnos em média), sem grid e com o mínimo de gestão de recursos."
       },
-      {
+      { "id": "system3",
         "name": "Mortalidade",
         "description": "Todo combate tem alta mortalidade. Tanto Jogadores como Inimigos tem apenas um \"ponto de vida\" ou Vida. Acertar um ataque e causar dano geralmente significa uma morte. Sobreviver a um Covil (ou Dungeon) é algo realmente significativo."
       },
-      {
+      { "id": "system4",
         "name": "Ações e Reações",
         "description": "O sistema é centrado em ações e reações, cada jogador tem uma de cada em cada turno e elas sempre tem impacto e consequências. A dinâmica do jogo é que os jogadores devem escolher os momentos para atacar e defender usando seus recursos a cada turno. Gastar equipamentos e usar habilidades ativamente é o único jeito de evitar mortes."
       },
-      {
+      { "id": "system5",
         "name": "Personagens",
         "description": "Os personagens são “modulares”: Basicamente montados como um conjunto de atributos e habilidades. Função (ou Classes) funcionam como pacotes de habilidades, dando acesso a conjuntos de habilidade únicos focados em um estilo de jogo específico. "
       },
-      {
+      { "id": "system6",
         "name": "Atributos e Funções",
         "description": "Personagens possuem apenas 4 atributos gerais: \n Agilidade (Físico. Ofensivo.) \n Astúcia (Mental. Ofensivo.) \n Resistência (Físico. Defensivo.) \n  Espírito (Mental. Defensivo.) \n No geral, as Ações se baseiam em atributos ofensivos e Reações nos defensivos."
       },
-      {
+      { "id": "system7",
         "name": "Habilidades",
         "description": "Não existe \"nível\" de personagem. A força do personagem vem principalmente das habilidades que ele adquire. Habilidades tem efeitos muito impactantes e definem seu personagem. (Algo mais parecido com as habilidades de um personagem de MOBA em vez de \"+2 nos testes para cavar buracos numa quarta-feira.\")"
       },
-      {
+      { "id": "system8",
         "name": "Itens",
         "description": "A maioria das Habilidades de personagens não se esgotam e são utilizadas turno a turno ou uma vez por descanso. Equipamentos e outros itens encontrados na aventura podem oferecer vantagens ainda maiores que as habilidades, mas são recursos finitos com uso e durabilidade limitada e com custos de fabricação, aquisição ou reparo."
       }
@@ -92,31 +92,31 @@
     "id": "characterCreation",
     "title": "Passo-a-Passo: Criação de Personagem",
     "list": [
-      {
+      { "id": "creation1",
         "name": "1 - Escolha uma Espécie",
         "description": "Você recebe uma Habilidade da Espécie escolhida para seu personagem."
       },
-      {
+      { "id": "creation2",
         "name": "2 -  Escolha uma das 4 Funções",
         "description": "Você recebe as Habilidades Básicas de sua Função."
       },
-      {
+      { "id": "creation3",
         "name": "3 - Escolha um atributo principal e um secundário",
         "description": "Recomenda-se escolher o atributo principal de acordo com sua função. \n O valor de seu atributo principal é 3 e o secundário é 2. O valor dos demais atributos é 1."
       },
-      {
+      { "id": "creation4",
         "name": "4 - Escolha 4 Habilidades",
         "description": "Você pode escolher qualquer Habilidade Comum ou da lista de sua Função, desde que cumpra os requisitos. Você pode receber também a habilidade básica de uma Expansão caso cumpra com seus requisitos."
       },
-      {
+      { "id": "creation5",
         "name": "5 - Você tem 6 Rações e 200 PO para comprar equipamentos iniciais",
         "description": "Você pode comprar o equipamento inicial recomendado da sua Função ou qualquer outro item a sua escolha e mantém o dinheiro restante."
       },
-      {
+      { "id": "creation6",
         "name": "6 - Anote sua lista de Feitos",
         "description": "A principal maneira de fortalecer seu personagem é realizando Feitos. Ao cumprir um dos Feitos descritos em sua Função, no seu próximo Descanso você poderá aumentar um dos seus atributos em 1 e pode adiquirir uma Habilidade de sua Função e uma Habilidade Comum. Cada Feito só pode ser cumprido uma única vez."
       },
-      {
+      { "id": "creation7",
         "name": "Evolução de Personagem",
         "description": "Além de Feitos, existem outros meios mais incomuns para adquirir Habilidades durante uma aventura: Alguns itens mágicos, rituais específicos, tutores ou até criaturas mágicas podem ser capazes de conceder novas habilidades aos personagens."
       }
@@ -129,7 +129,7 @@
       {
         "id": "check",
         "name": "Testes",
-        "description": "Sempre que há incerteza se um personagem conseguirá fazer algo, significa que isso depende de um Teste. Todo teste é feito com um atributo e contra uma dificuldade. \n Por padrão, um jogador rola um número de dados igual ao atributo e conta o número de Acertos, que são os resultados 4 ou mais (4+). Se esse número for igual ou maior que a dificuldade, ele tem sucesso. \n Apenas jogadores fazem Testes! Criaturas controladas pelo mestre sempre tem sucesso a não ser que sejam impedidas pelos jogadores. \n O mestre sempre decide se um teste é necessário ou não. Se não há possibilidade razoável de falha ou (de sucesso) para uma ação, não é necessário fazer um teste."
+        "description": "Sempre que há incerteza se um personagem conseguirá fazer algo, significa que isso depende de um Teste. Todo teste é feito com um atributo e contra uma [[diff:dificuldade]]. \n Por padrão, um jogador rola um número de dados igual ao atributo e conta o número de Acertos, que são os resultados 4 ou mais (4+). Se esse número for igual ou maior que a dificuldade, ele tem sucesso. \n Apenas jogadores fazem Testes! Criaturas controladas pelo mestre sempre tem sucesso a não ser que sejam impedidas pelos jogadores. \n O mestre sempre decide se um teste é necessário ou não. Se não há possibilidade razoável de falha ou (de sucesso) para uma ação, não é necessário fazer um teste."
       },
       {
         "id": "diff",
@@ -204,7 +204,7 @@
     "title": "Regras: O Combate",
     "list": [
       {
-        "id": "actionOrder",
+        "id": "combat",
         "name": "Combate",
         "description": "O combate é rápido e letal. A maioria dos inimigos (e os jogadores) têm apenas uma Vida ❤, então cada golpe é a diferença entre vitória e derrota. Por padrão, os inimigos usam atributos fixos de Ataque ⚔ e Defesa ⛨, deixando as rolagens para os jogadores."
       },
@@ -295,7 +295,7 @@
         "description": "O grupo emboscado não fica ciente da presença de seu grupo. \n Ao iniciar o combate, seu grupo têm um Dado Extra 🎲 na ordem de combate e o primeiro a agir pode escolher a posição inicial de todos os inimigos que agem depois na ordem."
       },
       {
-        "id": "ambushed",
+        "id": "ambushAttribute",
         "name": "Atributo para Espreitar",
         "description": "Cada covil define um atributo que será usado nos testes para Espreitar e se Esconder. Nos casos mais comuns será Agilidade, mas existem exceções. \n Exemplos: Resistência para atravessar um pântano traiçoeiro; Astúcia para evitar armadilhas no lar de um mago louco; Espírito para percorrer um cemitério assombrado sem perturbar os espíritos."
       },

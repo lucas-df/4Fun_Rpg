@@ -5,10 +5,17 @@
  *
  * Uso no HTML: <span data-tooltip="stunned">atordoados</span>
  * O valor é o "id" do termo no tooltips.json; o texto visível pode ser qualquer palavra.
+ *
+ * Uso em textos (ex.: descrições do tooltips.json): [[stunned:atordoados]] mostra a palavra
+ * "atordoados" com o tooltip do termo "stunned"; [[stunned]] mostra o nome do próprio termo.
+ * formatar(texto) converte as marcações em elementos; textoPuro(texto) as troca pelo texto visível.
  */
 const TooltipModule = {
     ARQUIVO: 'src/tooltips.json',
     MARGEM: 8,
+
+    // Marcação em textos: [[id]] ou [[id:texto]]
+    MARCACAO: /\[\[([\w-]+)(?::([^\]]+))?\]\]/g,
 
     categorias: [],
     termos: new Map(),      // id do termo -> termo
@@ -30,10 +37,14 @@ const TooltipModule = {
             .then(categorias => {
                 this.categorias = categorias;
                 this.termos = new Map();
-                categorias.flatMap(categoria => categoria.list).forEach(termo => {
+                const todos = categorias.flatMap(categoria => categoria.list);
+
+                // termos sem "id" só aparecem no guia; não podem ser chamados por data-tooltip
+                todos.filter(termo => termo.id).forEach(termo => {
                     if (this.termos.has(termo.id)) console.warn(`Tooltip: id de termo duplicado "${termo.id}"`);
                     this.termos.set(termo.id, termo);
                 });
+                this.validarMarcacoes(todos);
                 return categorias;
             })
             .catch(error => {
@@ -41,6 +52,53 @@ const TooltipModule = {
                 throw error;
             });
         return this.promessa;
+    },
+
+    /**
+     * Avisa no console sobre marcações [[id:texto]] que apontam para um id inexistente
+     */
+    validarMarcacoes(termos) {
+        const problemas = [];
+        for (const termo of termos) {
+            if (!termo.description) continue;  // ← ADICIONAR ESTA LINHA
+            for (const [marcacao, id] of termo.description.matchAll(this.MARCACAO)) {
+                if (!this.termos.has(id)) problemas.push(`Termo "${termo.id ?? termo.name}": ${marcacao} referencia um id inexistente`);
+            }
+        }
+        if (problemas.length > 0) console.warn(`Problemas nas marcações de tooltip:\n- ${problemas.join('\n- ')}`);
+    },
+
+    // ===== Textos com marcações =====
+
+    /**
+     * Converte um texto com marcações [[id:texto]] em elementos: o texto comum fica como está e
+     * cada marcação vira um <span data-tooltip="id">. Sem o texto ([[id]]), mostra o nome do termo.
+     */
+    formatar(texto) {
+        const fragmento = document.createDocumentFragment();
+        let inicio = 0;
+
+        for (const correspondencia of texto.matchAll(this.MARCACAO)) {
+            const [marcacao, id, visivel] = correspondencia;
+            fragmento.append(texto.slice(inicio, correspondencia.index));
+
+            const palavra = document.createElement('span');
+            palavra.dataset.tooltip = id;
+            palavra.textContent = visivel ?? this.termos.get(id)?.name ?? id;
+            fragmento.append(palavra);
+
+            inicio = correspondencia.index + marcacao.length;
+        }
+
+        fragmento.append(texto.slice(inicio));
+        return fragmento;
+    },
+
+    /**
+     * Troca as marcações pelo texto visível, sem elementos (ex.: dentro da caixa de tooltip)
+     */
+    textoPuro(texto) {
+        return texto.replace(this.MARCACAO, (_, id, visivel) => visivel ?? this.termos.get(id)?.name ?? id);
     },
 
     // ===== Inicialização =====
@@ -143,7 +201,7 @@ const TooltipModule = {
         const titulo = document.createElement('strong');
         titulo.textContent = [termo.icon, termo.name].filter(Boolean).join(' ');
         const descricao = document.createElement('p');
-        descricao.textContent = termo.description;
+        descricao.textContent = this.textoPuro(termo.description);
         this.caixa.replaceChildren(titulo, descricao);
 
         this.alvoAtual = alvo;
