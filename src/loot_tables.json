@@ -1,101 +1,123 @@
 [
     {
+        "type": "table",
         "tableId": "naturalTable",
         "entries": [
             {
+                "type": "ref",
                 "desc": "Recurso Medicinal",
                 "nextTable": "medicinalResources",
                 "selection": "difficulty"
             },
             {
+                "type": "ref",
                 "desc": "Minério Mítico",
                 "nextTable": "mineralResources",
                 "selection": "difficulty"
             },
             {
+                "type": "ref",
                 "desc": "Material Mágico",
                 "nextTable": "magicResources",
                 "selection": "difficulty"
             },
             {
+                "type": "ref",
                 "desc": "Iguaria Comestível",
                 "nextTable": "foodResources",
                 "selection": "difficulty"
             },
             {
+                "type": "ref",
                 "desc": "Item Mundano",
                 "nextTable": "civilizedTableRestricted",
                 "selection": "random",
                 "rolls": "1d6"
             },
-            {   "desc": "Recurso Único",
+            {
+                "type": "ref",
+                "desc": "Recurso Único",
                 "nextTable": "uniqueResources",                
                 "selection": "difficulty"
             }
         ]
     },
     {
+        "type": "table",
         "tableId": "naturalTableRestricted",
         "entries": [
             {
+                "type": "ref",
                 "desc": "Recurso Medicinal",
                 "nextTable": "medicinalResources",
                 "selection": "difficulty"
             },
             {
+                "type": "ref",
                 "desc": "Minério Mítico",
                 "nextTable": "mineralResources",
                 "selection": "difficulty"
             },
             {
+                "type": "ref",
                 "desc": "Material Mágico",
                 "nextTable": "magicResources",
                 "selection": "difficulty"
             },
             {
+                "type": "ref",
                 "desc": "Iguaria Comestível",
                 "nextTable": "foodResources",
                 "selection": "difficulty"
             },
-            {   "desc": "Recurso Único",
+            {
+                "type": "ref",
+                "desc": "Recurso Único",
                 "nextTable": "uniqueResources",                
                 "selection": "difficulty"
             }
         ]
     },
     {
+        "type": "table",
         "tableId": "civilizedTable",
         "entries": [
             {
+                "type": "ref",
                 "nextTable": "goldResources",
                 "desc": "Tesouro: Ouro",
                 "selection": "difficulty",
                 "quantity": "1d6"
             },
             {
+                "type": "ref",
                 "nextTable": "artResources",
                 "desc": "Tesouro: Obra de Arte",
                 "selection": "difficulty",
                 "quantity": "1d6"
             },
             {
+                "type": "ref",
                 "nextTable": "suppliesTable",
                 "selection": "random",
                 "desc": "Suprimento",
                 "quantity": "1d6"
             },
             {
+                "type": "ref",
                 "nextTable": "brkEquipmentTable",
                 "desc": "Equipamento (Quebrado)",
                 "selection": "weightedRandom"
             },
             {
+                "type": "ref",
                 "nextTable": "naturalTableRestricted",
                 "desc": "Recurso Natural",
                 "selection": "random",
                 "quantity": "1d6"
             },
             {
+                "type": "ref",
                 "nextTable": "specialItemTable",
                 "desc": "Item Especial",
                 "selection": "random"
@@ -103,32 +125,38 @@
         ]
     },
     {
+        "type": "table",
         "tableId": "civilizedTableRestricted",
         "entries": [
             {
+                "type": "ref",
                 "nextTable": "goldResources",
                 "desc": "Tesouro: Ouro",
                 "selection": "difficulty",
                 "quantity": "1d6"
             },
             {
+                "type": "ref",
                 "nextTable": "artResources",
                 "desc": "Tesouro: Obra de Arte",
                 "selection": "difficulty",
                 "quantity": "1d6"
             },
             {
+                "type": "ref",
                 "nextTable": "suppliesTable",
                 "selection": "random",
                 "desc": "Suprimento",
                 "quantity": "1d6"
             },
             {
+                "type": "ref",
                 "nextTable": "brkEquipmentTable",
                 "desc": "Equipamento (Quebrado)",
                 "selection": "weightedRandom"
             },
             {
+                "type": "ref",
                 "nextTable": "specialItemTable",
                 "desc": "Item Especial",
                 "selection": "random"
@@ -136,32 +164,39 @@
         ]
     },
     {
+        "type": "table",
         "tableId": "suppliesTable",
         "entries": [
             {
+                "type": "ref",
                 "item": "rations",
                 "desc": "Pacote de Rações"
             },
             {
+                "type": "ref",
                 "desc": "Kit de Reparo",
                 "nextTable": "repairKits",
                 "selection": "random"
             },
             {
+                "type": "ref",
                 "desc": "Consumível",
                 "nextTable": "consumablesTable",
                 "selection": "random"
             },
             {
+                "type": "ref",
                 "desc": "Pacote de Flechas/Setas",
                 "nextTable": "projectiles",
                 "selection": "random"
             },
             {   
+                "type": "ref",
                 "item": "medicalSupplies",
                 "desc": "Suprimentos Médicos"
             },
             {
+                "type": "ref",
                 "desc": "Suprimentos Mágicos",
                 "nextTable": "magicSuppliesTable",
                 "selection": "weightedRandom"
@@ -169,30 +204,37 @@
         ]
     },
     {
+        "type": "table",
         "tableId": "consumablesTable",
         "entries": [
             {
+                "type": "ref",
                 "item": "strengthPotion",
                 "desc": "Poção da Força do Marinheiro"
             },
             {
+                "type": "ref",
                 "item": "smokeHerb",
                 "desc": "Erva-de-fumo dos Pequenos"
             },
             {   
+                "type": "ref",
                 "item": "smokeBomb",
                 "desc": "Bomba de Fumaça"
             },
             {   
+                "type": "ref",
                 "item": "fireBomb",
                 "desc": "Bomba Incendiária"
             },
             {
+                "type": "ref",
                 "desc": "Toxina",
                 "nextTable": "toxins",
                 "selection": "difficulty"
             },
             {
+                "type": "ref",
                 "desc": "Veneno",
                 "nextTable": "poisons",
                 "selection": "difficulty"
@@ -200,49 +242,59 @@
         ]
     },
     {
+        "type": "table",
         "tableId": "magicSuppliesTable",
         "entries": [
             {
+                "type": "ref",
                 "item": "magicCristal",
                 "desc": "Cristal Mágico",
                 "weight": 4
             },
             {
+                "type": "ref",
                 "desc": "Runa Mágica",
                 "nextTable": "runes",
                 "selection": "random"
             },
             {
+                "type": "ref",
                 "item": "sacredRelic",
                 "desc": "Relíquia Sagrada"
             }
         ]
     },
     {
+        "type": "table",
         "tableId": "brkEquipmentTable",
         "entries": [
             {
+                "type": "ref",
                 "desc": "Escudo",
                 "nextTable": "shields",
                 "selection": "random"
             },
             {
+                "type": "ref",
                 "desc": "Armadura",
                 "nextTable": "armors",
                 "selection": "random"
             },
             {
+                "type": "ref",
                 "desc": "Arma 1 Mão",
                 "weight": 2,
                 "nextTable": "1hWeapons",
                 "selection": "random"
             },
             {
+                "type": "ref",
                 "desc": "Arma 2 Mãos",
                 "nextTable": "2hWeapons",
                 "selection": "random"
             },
             {
+                "type": "ref",
                 "desc": "Equipamento Intacto",
                 "nextTable": "equipmentTable",
                 "selection": "random"
@@ -250,25 +302,30 @@
         ]
     },
     {
+        "type": "table",
         "tableId": "equipmentTable",
         "entries": [
             {
+                "type": "ref",
                 "desc": "Escudo",
                 "nextTable": "shields",
                 "selection": "random"
             },
             {
+                "type": "ref",
                 "desc": "Armadura",
                 "nextTable": "armors",
                 "selection": "random"
             },
             {
+                "type": "ref",
                 "desc": "Arma 1 Mão",
                 "weight": 2,
                 "nextTable": "1hWeapons",
                 "selection": "random"
             },
             {
+                "type": "ref",
                 "desc": "Arma 2 Mãos",
                 "nextTable": "2hWeapons",
                 "selection": "random"
