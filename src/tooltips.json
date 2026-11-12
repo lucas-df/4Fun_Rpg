@@ -1,37 +1,60 @@
 [
   {
     "id": "system",
+    "type": "title",
     "title": "O que esperar do Sistema?",
     "list": [
-      { "id": "system1",
-        "name": "Como é o jogo?",
-        "description": "Um sistema de RPG de mesa com mecânicas simples e combate rápido. O foco não é realismo, e sim jogadas momento a momento, um jogo casual que tenta destacar os pontos fortes e fracos de cada função/personagem."
+      {
+        "id": "system1",
+        "type": "guideText",
+        "name": "Que tipo de jogo é esse?",
+        "description": "Um sistema de RPG de mesa com mecânicas simples e combate rápido. O foco não é realismo, e sim jogadas momento a momento, um jogo casual que destaca os pontos fortes e fracos de cada personagem através da cooperação entre Jogadores."
       },
-      { "id": "system2",
-        "name": "O Combate",
-        "description": "O combate é o ponto central do jogo, com foco em combates curtos e rápidos (1 ou 2 turnos em média), sem grid e com o mínimo de gestão de recursos."
+      {
+        "id": "system15",
+        "type": "guideText",
+        "name": "Como se joga?",
+        "description": "O mestre descreve uma história cena a cena com obstáculos e desafios. A cada obstáculo, os Jogadores escolhem as ações de seus personagens e rolam dados para ver se tem sucesso ou falham. O único dado usado é um dado de 6 lados (d6). Qualquer resultado 4 ou mais (4+) é um [[hit:Acerto]]. Se conseguir mais acertos que a [[diff:Dificuldade]] da ação, o personagem tem sucesso."
       },
-      { "id": "system3",
+      {
+        "id": "system2",
+        "type": "guideText",
+        "name": "Combate e Exploração",
+        "description": "[[player:Jogadores]] são aventureiros que exploram locais perigosos em busca de tesouros e recompensas. O combate em turnos é o ponto central do jogo, com confrontos curtos e rápidos (1 ou 2 turnos em média), sem grid e com o mínimo de gestão de recursos. Chegar ao fim do Covil (ou Dungeon) e derrotar o seu habitante mais poderoso (o [[boss:Chefe]] de Covil) é o objetivo."
+      },
+      {
+        "id": "system3",
+        "type": "guideText",
         "name": "Mortalidade",
-        "description": "Todo combate tem alta mortalidade. Tanto Jogadores como Inimigos tem apenas um \"ponto de vida\" ou Vida. Acertar um ataque e causar dano geralmente significa uma morte. Sobreviver a um Covil (ou Dungeon) é algo realmente significativo."
+        "description": "Todo combate tem alta mortalidade. Tanto [[player:Jogadores]] como [[enemy:Inimigos]] tem apenas um \"ponto de vida\" ou [[life:Vida]]. Acertar um ataque e causar dano geralmente significa uma morte. Apenas os Jogadores rolam dados, Inimigos usam valores fixos de Ataque e Defesa e sempre tem sucesso a não ser que sejam impedidas pelos Jogadores. Gastar recursos e usar [[skills:habilidades]] ativamente é o único jeito de evitar mortes."
       },
-      { "id": "system4",
+      {
+        "id": "system4",
+        "type": "guideText",
         "name": "Ações e Reações",
-        "description": "O sistema é centrado em ações e reações, cada jogador tem uma de cada em cada turno e elas sempre tem impacto e consequências. A dinâmica do jogo é que os jogadores devem escolher os momentos para atacar e defender usando seus recursos a cada turno. Gastar equipamentos e usar habilidades ativamente é o único jeito de evitar mortes."
+        "description": "O combate é centrado em [[action:Ações]] e [[reaction:Reações]] impactantes, e a cada Rodada as criaturas podem usar uma de cada. A dinâmica do jogo é que os Jogadores devem escolher os momentos para [[attack:Atacar]] e [[defend:Defender]] usando seus recursos. "
       },
-      { "id": "system5",
+      {
+        "id": "system5",
+        "type": "guideText",
         "name": "Personagens",
-        "description": "Os personagens são “modulares”: Basicamente montados como um conjunto de atributos e habilidades. Função (ou Classes) funcionam como pacotes de habilidades, dando acesso a conjuntos de habilidade únicos focados em um estilo de jogo específico. "
+        "description": "Os personagens são “modulares”: Basicamente montados como um conjunto de [[attributes:Atributos]] e [[skills:Habilidades]]. [[function:Funções]] (ou Classes) funcionam como pacotes de habilidades, dando acesso a conjuntos de habilidade únicos focados em um estilo de jogo específico. "
       },
-      { "id": "system6",
+      {
+        "id": "system6",
+        "type": "guideText",
         "name": "Atributos e Funções",
-        "description": "Personagens possuem apenas 4 atributos gerais: \n Agilidade (Físico. Ofensivo.) \n Astúcia (Mental. Ofensivo.) \n Resistência (Físico. Defensivo.) \n  Espírito (Mental. Defensivo.) \n No geral, as Ações se baseiam em atributos ofensivos e Reações nos defensivos."
+        "description": "No geral, as [[action:Ações]] se baseiam nos atributos ofensivos e [[reaction:Reações]] nos defensivos. Personagens possuem apenas 4 atributos: \n [[agility:Agilidade]] (Físico. Ofensivo.) \n [[wit:Astúcia]] (Mental. Ofensivo.) \n [[resistance:Resistência]] (Físico. Defensivo.) \n  [[spirit:Espírito]] (Mental. Defensivo.)"
       },
-      { "id": "system7",
+      {
+        "id": "system7",
+        "type": "guideText",
         "name": "Habilidades",
-        "description": "Não existe \"nível\" de personagem. A força do personagem vem principalmente das habilidades que ele adquire. Habilidades tem efeitos muito impactantes e definem seu personagem. (Algo mais parecido com as habilidades de um personagem de MOBA em vez de \"+2 nos testes para cavar buracos numa quarta-feira.\")"
+        "description": "Não existe \"nível\" de personagem. A força do personagem vem principalmente das habilidades que ele adquire. Habilidades tem efeitos muito impactantes e definem seu personagem."
       },
-      { "id": "system8",
+      {
+        "id": "system8",
+        "type": "guideText",
         "name": "Itens",
         "description": "A maioria das Habilidades de personagens não se esgotam e são utilizadas turno a turno ou uma vez por descanso. Equipamentos e outros itens encontrados na aventura podem oferecer vantagens ainda maiores que as habilidades, mas são recursos finitos com uso e durabilidade limitada e com custos de fabricação, aquisição ou reparo."
       }
@@ -39,359 +62,442 @@
   },
   {
     "id": "characters",
+    "type": "title",
     "title": "Conceitos Básicos: Personagens",
     "list": [
       {
         "id": "characterElementos",
+        "type": "guideText",
         "name": "Elementos do Personagem",
-        "description": "Todo personagem é composto por: \n Atributos \n Espécie \n Função \n Habilidades"
+        "description": "Todo personagem é composto por: \n [[attributes:Atributos]] \n [[species:Espécie]] \n [[function:Função]] \n [[skills:Habilidades]] \n [[feats:Feitos]]"
       },
       {
         "id": "attributes",
+        "type": "guideText",
         "name": "Atributos",
-        "description": "Os atributos definem a quantidade de dados rolados pelo jogador para tarefas específicas. "
+        "description": "Os atributos definem a quantidade de dados rolados pelo Jogador para ao fazer tarefas específicas."
       },
       {
         "id": "agility",
+        "type": "guideText",
         "name": "Agilidade",
-        "description": "Representa a destreza e habilidades físicas de um personagem. Usado para principalmente para fazer Ataques ⚔ e ações físicas. Atributo principal dos Assassinos."
+        "description": "Representa a destreza e habilidades físicas de um personagem. Usado para principalmente para fazer [[attack:Ataques]] e ações físicas. Atributo principal dos Assassinos."
       },
       {
         "id": "wit",
+        "type": "guideText",
         "name": "Astúcia",
-        "description": "Representa a acuidade mental e intelecto de um personagem. Usada principalmente para fazer Ataques Mágicos ⛤ e ações mentais. Atributo principal dos Conjuradores."
+        "description": "Representa a acuidade mental e intelecto de um personagem. Usada principalmente para fazer [[magicAttack:Ataques Mágicos]] e ações mentais. Atributo principal dos Conjuradores."
       },
       {
         "id": "resistance",
+        "type": "guideText",
         "name": "Resistência",
-        "description": "Representa o vigor e robustez de um personagem. Usada para resistir a Ataques ⚔ e efeitos físicos. Atributo principal dos Brutamontes."
+        "description": "Representa o vigor e robustez de um personagem. Usada para se [[defend:Defender]] de [[attack:Ataques]] e resistir a efeitos físicos. Atributo principal dos Brutamontes."
       },
       {
         "id": "spirit",
+        "type": "guideText",
         "name": "Espírito",
-        "description": "Representa a força de vontade e determinação de um personagem. Usado para resistir a Magias ⛤ e efeitos mentais. Atributo principal dos Devotos."
+        "description": "Representa a força de vontade e determinação de um personagem. Usado para resistir a [[magic:Magias]] e efeitos mentais. Atributo principal dos Devotos."
       },
       {
         "id": "species",
+        "type": "guideText",
         "name": "Espécie",
-        "description": "Define as características físicas e ancestralidade do personagem. Cada Espécie concede uma habilidade única. As opções de espécies disponíveis para os jogadores são: Humano, Povo-pequeno, Elfo, Bestial, Ogro e (Subterrâneo)."
+        "description": "Define as características físicas e ancestralidade do personagem. Cada Espécie concede uma habilidade única. As opções de espécies disponíveis para os Jogadores são: [[human:Humano]], [[smallfolk:Povo-pequeno]], [[elf:Elfo]], [[beastfolk:Bestial]], [[ogre:Ogro]] e ([[subterranean:Subterrâneo]])."
       },
       {
         "id": "function",
+        "type": "guideText",
         "name": "Função",
-        "description": "Cada personagem tem uma Função, com foco em um estilo de jogo: \n Assassino: Atacar ⚔ e causar dano. \n Baluarte: Proteger aliados e resistir a Ataques ⚔ inimigos. \n Conjurador: Conjurar Magias ⛤ contra múltiplos inimigos. \n Devoto: Controlar o campo e fortalecer aliados."
+        "description": "Cada personagem tem uma Função, com foco em um estilo de jogo: \n Assassino: [[attack:Atacar]] e causar dano aos seus alvos. \n Brutamontes: [[defend:Defender]] a si mesmo e aliados, resistindo contra ataques e efeitos de Inimigos. \n Conjurador: Conjurar efeitos [[magic:Magicos]] poderosos contra múltiplos Inimigos. \n Devoto: Controlar o campo e fortalecendo e protegendo aliados."
       },
       {
         "id": "skills",
+        "type": "guideText",
         "name": "Habilidades",
         "description": "Habilidades descrevem tudo que um personagem pode fazer e definem a identidade de um personagem."
-      }
-    ]
-  },
-  {
-    "id": "characterCreation",
-    "title": "Passo-a-Passo: Criação de Personagem",
-    "list": [
-      { "id": "creation1",
-        "name": "1 - Escolha uma Espécie",
-        "description": "Você recebe uma Habilidade da Espécie escolhida para seu personagem."
       },
-      { "id": "creation2",
-        "name": "2 -  Escolha uma das 4 Funções",
-        "description": "Você recebe as Habilidades Básicas de sua Função."
-      },
-      { "id": "creation3",
-        "name": "3 - Escolha um atributo principal e um secundário",
-        "description": "Recomenda-se escolher o atributo principal de acordo com sua função. \n O valor de seu atributo principal é 3 e o secundário é 2. O valor dos demais atributos é 1."
-      },
-      { "id": "creation4",
-        "name": "4 - Escolha 4 Habilidades",
-        "description": "Você pode escolher qualquer Habilidade Comum ou da lista de sua Função, desde que cumpra os requisitos. Você pode receber também a habilidade básica de uma Expansão caso cumpra com seus requisitos."
-      },
-      { "id": "creation5",
-        "name": "5 - Você tem 6 Rações e 200 PO para comprar equipamentos iniciais",
-        "description": "Você pode comprar o equipamento inicial recomendado da sua Função ou qualquer outro item a sua escolha e mantém o dinheiro restante."
-      },
-      { "id": "creation6",
-        "name": "6 - Anote sua lista de Feitos",
-        "description": "A principal maneira de fortalecer seu personagem é realizando Feitos. Ao cumprir um dos Feitos descritos em sua Função, no seu próximo Descanso você poderá aumentar um dos seus atributos em 1 e pode adiquirir uma Habilidade de sua Função e uma Habilidade Comum. Cada Feito só pode ser cumprido uma única vez."
-      },
-      { "id": "creation7",
-        "name": "Evolução de Personagem",
-        "description": "Além de Feitos, existem outros meios mais incomuns para adquirir Habilidades durante uma aventura: Alguns itens mágicos, rituais específicos, tutores ou até criaturas mágicas podem ser capazes de conceder novas habilidades aos personagens."
+      {
+        "id": "feats",
+        "type": "guideText",
+        "name": "Feitos",
+        "description": "Representam pontos chaves de progressão e crescimento do personagem, determinados por sua Função. Ao cumprir com a condição descrita no Feito, no seu próximo Descanso você poderá aumentar um dos seus atributos em 1 e pode adiquirir uma Habilidade de sua Função e uma Habilidade Comum. Cada Feito só pode ser cumprido uma única vez."
       }
     ]
   },
   {
     "id": "rolls",
+    "type": "title",
     "title": "Regras: Testes e Rolagens",
     "list": [
       {
-        "id": "check",
+        "id": "test",
+        "type": "guideText",
         "name": "Testes",
-        "description": "Sempre que há incerteza se um personagem conseguirá fazer algo, significa que isso depende de um Teste. Todo teste é feito com um atributo e contra uma [[diff:dificuldade]]. \n Por padrão, um jogador rola um número de dados igual ao atributo e conta o número de Acertos, que são os resultados 4 ou mais (4+). Se esse número for igual ou maior que a dificuldade, ele tem sucesso. \n Apenas jogadores fazem Testes! Criaturas controladas pelo mestre sempre tem sucesso a não ser que sejam impedidas pelos jogadores. \n O mestre sempre decide se um teste é necessário ou não. Se não há possibilidade razoável de falha ou (de sucesso) para uma ação, não é necessário fazer um teste."
+        "description": "Sempre que há incerteza se um [[player:Jogador]] conseguirá fazer algo, ele deve fazer uma rolagem para determinar se ele terá sucesso ou não. Todo Teste é feito usando um [[attribute:Atributo]] e contra uma [[diff:Dificuldade]], de forma simplificada: \"Rolar (Atributo) contra (Dificuldade)\" \n Por padrão, um Jogador rola um número de dados igual ao atributo do teste e conta o número de [[hit:Acertos]], que são os resultados 4 ou mais (4+). Se esse número for igual ou maior que a Dificuldade, ele tem sucesso. \n Apenas Jogadores fazem Testes. O mestre sempre decide se um teste é necessário ou não. Se não há possibilidade de falha ou (de sucesso) para uma ação, não é necessário fazer um teste."
       },
       {
         "id": "diff",
+        "type": "guideText",
         "name": "Dificuldade",
         "icon": "DIF",
-        "description": "Número mínimo de Acertos para cumprir o objetivo do Jogador e ter sucesso em um teste. \n Se um teste tem DIF 0, o jogador sempre terá no mínimo um número de Acertos ✔ igual ao atributo usado no teste, independente da sua rolagem. "
+        "description": "Todo Inimigo, obstáculo ou tarefa terá um valor de dificuldade, que representa o número mínimo de [[hit:Acertos]] para ter sucesso em um teste contra seus efeitos. \n A dificuldade de Inimigos é calculada pelo valor médio de seu Ataque e Defesa, arredondado para cima."
       },
       {
         "id": "hit",
+        "type": "guideText",
         "name": "Acerto",
         "icon": "✔",
         "description": "Um dado rolado que obteve resultado igual ou maior que 4."
       },
       {
         "id": "criticalHit",
+        "type": "guideText",
         "name": "Acerto Crítico",
         "icon": "❕",
-        "description": "Um resultado 6 obtido no dado que sempre representa um Acerto ✔. Algumas habilidades causam efeitos especiais para estes resultados."
+        "description": "Um resultado 6 obtido no dado que sempre representa um [[hit:Acerto]]. Algumas habilidades causam efeitos especiais para estes resultados."
       },
       {
         "id": "miss",
+        "type": "guideText",
         "name": "Falha",
         "description": "O oposto de um acerto. Um dado rolado que obteve resultado menor que 4."
       },
       {
         "id": "criticalMiss",
+        "type": "guideText",
         "name": "Erro Crítico",
         "icon": "✘",
-        "description": "Um resultado 1 obtido no dado que sempre representa uma falha. Algumas habilidades causam efeitos especiais para estes resultados."
+        "description": "Um resultado 1 obtido no dado que sempre representa uma [[miss:Falha]]. Algumas habilidades causam efeitos especiais para estes resultados."
       },
       {
         "id": "extraDice",
+        "type": "guideText",
         "name": "Dado Extra",
         "icon": "🎲",
-        "description": "Um dado adicional no teste, que pode contribuir com um Acerto ✔ adicional!"
+        "description": "Um dado adicional no teste, que pode contribuir com um [[hit:Acerto]] adicional!"
       },
       {
         "id": "acc",
+        "type": "guideText",
         "name": "Chance de Acerto",
         "icon": "CA",
-        "description": "Um modificador aplicado ao resultado de cada rolagem em um teste, que é adicionado ou subtraido dos resultados. \n Não gera Acertos ou Erros Críticos."
+        "description": "Um modificador aplicado ao resultado de cada rolagem em um teste, que é adicionado ou subtraido dos resultados para determinar [[hit:Acertos]]. Não transforma um resultado normal em [[criticalHit:Acerto Crítico]] ou [[criticalMiss:Erro Crítico]]."
       },
       {
         "id": "challenge",
+        "type": "guideText",
         "name": "Desafios",
-        "description": "Qualquer Teste que não envolva alguma das regras de combate é tratado como um desafio. Um desafio é uma oportunidade para os jogadores resolverem um problema de forma criativa, seja para evitar um obstáculo ou alcançar uma recompensa. \n Geralmente existem apenas dois tipos de desafios: Físicos ou Mentais. O jogador define como quer agir e cabe ao mestre definir a dificuldade. Um mesmo desafio pode ser superado de maneiras diferentes, contanto que a solução faça sentido. Uma porta trancada pode ser arrombada à força ou destrancada com as ferramentas certas na mão de alguém habilidoso."
+        "description": "Qualquer [[test:Teste]] que não envolva alguma das regras de combate pode ser tratado como um desafio. Um desafio é uma oportunidade para os Jogadores resolverem um problema de forma criativa, seja para evitar um obstáculo ou alcançar uma recompensa. \n Desafios são mais flexíveis em relação aos atributos usados. Existem apenas dois tipos de desafios: Físicos ou Mentais. O Jogador define como seu personagem agirá e cabe ao mestre definir a dificuldade. \n Um obstáculo pode ser superado de maneiras diferentes, contanto que a solução faça sentido. Uma porta trancada pode ser arrombada à força (Desafio Físico) ou destrancada com as ferramentas certas na mão de alguém habilidoso (Desafio Mental)."
       },
       {
         "id": "physChallenge",
-        "name": "Desafios Físicos: Teste de Corpo",
-        "description": "Em um desafio Físico, o jogador faz uma rolagem de Corpo, e pode rolar usando o maior atributo entre Agilidade e Resistência. Exemplos: Quebrar uma parede. Atravessar um Pântano. Se esconder da guarda da cidade. Correr de um dinossauro faminto."
+        "type": "guideText",
+        "name": "Desafio Físico",
+        "description": "Em um desafio Físico, o Jogador faz um [[test:Teste]] usando o maior atributo entre Agilidade e Resistência. Exemplos: Quebrar uma parede. Atravessar um Pântano. Se esconder da guarda da cidade. Correr de um dinossauro faminto."
       },
       {
         "id": "mentalChallenge",
-        "name": "Desafios Mentais: Teste de Mente",
-        "description": "Em um desafio Mental, o jogador faz uma rolagem de Mente, usando o maior atributo entre Astúcia e Espírito. Exemplos: Deduzir uma história retratada em um mural antigo. Rastrear criaturas escondidas em um pântano. Subornar o chefe da guarda da cidade. Convencer um dinossauro que seu aliado é mais saboroso do que você."
+        "type": "guideText",
+        "name": "Desafio Mentai",
+        "description": "Em um desafio Mental, o Jogador faz um [[test:Teste]] usando o maior atributo entre Astúcia e Espírito. Exemplos: Decifrar uma história retratada em um mural antigo. Avistar rastros de criaturas em um pântano. Subornar o chefe da guarda da cidade. Convencer um dinossauro que seu aliado é mais saboroso do que você."
       },
       {
         "id": "collectiveTest",
+        "type": "guideText",
         "name": "Teste Coletivo",
-        "description": "Quando o sucesso de uma tarefa depende obrigatóriamente de dois ou mais jogadores, o teste será considerado um Teste Coletivo. (Por exemplo, se o grupo inteiro precisa passar despercebido por um guarda). Nesse caso, cada jogador faz o teste separadamente, mas cada jogador que falha nesse teste subtrai um Acerto ✔ de um ou mais jogadores que tenham o maior número de Acertos ✔. No fim, se algum jogador ainda tiver sucesso no teste, significa que o grupo tem sucesso na tarefa como um todo. Mesmo com o sucesso do grupo, alguns desafios podem ter efeitos impostos aos jogadores que falharam."
+        "description": "Quando o sucesso de uma tarefa depende obrigatóriamente de dois ou mais Jogadores, o teste será considerado um Teste Coletivo. (Por exemplo, se o grupo inteiro precisa passar despercebido por um guarda). Nesse caso, cada Jogador faz a rolgem contra a dificuldade separadamente, mas cada Jogador que falhar subtrai um [[hit:Acerto]] dos Jogadores que tenham obtido o maior número de [[hit:Acertos]]. No fim, se algum Jogador do grupo ainda tiver sucesso no teste, significa que o grupo tem sucesso na tarefa. Mesmo com o sucesso do grupo, alguns desafios podem ter efeitos impostos aos Jogadores que falharam."
+      },
+      {
+        "id": "areaEffects",
+        "type": "guideText",
+        "name": "Efeito de Área",
+        "description": "Algumas habilidades, como [[magicAttack:Ataques Mágicos]], afetam criaturas em uma área. Nesse casos, quando os Jogadores fazem testes para efeitos em área, o número de [[hit:Acertos]] vai determinar quantas criaturas o Jogador conseguirá afetar. Para cada [[hit:Acerto]] obtido, o Jogador escolhe uma criatura que será afetada. Porém, é mais difícil afetar criaturas mais poderosas: Criaturas da categoria [[boss:“Chefe”]] só são afetadas com 2 [[hit:Acertos]]."
       },
       {
         "id": "fiftyFifty",
+        "type": "guideText",
         "name": "50% de Chance",
-        "description": "Quando alguma habilidade ou efeito tem 50% de chance de ocorrer, role um d6 sem efeitos adicionais. Com um Acerto ✔, o efeito ocorre. Alternativamente, à preferência dos jogadores, vocês podem escolher entre um resultado par ou ímpar, ou jogar uma moeda e escolher cara ou coroa."
+        "description": "Quando alguma habilidade ou efeito tem 50% de chance de ocorrer, role um [[d6:d6]] sem aplicar nenhum efeito adicional. Com um [[hit:Acerto]], o efeito ocorre. Alternativamente, à preferência dos Jogadores, vocês podem escolher entre um resultado par ou ímpar, ou jogar uma moeda e escolher cara ou coroa."
       }
     ]
   },
   {
     "id": "basicCombat",
+    "type": "title",
     "title": "Regras: O Combate",
     "list": [
       {
         "id": "combat",
+        "type": "guideText",
         "name": "Combate",
-        "description": "O combate é rápido e letal. A maioria dos inimigos (e os jogadores) têm apenas uma Vida ❤, então cada golpe é a diferença entre vitória e derrota. Por padrão, os inimigos usam atributos fixos de Ataque ⚔ e Defesa ⛨, deixando as rolagens para os jogadores."
+        "description": "O combate é rápido e letal. A maioria dos [[enemy:Inimigos]] (e os [[player:Jogadores]]) têm apenas uma [[life:Vida]], então cada golpe é a diferença entre vitória e derrota. Por padrão, os Inimigos usam valores fixos de Ataque e Defesa, deixando as rolagens para os Jogadores e acelerando o ritmo do combate."
       },
       {
-        "id": "actionOrder",
-        "name": "Ordem de Ação",
-        "description": "Na primeira rodada do combate, o mestre rola um d6 e o resultado define a ordem dos inimigos, que vão agir em grupo de acordo com sua categoria: A ordem de Lacaios é a sua DIF; a de Oponentes é o resultado do dado; e a de Chefes é o Resultado+DIF. Cada jogador rola um d6 para definir a sua ordem de Ação e todos se posicionam em campo de acordo com essa ordem. Inimigos agem antes dos jogadores com ordem menor ou igual à sua. A rodada acaba depois que todas as criaturas tenham agido, iniciando a próxima rodada na mesma ordem."
+        "id": "action",
+        "type": "guideText",
+        "name": "Ação",
+        "description": "Ações são gastas para efeitos de habilidades que só podem ser usados por uma criatura no seu próprio Turno."
       },
       {
-        "id": "reactions",
-        "name": "Reações",
-        "description": "Podem ser feitas a qualquer momento do combate. Um jogador sempre tem uma Reação no início do combate e a recupera quando chega sua vez de agir."
+        "id": "reaction",
+        "type": "guideText",
+        "name": "Reação",
+        "description": "Reações são gastas para efeitos de habilidades que podem ser usados a qualquer momento do combate. Uma criatura tem uma Reação no início do combate e a recupera no início de seu próprio Turno."
+      },
+      {
+        "id": "turnOrder",
+        "type": "guideText",
+        "name": "Ordem de Turnos",
+        "description": "No início de cada combate, cada [[player:Jogador]] rola um [[d6:d6]] para definir a ordem de seus turnos. O mestre rola um único d6 para os [[enemy:Inimigos]], agrupando seus turnos de acordo com cada categoria: A ordem de Lacaios é a sua DIF; a de Oponentes é o resultado do dado; e a de Chefes é o Resultado+DIF. [[enemy:Inimigos]] agem antes dos Jogadores com ordem menor ou igual à sua. \n Seguindo essa ordem, todas as criaturas se posicionam em campo e então podem agir em sequência até que todas as criaturas tenham agido, iniciando a próxima rodada na mesma ordem."
       },
       {
         "id": "field",
-        "name": "Campos",
-        "description": "No combate, o espaço é dividido em campos para cada grupo. Normalmente, temos o campo aliado e o campo inimigo, com um grupo de jogadores enfrentando um grupo de inimigos. O campo é dividido em duas metades chamadas de Linhas: a metade mais próxima ao campo oposto é a Frente e a mais distante é o Fundo."
+        "type": "guideText",
+        "name": "Campos e Linhas",
+        "description": "No combate, o espaço é dividido em campos para cada grupo. Normalmente, temos o campo aliado e o campo Inimigo, com um grupo de Jogadores enfrentando um grupo de Inimigos. O campo é dividido em duas metades chamadas de Linhas: a metade mais próxima ao campo oposto é a [[front:Frente]] e a mais distante é o [[back:Fundo]]."
       },
       {
         "id": "positioning",
+        "type": "guideText",
         "name": "Posicionamento",
-        "description": "No início do combate, cada criatura escolhe onde se posicionará no seu campo escolhendo entre as duas Linhas: a Frente ou o Fundo. \n Se não houver outros aliados posicionados na Frente, todas as criaturas posicionadas no Fundo são consideradas como posicionadas na Frente."
+        "description": "No início do combate, cada criatura escolhe onde se posicionará no seu campo escolhendo entre as duas Linhas: a [[front:Frente]] ou o [[back:Fundo]]. \n Em situações normais, criaturas posicionadas na Frente podem Atacar e ser atacadas pelas criaturas posicionadas à Frente no grupo oposto. \n Criaturas posicionadas no Fundo não podem fazer [[attack:Ataques]] contra alvos no campo oposto, exceto quando uma habilidade aumenta seu Alcance. \n Se não houver outros aliados posicionados na Frente, todas as criaturas posicionadas no Fundo são consideradas como posicionadas na Frente."
       },
       {
         "id": "reach",
+        "type": "guideText",
         "name": "Alcance",
         "icon": "⌾",
-        "description": "O Alcance ⌾ de uma criatura representa quais linhas podem ser afetadas por seu Ataque ⚔. Normalmente, criaturas têm um Alcance ⌾ igual a 1, então só podem possível atacar alvos em uma linha adjacente à sua linha atual (Próximos). \n Em situações normais, criaturas posicionadas na linha de Frente podem Atacar e ser atacadas pelas criaturas posicionadas à Frente no grupo inimigo. \n Criaturas posicionadas na linha de Fundo não podem fazer Ataques ⚔ contra o grupo inimigo, exceto quando uma habilidade aumenta seu Alcance ⌾."
-      },
-      {
-        "id": "areaEffects",
-        "name": "Efeitos de Área",
-        "description": "Algumas habilidades, como Ataques Mágicos, podem afetar mais de uma criatura em certa área. Jogadores, aliados e criaturas da categoria “Lacaio” são afetadas normalmente. Porém, é mais difícil afetar criaturas mais poderosas: Criaturas da categoria “Oponente” só são afetadas com 2 Acertos e “Chefe” com 3 Acertos."
+        "description": "O Alcance ⌾ de uma criatura representa quais [[field:Linhas]] podem ser afetadas por seus [[attack:Ataques]]. Normalmente, criaturas têm Alcance ⌾ 1, então só podem atacar alvos que ocupam a mesma Linha ou Linhas adjacentes à sua ([[close:Próximos]]). "
       },
       {
         "id": "attack",
+        "type": "basicSkill",
         "name": "Ataque",
         "icon": "⚔",
-        "description": "A Ação básica de combate. Cada criatura pode escolher atacar um alvo visível dentro do seu Alcance ⌾, e vai acertá-lo se ele não puder se Defender ⛨. Ao atacar um inimigo que tenta se defender, o jogador rola Agilidade contra a Defesa ⛨ do inimigo. Com sucesso, ele o atinge e causa dano."
+        "description": "A [[action:Ação]] básica de combate. Cada criatura pode usar a Ação para atacar um alvo dentro do seu [[reach:Alcance]], e acerta se ele não puder se [[defend:Defender]]. Ao atacar um Inimigo que tenta se defender, o Jogador rola [[agility:Agilidade]] contra a [[defendse:Defesa]] do Inimigo. Com sucesso, o alvo é atingido e recebe dano."
       },
       {
-        "id": "defense",
+        "id": "defend",
+        "type": "basicSkill",
         "name": "Defesa",
         "icon": "⛨",
-        "description": "A Reação básica de combate. Quando um inimigo faz um ataque Visível, o alvo pode usar sua reação para tentar se defender. O jogador rola Resistência com DIF igual ao valor de Ataque ⚔ do inimigo. Com sucesso, ele evita o ataque e não recebe dano."
+        "description": "A [[reaction:Reação]] básica de combate. Quando um Inimigo faz um [[attack:Ataque]], o alvo pode usar sua Reação para tentar se [[defend:Defender]]. O Jogador rola [[resistance:Resistência]] contra o [[attack:Ataque]] do Inimigo. Com sucesso, o ataque erra e não causa dano."
       },
       {
         "id": "move",
+        "type": "basicSkill",
         "name": "Mover",
         "icon": "↪",
-        "description": "Usar a Ação para trocar sua posição no campo, se movendo para uma linha adjacente à sua posição atual."
+        "description": "Usar a [[action:Ação]] para trocar sua posição no campo, se movendo para uma linha adjacente à sua posição atual."
       },
       {
         "id": "changeWeapon",
+        "type": "basicSkill",
         "name": "Trocar de Arma",
         "icon": "✔",
-        "description": "Usar a Ação para guardar o que estiver segurando e equipar uma nova arma ou escudo em cada mão"
+        "description": "Usar a [[action:Ação]] para guardar o que estiver segurando e equipar uma nova arma ou escudo em cada mão"
       },
       {
         "id": "flee",
+        "type": "basicSkill",
         "name": "Fugir",
-        "description": "Qualquer criatura na linha de Fundo pode usar sua Ação para fugir do combate. Se não houver outros aliados na linha de Fundo, um jogador na linha de Frente também pode usar sua Ação para tentar fugir rolando Corpo contra a maior DIF dos inimigos adjacentes a ele. Inimigos só conseguem fugir se os jogadores falharem em um teste de coletivo de Corpo contra sua DIF para perseguí-lo."
+        "description": "Qualquer criatura no [[back:Fundo]] pode usar sua Ação para fugir do combate. Se não houver outros aliados na linha de Fundo, um [[player:Jogador]] na [[front:Frente]] também pode usar sua Ação para tentar fugir rolando [[agility:Agilidade]] contra a maior [[diff:DIF]] dos [[enemy:Inimigos]] adjacentes a ele. Inimigos só conseguem fugir se todos os Jogadores falharem em um teste de [[agility:Agilidade]] contra sua DIF para perseguí-lo."
       }
     ]
   },
   {
     "id": "exploration",
+    "type": "title",
     "title": "Exploração",
     "list": [
       {
         "id": "explore",
         "name": "Explorar",
-        "description": "Explorar cada área dura em média meia hora. (Tempo gasto explorando, investigando, enfrentando os desafios e se deslocando cuidadosamente.) \n Se houverem inimigos na área, eles são alertados pelos jogadores e podem iniciar um combate. \n Se houver algum Tesouro Escondido, característica oculta ou efeito especial nessa área, os jogadores podem descobrir com um teste de Mente ao explorar. \n Quando chegam numa área, o grupo também pode escolher explorar de maneira diferente. Todos os jogadores do grupo devem estar de acordo com essa escolha."
+        "type": "guideText",
+        "description": "Explorar cada área dura em média meia hora. (Tempo gasto explorando, investigando, enfrentando os desafios e se deslocando cuidadosamente.) \n Se houverem [[enemy:Inimigos]] na área, eles são alertados pelos Jogadores e podem iniciar um combate. \n Se houver algum Tesouro Escondido, característica oculta ou efeito especial nessa área, os Jogadores podem descobrir com um teste de Mente ao explorar. \n Assim que entram numa área, o grupo também pode escolher uma abordagem diferente: [[rush:Apressar]], [[lurk:Espreitar]] ou [[hide:Esconder]]."
       },
       {
         "id": "rush",
         "name": "Apressar",
-        "description": "Os jogadores podem escolher avançar mais rápido. Fazendo isso: \n Explorar a área dura metade do tempo. \n Os jogadores não podem vasculhar a área em busca de qualquer coisa que esteja escondida, como recursos ou passagens secretas."
+        "type": "guideText",
+        "description": "Os Jogadores podem escolher avançar mais rápido. Fazendo isso: \n Explorar a área dura metade do tempo. \n Os Jogadores não podem vasculhar a área em busca de qualquer coisa que esteja escondida, como recursos ou passagens secretas."
       },
       {
-        "id": "skulk",
+        "id": "lurk",
         "name": "Espreitar",
-        "description": "Os jogadores podem tentar se mover cautelosamente para emboscar seus inimigos. Espreitar é um esforço conjunto e coordenado. Fazendo isso: \n Explorar a área dura o dobro do tempo. \n Sempre que entra numa área, o grupo faz um Teste Coletivo para Espreitar com o atributo determinado contra a DIF do Covil. Com sucesso, o grupo consegue Emboscar qualquer inimigo que esteja na área. "
+        "type": "guideText",
+        "description": "Os Jogadores podem tentar se mover cautelosamente para emboscar seus Inimigos. Espreitar é um esforço conjunto e coordenado. Fazendo isso: \n Explorar a área dura o dobro do tempo. \n Sempre que entra numa área, o grupo faz um Teste Coletivo para Espreitar com o atributo determinado contra a DIF do Covil. Com sucesso, o grupo consegue Emboscar qualquer Inimigo que esteja na área. "
       },
       {
         "id": "ambushed",
         "name": "Emboscar",
-        "description": "O grupo emboscado não fica ciente da presença de seu grupo. \n Ao iniciar o combate, seu grupo têm um Dado Extra 🎲 na ordem de combate e o primeiro a agir pode escolher a posição inicial de todos os inimigos que agem depois na ordem."
+        "type": "guideText",
+        "description": "O grupo emboscado não fica ciente da presença de seu grupo. \n Ao iniciar o combate, seu grupo têm um Dado Extra 🎲 na ordem de combate e o primeiro a agir pode escolher a posição inicial de todos os Inimigos que agem depois na ordem."
       },
       {
         "id": "ambushAttribute",
+        "type": "guideText",
         "name": "Atributo para Espreitar",
         "description": "Cada covil define um atributo que será usado nos testes para Espreitar e se Esconder. Nos casos mais comuns será Agilidade, mas existem exceções. \n Exemplos: Resistência para atravessar um pântano traiçoeiro; Astúcia para evitar armadilhas no lar de um mago louco; Espírito para percorrer um cemitério assombrado sem perturbar os espíritos."
       },
       {
         "id": "hide",
+        "type": "guideText",
         "name": "Esconder",
-        "description": "Se não encontrarem abrigo seguro dentro do Covil, os jogadores podem tentar se esconder em uma área para evitar inimigos. Enquanto estiverem escondidos, o grupo pode tentar Descansar e passar o tempo que desejar no local. \n Para se esconder com sucesso, o grupo deve fazer um Teste Coletivo de Mente contra a DIF do Covil.\n Caso falhem, ainda podem tentar Descansar, mas há a chance do grupo ser encontrado por inimigos. A cada hora que passa, tem 50% de chance de um grupo de inimigos encontrar os jogadores. \n Uma vez encontrados, o grupo não pode tentar se esconder no mesmo lugar novamente, mas ainda pode tentar Descansar novamente."
+        "description": "Se não encontrarem abrigo seguro dentro do Covil, os Jogadores podem tentar se esconder em uma área para evitar Inimigos. Enquanto estiverem escondidos, o grupo pode tentar Descansar e passar o tempo que desejar no local. \n Para se esconder com sucesso, o grupo deve fazer um Teste Coletivo de Mente contra a DIF do Covil.\n Caso falhem, ainda podem tentar Descansar, mas há a chance do grupo ser encontrado por Inimigos. A cada hora que passa, tem 50% de chance de um grupo de Inimigos encontrar os Jogadores. \n Uma vez encontrados, o grupo não pode tentar se esconder no mesmo lugar novamente, mas ainda pode tentar Descansar novamente."
       },
       {
         "id": "food",
+        "type": "guideText",
         "name": "Comida",
-        "icon": "⚔",
-        "description": "Jogadores precisam comer o equivalente a 4 rações por dia em intervalos regulares, ou recebem a condição Faminto 🍗. Após um número de dias consecutivos igual a sua Resistência com essa condição, o jogador recebe a condição Definhando 💀."
+        "description": "Jogadores precisam comer o equivalente a 4 rações por dia em intervalos regulares, ou recebem a condição [[hungry:Faminto]]. Após um número de dias consecutivos igual a sua Resistência com essa condição, o Jogador recebe a condição [[withering:Definhando]]."
       },
       {
         "id": "drink",
+        "type": "guideText",
         "name": "Hidratação",
-        "icon": "⛨",
-        "description": "Jogadores podem ficar sem água por um número de dias consecutivos igual a sua Resistência, antes de receber a condição Definhando 💀."
+        "description": "Jogadores podem ficar sem água por um número de dias consecutivos igual a sua [[resistance:Resistência]], antes de receber a condição [[withering:Definhando]]."
       },
       {
         "id": "rest",
+        "type": "guideText",
         "name": "Sono e Descanso",
-        "icon": "↪",
-        "description": "Para Descansar, um Jogador deve consumir comida equivalente a uma ração e passar pelo menos uma hora em repouso ou fazendo atividades leves. \n Alternativamente, Jogadores podem Descansar apenas dormindo por 8 horas. Jogadores devem Dormir assim pelo menos uma vez por dia ou recebem a condição Exausto 💧."
+        "description": "Para Descansar, um Jogador deve consumir comida equivalente a uma ração e passar pelo menos uma hora em repouso ou fazendo atividades leves. \n Alternativamente, Jogadores podem Descansar apenas dormindo por 8 horas. Jogadores devem Dormir assim pelo menos uma vez por dia ou recebem a condição [[exhausted:Exausto]]."
       },
       {
         "id": "breathing",
+        "type": "guideText",
         "name": "Respirar",
-        "icon": "✔",
-        "description": "Jogadores podem ficar sem respirar por um número de rodadas consecutivas igual a sua Resistência. Depois disso, ficam Inconscientes 💤 pelo mesmo número de rodadas antes de morrer."
+        "description": "Jogadores podem ficar sem respirar por um número de rodadas consecutivas igual a sua [[resistance:Resistência]]. Depois disso, ficam [[unconscious:Inconscientes]] pelo mesmo número de rodadas antes de morrer."
       }
     ]
   },
   {
     "id": "skillTypes",
+    "type": "title",
     "title": "Tipos de Habilidades",
     "list": [
       {
         "id": "speciesSkill",
+        "type": "guideText",
         "name": "Habilidade de Espécie",
         "description": "Habilidade única concedida pela espécie do personagem."
       },
       {
         "id": "commonSkill",
+        "type": "guideText",
         "name": "Habilidade Comum",
         "description": "Habilidades que podem ser adquiridas por personagens de qualquer função."
       },
       {
         "id": "functionSkill",
+        "type": "guideText",
         "name": "Habilidade de Função",
         "description": "Cada função tem uma lista de habilidades exclusivas que só podem ser adquiridas por um personagens dessa função."
       },
       {
-        "id": "basicFunctionSkill",
-        "name": "Habilidade Básica de Função:",
-        "description": "É a principal habilidade da Função, que define seu estilo de jogo. Todo personagem com a função possui essa Habilidade. "
+        "id": "basicSkills",
+        "type": "guideText",
+        "name": "Habilidade Básicas",
+        "description": "São as principais habilidades que todas as criaturas possuem. \n Cada Personagem recebe também as Habilidades Básicas exclusivas de sua Função, que definem seu estilo de jogo. \n Caso cumpra os requisitos, um personagem pode receber também as Habilidades Básicas de uma [[expansion:Expansão]]."
       },
       {
         "id": "expansion",
+        "type": "guideText",
         "name": "Expansão",
-        "description": "São habilidades especiais que permitem adquirir aspectos de outras funções. Um personagem só pode ter no máximo uma Expansão."
+        "description": "São [[basicSkills:Habilidades Básicas]] especiais que permitem acesso a aspectos de outras Funções. Um personagem só pode ter no máximo uma Expansão."
       },
       {
         "id": "doom",
+        "type": "guideText",
         "name": "Sina",
         "description": "São habilidades que representam efeitos negativos impostos a um personagem e só são adquiridas sob condições especiais."
       },
       {
         "id": "itemSkills",
+        "type": "guideText",
         "name": "Habilidades de Itens e Equipamentos",
-        "description": "Ao contrário das habilidades do jogador, as habilidades de Itens e Equipamentos têm uso limitado. Um jogador pode usar estas habilidades enquanto estiver empunhando ou usando o equipamento, mas isso geralmente consome ou danifica o item até que seja reparado."
+        "description": "Ao contrário das habilidades do Jogador, as habilidades de Itens e Equipamentos têm uso limitado. Um Jogador pode usar estas habilidades enquanto estiver empunhando ou usando o equipamento, mas isso geralmente consome ou danifica o item até que seja reparado."
       },
       {
         "id": "skillKeywords",
+        "type": "guideText",
         "name": "Palavras chave de Habilidades",
         "description": "[Ação] - Dá uma nova opção de Ação. \n [Reação] - Dá uma nova opção de Reação. \n [Fabricação] - Permite fabricar itens a partir de materiais.  \n [+] - Melhora ou sobrepõe o efeito de outra Habilidade. \n (1/Descanso) - Pode ser usada uma vez por Descanso."
       }
     ]
   },
   {
+    "id": "characterCreation",
+    "type": "title",
+    "title": "Passo-a-Passo: Criação de Personagem",
+    "list": [
+      {
+        "id": "creation1",
+        "type": "guideText",
+        "name": "1 - Escolha uma Espécie",
+        "description": "Você recebe uma [[speciesSkill:Habilidade da Espécie]] escolhida para seu personagem."
+      },
+      {
+        "id": "creation2",
+        "type": "guideText",
+        "name": "2 -  Escolha uma das 4 Funções",
+        "description": "Você recebe as [[basicSkills:Habilidades Básicas]] de sua [[functions:Função]]."
+      },
+      {
+        "id": "creation3",
+        "type": "guideText",
+        "name": "3 - Escolha um atributo principal e um secundário",
+        "description": "Recomenda-se escolher o atributo principal de acordo com sua [[functions:Função]]. \n O valor de seu atributo principal é 3 e o secundário é 2. O valor dos demais atributos é 1."
+      },
+      {
+        "id": "creation4",
+        "type": "guideText",
+        "name": "4 - Escolha 4 Habilidades",
+        "description": "Você pode escolher qualquer [[commonSkills:Habilidade Comum]] ou da lista de sua [[functionSkills:Função]], desde que cumpra os requisitos. Você pode escolher também a [[basicSkills:Habilidade Básica]] de uma [[expansion:Expansão]] caso cumpra com seus requisitos."
+      },
+      {
+        "id": "creation5",
+        "type": "guideText",
+        "name": "5 - Você tem 6 Rações e 200 DO para comprar equipamentos iniciais",
+        "description": "Você pode comprar o equipamento inicial recomendado da sua [[function:Função]] ou qualquer outro item a sua escolha e mantém o dinheiro restante."
+      },
+      {
+        "id": "creation6",
+        "type": "guideText",
+        "name": "6 - Anote sua lista de Feitos",
+        "description": "A principal maneira de fortalecer seu personagem é realizando Feitos, que são concedidos por sua Função. Ao cumprir um Feito, no seu próximo Descanso você poderá aumentar um dos seus atributos em 1 e pode adiquirir uma Habilidade de sua Função e uma Habilidade Comum. Cada Feito só pode ser cumprido uma única vez."
+      },
+      {
+        "id": "creation7",
+        "type": "guideText",
+        "name": "Evolução de Personagem",
+        "description": "Além de Feitos, existem outros meios mais incomuns para adquirir Habilidades durante uma aventura: Alguns itens mágicos, rituais específicos, tutores ou até criaturas mágicas podem ser capazes de conceder novas habilidades aos personagens."
+      }
+    ]
+  },
+  {
     "id": "species",
+    "type": "title",
     "title": "Espécies",
     "list": [
       {
         "id": "human",
+        "type": "species",
         "name": "Humano",
         "flavor": "Adaptáveis. Perseverantes. Versáteis.",
         "description": "Nativos da terra perdida de Huma. Humanos são conhecidos por sua adaptabilidade, encontrando prosperidade mesmo nas situações mais precárias, e frequentemente se encontram convivendo com outras espécies.",
         "skillName": "Espírito Indomável",
-        "skillEffect": "Quando você falha em uma rolagem, você pode escolher rolar novamente todos os dados que não obtiveram Acertos ✔ e usar esse novo resultado.",
+        "skillEffect": "Quando você falha em uma rolagem, você pode escolher rolar novamente todos os dados que não obtiveram [[hit:Acertos]] e usar esse novo resultado.",
         "tag": "1rest"
       },
       {
         "id": "elf",
         "name": "Elfo",
+        "type": "species",
         "flavor": "Exóticos. Independentes. Solitários.",
         "description": "Seres misteriosos, nativos de outro mundo. Elfos vivem vidas muito longas em relação às outras espécies. Por isso, costumam viver em comunidades pequenas e reservadas, protegendo seus costumes e artes secretas de olhos alheios.",
         "skillName": "Maestria Élfica",
@@ -400,6 +506,7 @@
       },
       {
         "id": "smallfolk",
+        "type": "species",
         "name": "Povo-pequeno",
         "flavor": "Solidários. Inventivos. Prestativos.",
         "description": "Nome dado aos povos de tamanho diminuto que se abrigam nas profundezas das florestas e no subsolo.  Apesar dá uma desconfiança com os gigantes forasteiros, sua sociedade acredita que cooperação é a chave para a sobrevivência, valorizando a prática de artes e ofícios.",
@@ -408,6 +515,7 @@
       },
       {
         "id": "beastfolk",
+        "type": "species",
         "name": "Bestial",
         "flavor": "Leais. Honrados. Tenazes.",
         "description": "Seres com características de animais, com costumes e origens tão variados quanto sua fisionomia. Apesar da aparência selvagem, sua cultura valoriza a civilidade e diplomacia. Se destacam como comerciantes confiáveis por sua disposição a sempre cumprir com a palavra a todo custo. Como consequência de serem frequentemente tratados como ingênuos ou bárbaros por outras espécies, costumam ser cautelosos com desconhecidos.",
@@ -416,15 +524,17 @@
       },
       {
         "id": "ogre",
+        "type": "species",
         "name": "Ogro",
         "flavor": "Adaptáveis. Perseverantes. Versáteis.",
         "description": "Seres corpulentos de pele colorida e apetite voraz. A maioria dos Ogros vive como nômade, procurando locais com recursos em abundância. São famosos por tomarem o que desejam com sua força descomunal, no entanto, muitos Ogros só querem mesmo é ser deixados em paz.",
         "skillName": "Devorador de Almas",
-        "skillEffect": "Imediatamente após receber dano e ficar à Beira da Morte ✝, você pode tentar fazer um Ataque ⚔ contra o inimigo que o atingiu. Se este ataque matar o inimigo, você recupera sua Vida ❤.",
+        "skillEffect": "Imediatamente após receber dano e ficar à Beira da Morte ✝, você pode tentar fazer um Ataque ⚔ contra o Inimigo que o atingiu. Se este ataque matar o Inimigo, você recupera sua Vida ❤.",
         "tag": "1rest"
       },
       {
         "id": "subterranean",
+        "type": "species",
         "name": "Subterrâno",
         "flavor": "Forasteiro.",
         "description": "Uma raça insectóide que habita o subterrâneo. Apesar do contato limitado com outras raças, alguns indivíduos ficam estranhamente fascinados pelas luzes da superfície.",
@@ -435,21 +545,25 @@
   },
   {
     "id": "assassin",
+    "type": "title",
     "title": "Função: Assassino",
     "list": [
       {
         "id": "assassinFlavor",
+        "type": "guideText",
         "name": "Assassino",
         "description": "Dano. Mobilidade. Ações.\n Atributo base: Agilidade"
       },
       {
         "id": "assassinBasic",
+        "type": "basicFnSkill",
         "name": "Habilidade Básica",
         "skillName": "Eficiência Letal",
-        "skillEffect": "Quando você faz um Ataque ⚔,  você rola um Dado Extra 🎲 para cada Acerto Crítico ❕. Caso o número de Acertos ✔ supere a Defesa ⛨ do oponente, você pode usar o número de Acertos ✔ restantes para outro Ataque ⚔ na mesma Ação."
+        "skillEffect": "Quando você faz um Ataque ⚔,  você rola um Dado Extra 🎲 para cada Acerto Crítico ❕. Caso o número de [[hit:Acertos]] supere a Defesa ⛨ do oponente, você pode usar o número de [[hit:Acertos]] restantes para outro Ataque ⚔ na mesma Ação."
       },
       {
         "id": "assassinItems",
+        "type": "guideText",
         "name": "Itens Iniciais Recomendados",
         "description": "Arma de Duas Mãos \n Armadura Leve \n Kits de Reparo"
       }
@@ -457,21 +571,25 @@
   },
   {
     "id": "bulwark",
+    "type": "title",
     "title": "Função: Baluarte",
     "list": [
       {
         "id": "bulwarkFlavor",
+        "type": "guideText",
         "name": "Baluarte",
         "description": "Sobrevivência. Controle. Reações.\n Atributo base: Resistência"
       },
       {
         "id": "bulwarkBasic",
+        "type": "basicFnSkill",
         "name": "Habilidade Básica",
         "skillName": "Guarda-Costas",
-        "skillEffect": "Quando você faz uma Defesa ⛨, você rola um Dado Extra 🎲 para cada Acerto Crítico ❕. Quando você tem sucesso em um teste de Defesa ⛨, você recupera a sua Reação. Seu número máximo de Defesas ⛨ por rodada é igual a sua Resistência. [Reação]: Quando um aliado adjacente a você é acertado por um Ataque ⚔, você pode se interpor ao ataque. Faça uma reação de Defesa ⛨ no lugar do aliado ou, se ele já fez uma rolagem, adicione seu número de Acertos ✔ à rolagem dele. Com sucesso, ambos evitam o dano. Caso contrário, você é acertado no lugar de seu aliado."
+        "skillEffect": "Quando você faz uma Defesa ⛨, você rola um Dado Extra 🎲 para cada [[criticalHit:Acerto Crítico]]. Quando você tem sucesso em um teste de Defesa ⛨, você recupera a sua Reação. Seu número máximo de Defesas ⛨ por rodada é igual a sua Resistência. [Reação]: Quando um aliado adjacente a você é acertado por um Ataque ⚔, você pode se interpor ao ataque. Faça uma reação de Defesa ⛨ no lugar do aliado ou, se ele já fez uma rolagem, adicione seu número de [[hit:Acertos]] à rolagem dele. Com sucesso, ambos evitam o dano. Caso contrário, você é acertado no lugar de seu aliado."
       },
       {
         "id": "bulwarkItems",
+        "type": "guideText",
         "name": "Itens Iniciais Recomendados",
         "description": "Arma de Uma Mão \n Escudo \n Armadura Leve \n Kits de Reparo"
       }
@@ -479,27 +597,32 @@
   },
   {
     "id": "conjurer",
+    "type": "title",
     "title": "Função: Conjurador",
     "list": [
       {
         "id": "conjurerFlavor",
+        "type": "guideText",
         "name": "Conjurador",
         "description": "Ataques Mágicos. Efeitos de Área. Ações. \n Atributo base: Astúcia"
       },
       {
         "id": "conjurerBasic",
+        "type": "basicFnSkill",
         "name": "Habilidade Básica",
         "skillName": "Estudioso Arcano",
-        "skillEffect": "Ao receber essa Habilidade, você recebe a Habilidade Básica: Ataque Mágico ⛤ e um Arcano à sua escolha. \n Você tem a opção de adquirir novos Arcanos em vez de uma habilidade. \n [+] - Quando você faz um Ataque Mágico ⛤, para cada Acerto Crítico ❕ obtido você multiplica o número total de Acertos ✔ por 2. \n [Fabricação] - Você pode fabricar Cristais Mágicos convertendo Tesouro equivalente ao dobro de seu custo."
+        "skillEffect": "Ao receber essa Habilidade, você recebe a Habilidade Básica: Ataque Mágico ⛤ e um Arcano à sua escolha. \n Você tem a opção de adquirir novos Arcanos em vez de uma habilidade. \n [+] - Quando você faz um Ataque Mágico ⛤, para cada [[criticalHit:Acerto Crítico]] obtido você multiplica o número total de [[hit:Acertos]] por 2. \n [Fabricação] - Você pode fabricar Cristais Mágicos convertendo Tesouro equivalente ao dobro de seu custo."
       },
       {
-        "id": "conjurerBasic2",
+        "id": "magicAttack",
+        "type": "basicFnSkill",
         "name": "Habilidade Básica",
-        "skillName": "Ataque Mágico ⛤",
-        "skillEffect": "Para fazer um Ataque Mágico ⛤, o conjurador deve ter ambas as mãos livres ou estar empunhando um Catalisador Mágico e é necessário gastar um número de Cristais Mágicos igual ao nível da magia. \n [Ação] - Role Astúcia e para cada Acerto ✔ a magia conjurada pode afetar um inimigo visível à sua escolha. Conjurar normalmente leva tempo, você gasta os recursos imediatamente mas só causa os efeitos da magia ao final da rodada atual. Usar sua reação ou ser atingido interrompe a conjuração e os recursos gastos são perdidos. \n Você pode escolher conjurar a magia imediatamente na sua Ação, fazendo isso, cada Erro Crítico ❌ na rolagem anula um Acerto ✔ devido à natureza volátil da Magia."
+        "skillName": "Ataque Mágico",
+        "skillEffect": "O conjurador deve ter ambas as mãos livres ou estar empunhando um Catalisador Mágico e é necessário gastar um número de Cristais Mágicos igual ao nível do Arcano usado. \n [Ação] - Role [[wit:Astúcia]] e para cada [[hit:Acerto]] a magia conjurada pode afetar um Inimigo visível à sua escolha na área. Conjurar normalmente leva tempo, você gasta os recursos imediatamente mas só causa os efeitos da magia ao final da rodada atual. Usar sua reação ou ser atingido interrompe a conjuração e os recursos gastos são perdidos. \n Você pode escolher conjurar a magia imediatamente na sua Ação, fazendo isso, cada [[criticalMiss:Erro Crítico]] na rolagem anula um [[hit:Acerto]] devido à natureza volátil da Magia."
       },
       {
         "id": "conjurerItems",
+        "type": "guideText",
         "name": "Itens Iniciais Recomendados",
         "description": "Catalisador Arcano \n 2x Cristais Mágicos"
       }
@@ -507,21 +630,25 @@
   },
   {
     "id": "devout",
+    "type": "title",
     "title": "Função: Devoto",
     "list": [
       {
         "id": "devoutFlavor",
+        "type": "guideText",
         "name": "Devoto",
-        "description": "Assistência. Proteção Mágica. Reações \n Atributo base: Espírito"
+        "description": "Assistência. Proteção Mágica. Reações \n Atributo base: [[spirit:Espírito]]"
       },
       {
         "id": "devoutBasic",
+        "type": "basicFnSkill",
         "name": "Habilidade Básica",
         "skillName": "Intervenção Divina",
-        "skillEffect": "Sempre que você ou um aliado que você pode ver faz uma Ação ou Reação, você pode conceder um Dado Extra 🎲 àquela criatura por uma rodada. Você pode conceder um número máximo de dados por rodada igual ao seu Espírito. \n Gastando um Dado Extra 🎲 concedido por você, você e seus aliados podem fazer uma Defesa ⛨ sem precisar de uma Reação. \n [Reação] -  Quando você ou um aliado que você pode ver falha em um Ataque ⚔, Defesa ⛨, ou qualquer teste para resistir a uma condição ou efeito mágico durante o combate, você pode canalizar poderes divinos na forma de uma benção sutil. Você rola Espírito e soma seu número de Acertos ✔ aos já obtidos no teste. Para cada Acerto Crítico ❕, você também concede ao alvo um Dado Extra 🎲 por uma rodada."
+        "skillEffect": "Sempre que você ou um aliado que você pode ver faz uma Ação ou Reação, você pode conceder um [[extraDice:Dado Extra]] àquela criatura por uma rodada. Você pode conceder um número máximo de dados por rodada igual ao seu [[spirit:Espírito]]. \n Gastando um [[extraDice:Dado Extra]] concedido por você, você e seus aliados podem fazer uma [[defend:Defesa]] sem precisar de uma Reação. \n [Reação] -  Quando você ou um aliado que você pode ver falha em um [[attack:Ataque]], [[defend:Defesa]], ou qualquer teste para resistir a uma condição ou efeito mágico durante o combate, você pode canalizar poderes divinos na forma de uma benção sutil. Você rola [[spirit:Espírito]] e soma seu número de [[hit:Acertos]] aos já obtidos no teste. Para cada [[criticalHit:Acerto Critico]], você também concede ao alvo um [[extraDice:Dado Extra]]."
       },
       {
         "id": "devoutItems",
+        "type": "guideText",
         "name": "Itens Iniciais Recomendados",
         "description": "Relíquia Sagrada \n Uma Arma com Munição ou Alcance \n Armadura Leve"
       }
@@ -529,212 +656,348 @@
   },
   {
     "id": "conditions",
+    "type": "title",
     "title": "Condições",
     "list": [
       {
         "id": "immobilized",
+        "type": "condition",
         "name": "Imobilizado",
         "icon": "✕",
         "description": "A criatura não pode se Mover ↪."
       },
       {
         "id": "isolated",
+        "type": "condition",
         "name": "Isolado",
         "icon": "◻",
         "description": "A criatura foi separada do resto do campo e não pode afetar ou alvejar outras criaturas, nem ser alvejada ou afetada por elas."
       },
       {
         "id": "bleeding",
+        "type": "condition",
         "name": "Sangrando",
         "icon": "🩸",
         "description": "A criatura está perdendo muito sangue. Ao final de seu turno receberá dano, e este dano não pode ser negado. A condição é encerrada consumindo Suprimentos Médicos."
       },
       {
         "id": "exhausted",
+        "type": "condition",
         "name": "Exausto",
         "icon": "💧",
-        "description": "A criatura faz todos os testes com CA -1 até fazer um Descanso. Essa condição é cumulativa."
+        "description": "A criatura faz todos os testes com [[acc:CA]] -1 até fazer um Descanso. Essa condição é cumulativa."
       },
       {
         "id": "burning",
+        "type": "condition",
         "name": "Incendiado",
         "icon": "🔥",
-        "description": "A criatura está envolta em chamas. A criatura ou um de seus aliados adjacentes pode usar sua ação para apagar as chamas e encerrar essa condição. Enquanto as chamas não forem apagadas, a criatura recebe dano ao final de seu turno."
+        "description": "A criatura está envolta em chamas. A criatura ou um de seus aliados Próximos pode usar sua ação para apagar as chamas e encerrar essa condição. Enquanto as chamas não forem apagadas, a criatura recebe dano ao final de seu turno."
       },
       {
         "id": "frozen",
+        "type": "condition",
         "name": "Congelado",
         "icon": "❄",
         "description": "A criatura está coberta por uma fina camada de gelo. Não pode usar reações ou se Mover ↪."
       },
       {
         "id": "vulnerable",
+        "type": "condition",
         "name": "Vulnerável",
-        "description": "Ataques ⚔ contra a criatura tem CA +1. A criatura tem CA -1 nas rolagens de Defesa ⛨."
+        "description": "Ataques ⚔ contra a criatura tem [[acc:CA]] +1. A criatura tem [[acc:CA]] -1 nas rolagens de [[defend:Defesa]]."
       },
       {
         "id": "poisoned",
+        "type": "condition",
         "name": "Envenenado",
         "icon": "☠",
-        "description": "Um veneno letal está afetando a criatura. No início de cada um de seus turnos, ela deve rolar Espírito com DIF igual a potência da toxina. Caso falhe, recebe dano. A condição é encerrada quando a criatura passa nesse teste, ou usa Suprimentos Médicos."
+        "description": "Um veneno letal está afetando a criatura. No início de cada um de seus turnos, ela deve rolar [[spirit:Espírito]] contra a potência da toxina. Caso falhe, recebe dano. A condição é encerrada quando a criatura passa nesse teste, ou usa Suprimentos Médicos."
       },
       {
         "id": "intoxicated",
+        "type": "condition",
         "name": "Intoxicado",
         "icon": "☠",
-        "description": "Uma substância tóxica está afetando os sentidos da criatura. No início de cada um de seus turnos, ela deve rolar Espírito com DIF igual a potência da toxina. Caso falhe, todos os testes da criatura tem CA -1. A condição é encerrada quando a criatura passa nesse teste, ou usa Suprimentos Médicos."
+        "description": "Uma substância tóxica está afetando os sentidos da criatura. No início de cada um de seus turnos, ela deve rolar [[spirit:Espírito]] contra a potência da toxina. Caso falhe, todos os testes da criatura tem [[acc:CA]] -1. A condição é encerrada quando a criatura passa nesse teste, ou usa Suprimentos Médicos."
       },
       {
         "id": "wounded",
+        "type": "condition",
         "name": "Ferido",
-        "description": "A criatura tem CA -1 nas rolagens e se for ferida novamente, recebe dano. A condição é encerrada usando Suprimentos Médicos ou após dormir por 8 horas."
+        "description": "A criatura tem [[acc:CA]] -1 nas rolagens e se for ferida novamente, recebe dano. A condição é encerrada usando Suprimentos Médicos ou após dormir por 8 horas."
       },
       {
         "id": "unconscious",
+        "type": "condition",
         "name": "Inconsciente",
         "icon": "💤",
-        "description": "A criatura está desacordada. Qualquer Ataque ⚔ contra ela acerta automaticamente."
+        "description": "A criatura está desacordada, não fica ciente de outras criaturas e não pode usar Ações ou Reações."
       },
       {
         "id": "nearDeath",
+        "type": "condition",
         "name": "Beira da Morte",
         "icon": "✝",
-        "description": "A criatura está Inconsciente 💤 e prestes a morrer. Caso não tenha sua Vida ❤ restaurada, o personagem estará Morto ☠ após o fim do combate."
+        "description": "A criatura está Inconsciente 💤 e prestes a morrer. Caso não tenha sua [[life:Vida]] restaurada, o personagem estará [[dead:Morto]] após o fim do combate."
       },
       {
         "id": "dead",
+        "type": "condition",
         "name": "Morto",
         "icon": "☠",
         "description": "Você está morto."
       },
       {
         "id": "undead",
+        "type": "condition",
         "name": "Morto-vivo",
         "icon": "❤",
-        "description": "A criatura voltou à vida de forma incompleta. Ignora qualquer efeito de recuperação de Vida ❤ e qualquer Habilidade que conceda Vida Extra ❤."
+        "description": "A criatura voltou à vida de forma incompleta. Ignora qualquer efeito de recuperação de [[life:Vida]] e qualquer Habilidade que conceda [[extraLife:Vida Extra]]."
       },
       {
         "id": "disarmed",
+        "type": "condition",
         "name": "Desarmado",
         "icon": "✋",
         "description": "Os Ataques ⚔ da criatura não causam dano, apenas podem deixar o alvo Atordoado 💫."
       },
       {
         "id": "stunned",
+        "type": "condition",
         "name": "Atordoado",
         "icon": "💫",
         "description": "Por uma rodada, a criatura tem CA -1 nas rolagens. Ataques ⚔ e Defesas ⛨ contra ela tem CA +1. Se a criatura for atordoada novamente, fica Desnorteada 💫."
       },
       {
         "id": "dazed",
+        "type": "condition",
         "name": "Desnorteado",
         "icon": "💫",
         "description": "Por uma rodada, a criatura tem CA -2 nas rolagens. Ataques ⚔ e Defesas ⛨ contra ela tem CA +2. Se a criatura for atordoada novamente, fica Inconsciente 💤."
       },
       {
         "id": "paralyzed",
+        "type": "condition",
         "name": "Paralisado",
         "description": "A criatura está completamente imóvel e não tem ações ou reações."
       },
       {
         "id": "surprised",
+        "type": "condition",
         "name": "Surpreso",
         "description": "A criatura não tem reações."
       },
       {
         "id": "ofuscated",
+        "type": "condition",
         "name": "Ofuscado",
         "description": "Para esta criatura, outras criaturas que não estão Próximas ficam Ocultas."
       },
       {
         "id": "close",
+        "type": "condition",
         "name": "Pròximo",
-        "description": "A criatura está em uma linha adjacente à sua."
+        "description": "Uma criatura está próxima em relação a outra quando ocupam a mesma Linha ou Linhas adjascentes."
       },
       {
         "id": "blind",
+        "type": "condition",
         "name": "Cego",
         "description": "Para esta criatura, outras criaturas ficam Ocultas."
       },
       {
         "id": "hidden",
+        "type": "condition",
         "name": "Escondida",
-        "description": "A criatura não pode ser alvejada e sua posição no campo é desconhecida para inimigos. Ao fazer uma Ação ou Reação, seus Inimigos ficam Surpresos. Ser atingido ou interagir com outra criatura com uma Ação ou Reação interrompe essa condição."
+        "description": "A criatura não pode ser alvejada e sua posição no campo é desconhecida para [[enemy:Inimigos]]. Ao fazer uma Ação ou Reação, seus [[enemy:Inimigos]] ficam Surpresos. Ser atingido ou interagir com outra criatura com uma Ação ou Reação interrompe essa condição."
       },
       {
         "id": "invisible",
+        "type": "condition",
         "name": "Invisível",
         "description": "A criatura pode ficar Oculta ao final de seu turno."
       },
       {
         "id": "incorporeal",
+        "type": "condition",
         "name": "Incorpórea",
         "description": "Esta criatura não pode ser afetada físicamente por Ataques, Ações ou Reações."
       },
       {
         "id": "transformed",
+        "type": "condition",
         "name": "Transformado",
         "icon": "🐑",
         "description": "A criatura foi transformada em um animal inofensivo e não tem acesso às suas habilidades."
       },
       {
         "id": "frightened",
+        "type": "condition",
         "name": "Amedrontado",
         "icon": "👻",
         "description": "A criatura não pode se aproximar voluntariamente de quem o amedrontou e tem CA -1 enquanto puder ver a fonte de seu medo."
       },
       {
         "id": "confused",
+        "type": "condition",
         "name": "Confuso",
         "icon": "❓",
-        "description": "A criatura não consegue distinguir aliados ou inimigos. Seus Ataques ⚔ têm 50% de chance de ter seu aliado mais próximo como alvo."
+        "description": "A criatura não consegue distinguir aliados ou Inimigos. Seus Ataques ⚔ têm 50% de chance de ter seu aliado mais próximo como alvo."
       },
       {
         "id": "captivated",
+        "type": "condition",
         "name": "Cativado",
         "icon": "❤",
         "description": "A criatura acredita ser aliada de quem o cativou."
       },
       {
         "id": "controlled",
+        "type": "condition",
         "name": "Controlado",
         "description": "A criatura deve agir seguindo as ordens de quem a controla."
       },
       {
         "id": "pacified",
+        "type": "condition",
         "name": "Pacificado",
         "icon": "☮",
         "description": "A criatura é incapaz de fazer Ataques ⚔ e enxerga todos ao seu redor como aliados."
       },
       {
         "id": "sealed",
+        "type": "condition",
         "name": "Selado",
         "icon": "🔒",
         "description": "A criatura não pode usar Magia ou fazer Ataques Mágicos."
       },
       {
         "id": "karma",
+        "type": "condition",
         "name": "Karma Acumulado",
         "icon": "☸",
         "description": "A criatura escapou da morte. Um ponto de Karma é acumulado cada vez que uma criatura volta dos mortos."
       },
       {
         "id": "hungry",
+        "type": "condition",
         "name": "Faminto",
         "icon": "🍗",
         "description": "A criatura não come a muito tempo. Uma vez por dia, Role Resistência com DIF igual ao número de dias desde que a criatura adquiriu essa condição. Caso falhe, todos os testes da criatura tem CA -1 até a próxima refeição."
       },
       {
         "id": "withering",
+        "type": "condition",
         "name": "Definhando",
         "icon": "💀",
         "description": "A criatura está morrendo lentamente, ficando Inconsciente 💤 e morrerá em 4d6 horas."
       },
       {
         "id": "flying",
+        "type": "condition",
         "name": "Voando",
         "icon": "🐦",
         "description": "Enquanto voa, a criatura só pode ser alvejada por ataques mágicos ou por Ataques ⚔ de Alcance ⌾ 3."
+      }
+    ]
+  },
+  {
+    "id": "terminology",
+    "type": "title",
+    "title": "Terminologia",
+    "list": [
+      {
+        "id": "d6",
+        "type": "guideText",
+        "name": "d6",
+        "description": "Dado de 6 lados."
+      },
+      {
+        "id": "life",
+        "type": "guideText",
+        "name": "Vida",
+        "icon": "❤",
+        "description": "Toda criatura tem apenas uma. Ao receber dano, esta vida é perdida e a criatura fica à [[nearDeath:Beira da Morte]]."
+      },
+      {
+        "id": "extraLife",
+        "type": "guideText",
+        "name": "Vida Extra",
+        "icon": "❤",
+        "description": "Algumas Habilidades concedem Vida Extra. Ao receber dano, as Vidas Extras são perdidas primeiro, antes da [[life:Vida]]."
+      },
+      {
+        "id": "magic",
+        "type": "guideText",
+        "name": "Magia",
+        "description": "[[magicAttack:Ataques Mágicos]] e outras Habilidades que conjuram efeitos que desafiam as leis naturais."
+      },
+      {
+        "id": "creature",
+        "type": "guideText",
+        "name": "Criatura",
+        "description": "Seres no mundo do jogo, como Jogadores e Inimigos."
+      },
+      {
+        "id": "player",
+        "type": "guideText",
+        "name": "Jogador",
+        "description": "Personagem que representa uma pessoa que está jogando."
+      },
+      {
+        "id": "ally",
+        "type": "guideText",
+        "name": "Aliado",
+        "description": "Criaturas amigáveis que voluntariamente fazem parte do mesmo grupo são consideradas aliadas."
+      },
+      {
+        "id": "enemy",
+        "type": "guideText",
+        "name": "Inimigo",
+        "description": "Qualquer criatura hostil aos jogadores e capaz de matá-los."
+      },
+      {
+        "id": "trap",
+        "type": "guideText",
+        "name": "Armadilha",
+        "description": "Obstáculos para atrapalhar o progresso dos jogadores, impôr desvantagens e até ferí-los diretamente. \n ex: Uma matilha de lobos comuns, Um ninho de vespas, uma estátua encantada para cuspir fogo."
+      },
+      {
+        "id": "lackey",
+        "type": "guideText",
+        "name": "Lacaio",
+        "description": " É o tipo de Inimigo mais comum. Geralmente são mais fracos e encontrados em maior número que os jogadores. Por padrão, são Inimigos que possuem apenas uma habilidade. \n ex: Goblins, Aprendiz de Feiticeiro, Kobolds, Eis que leto."
+      },
+      {
+        "id": "rival",
+        "type": "guideText",
+        "name": "Rival",
+        "description": "Um Inimigo com poder para desafiar um Jogador. Podem ser encontrados em grupos ou liderando Capangas. Possuem duas Habilidades. \n ex: Orc, Necromante, Leão, Espectro."
+      },
+      {
+        "id": "boss",
+        "type": "guideText",
+        "name": "Chefe",
+        "description": "Inimigos mais poderosos e raramente encontrados em grupo. Possuem três habilidades. Chefes geralmente são o desafio final de um Covil. \n ex: Golem, Troll, Arquimago, Banshee."
+      },
+      {
+        "id": "colossus",
+        "type": "guideText",
+        "name": "Colosso",
+        "description": "Inimigos épicos, cuja influência se estende além do covil que habitam. Colossos são Inimigos únicos compostos por múltiplas partes com habilidades independentes. \n ex: Uma Congregação de Bruxas, Dragões (Cabeça, Corpo, Asas e Cauda), Observadores (Corpo + vários Olhos Extras), Kaijus (Cabeça, Braços e Pernas)."
+      },
+      {
+        "id": "frontLine",
+        "type": "guideText",
+        "name": "Linha de Frente",
+        "description": "A área do campo em contato direto com o campo oposto. Criaturas posicionadas aqui ficam Próximas de criaturas posicionadas na Linha de Frente do Campo oposto."
+      },
+      {
+        "id": "backLine",
+        "type": "guideText",
+        "name": "Linha de Fundo",
+        "description": "A área do campo mais distante do campo oposto. Criaturas posicionadas aqui não podem fazer [[attack:Ataques]] contra alvos no campo oposto, exceto quando uma habilidade aumenta seu Alcance ⌾."
       }
     ]
   }
