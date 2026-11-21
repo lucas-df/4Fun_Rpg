@@ -3,6 +3,11 @@
  * Responsável por persistência, CRUD e importação/exportação
  */
 
+
+
+
+
+
 /** Habilidade de um monstro */
 interface Habilidade {
   name: string;
