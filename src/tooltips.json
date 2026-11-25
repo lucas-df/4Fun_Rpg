@@ -1,7 +1,7 @@
 [
   {
     "id": "system",
-    "type": "title",
+    "type": "section",
     "title": "O que esperar do Sistema?",
     "list": [
       {
@@ -62,7 +62,7 @@
   },
   {
     "id": "characters",
-    "type": "title",
+    "type": "section",
     "title": "Conceitos Básicos: Personagens",
     "list": [
       {
@@ -129,7 +129,7 @@
   },
   {
     "id": "rolls",
-    "type": "title",
+    "type": "section",
     "title": "Regras: Testes e Rolagens",
     "list": [
       {
@@ -226,7 +226,7 @@
   },
   {
     "id": "basicCombat",
-    "type": "title",
+    "type": "section",
     "title": "Regras: O Combate",
     "list": [
       {
@@ -310,7 +310,7 @@
   },
   {
     "id": "exploration",
-    "type": "title",
+    "type": "section",
     "title": "Exploração",
     "list": [
       {
@@ -377,7 +377,7 @@
   },
   {
     "id": "skillTypes",
-    "type": "title",
+    "type": "section",
     "title": "Tipos de Habilidades",
     "list": [
       {
@@ -432,7 +432,7 @@
   },
   {
     "id": "characterCreation",
-    "type": "title",
+    "type": "section",
     "title": "Passo-a-Passo: Criação de Personagem",
     "list": [
       {
@@ -481,7 +481,7 @@
   },
   {
     "id": "species",
-    "type": "title",
+    "type": "section",
     "title": "Espécies",
     "list": [
       {
@@ -545,7 +545,7 @@
   },
   {
     "id": "assassin",
-    "type": "title",
+    "type": "section",
     "title": "Função: Assassino",
     "list": [
       {
@@ -571,7 +571,7 @@
   },
   {
     "id": "bulwark",
-    "type": "title",
+    "type": "section",
     "title": "Função: Baluarte",
     "list": [
       {
@@ -597,7 +597,7 @@
   },
   {
     "id": "conjurer",
-    "type": "title",
+    "type": "section",
     "title": "Função: Conjurador",
     "list": [
       {
@@ -630,7 +630,7 @@
   },
   {
     "id": "devout",
-    "type": "title",
+    "type": "section",
     "title": "Função: Devoto",
     "list": [
       {
@@ -656,7 +656,7 @@
   },
   {
     "id": "conditions",
-    "type": "title",
+    "type": "section",
     "title": "Condições",
     "list": [
       {
@@ -904,7 +904,7 @@
   },
   {
     "id": "terminology",
-    "type": "title",
+    "type": "section",
     "title": "Terminologia",
     "list": [
       {
