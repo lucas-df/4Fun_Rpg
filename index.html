@@ -10,202 +10,28 @@
     <h1>RPG 4 FUN</h1>
 
     <div class="tabs">
-      <button class="tab active" data-tab="guide">Regras</button>
-      <button class="tab" data-tab="create">Criar Monstro</button>
+      <button class="tab active" data-tab="guide">Guia de Regras</button>
+      <button class="tab active" data-tab="guide">Ferramentas DEV</button>
+      <!--button class="tab" data-tab="create">Fábrica de Monstros</button>
       <button class="tab" data-tab="bestiary">Bestiário</button>
-      <button class="tab" data-tab="treasure">Tesouros</button>
+      <button class="tab" data-tab="treasure">Tesouros</button-->
     </div>
 
-    <div id="guide" class="tab-content active">
-      <div class="guide">
-        <h2>Guia de Regras</h2>
-        <p class="guide-intro">
-          Escolha uma categoria para ler os tópicos em sequência, ou use os
-          botões para ir direto a um tópico.
-        </p>
-        <div
-          id="guideCategories"
-          class="guide-buttons"
-          role="group"
-          aria-label="Categorias de regras"
-        ></div>
-        <div id="guideContent" data-tooltips></div>
-      </div>
-    </div>
+    <!-- Os fragmentos de partials/ são inseridos aqui pelo UIModule.showTab -->
+    <div id="content"></div>
 
-    <div id="create" class="tab-content">
-      <form id="monsterForm">
-        <div class="form-group">
-          <label for="name">Nome:</label>
-          <input type="text" id="name" required />
-        </div>
-
-        <div class="form-group">
-          <label for="type">Tipo:</label>
-          <select id="type" required>
-            <option value="">Selecione...</option>
-            <option value="Armadilha">Armadilha</option>
-            <option value="Lacaio">Lacaio</option>
-            <option value="Oponente">Oponente</option>
-            <option value="Chefe">Chefe</option>
-            <option value="Colosso">Colosso</option>
-          </select>
-        </div>
-
-        <div>
-          <div class="form-group" style="width: 20%; float: left">
-            <label for="attack"
-              ><span data-tooltip="attack">Ataque</span>:</label
-            >
-            <input type="number" id="attack" min="0" required />
-          </div>
-
-          <div
-            class="form-group"
-            style="width: 20%; float: left; margin-left: 10%"
-          >
-            <label for="defense"
-              ><span data-tooltip="defense">Defesa</span>:</label
-            >
-            <input type="number" id="defense" min="0" required />
-          </div>
-          <div
-            class="form-group"
-            style="
-              width: 15%;
-              float: right;
-              margin-left: 10%;
-              margin-right: 15%;
-            "
-          >
-            <label for="diff">Dificuldade:</label>
-            <input type="number" id="diff" readonly />
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="description">Descrição:</label>
-          <textarea id="description" rows="4"></textarea>
-        </div>
-
-        <div class="form-group">
-          <label for="strategy">Estratégia:</label>
-          <textarea id="strategy" rows="2"></textarea>
-        </div>
-
-        <div id="skillsContainer"></div>
-
-        <button type="submit">Criar Monstro</button>
-      </form>
-
-      <div id="result" data-tooltips></div>
-    </div>
-
-    <div id="bestiary" class="tab-content">
-      <div class="monster-actions" style="margin-bottom: 20px">
-        <button class="secondary" data-action="importar">Importar JSON</button>
-        <input
-          type="file"
-          id="importFile"
-          accept="application/json"
-          style="display: none"
-        />
-      </div>
-
-      <div class="bestiary">
-        <h2>Bestiário</h2>
-        <div class="monster-actions" style="margin-bottom: 15px">
-          <button class="secondary" data-action="exportar">
-            Exportar JSON
-          </button>
-          <button class="danger" data-action="limpar">Limpar Bestiário</button>
-        </div>
-        <div id="bestiaryList" data-tooltips></div>
-      </div>
-    </div>
-
-    <div id="treasure" class="tab-content">
-      <div class="bestiary">
-        <h2>Gerador de Tesouros</h2>
-        <p>Funcionalidade em desenvolvimento.</p>
-
-        <div>
-          <div class="form-group" style="width: 48%; float: left">
-            <label for="covilDificuldade">Dificuldade do Covil:</label>
-            <input
-              type="number"
-              id="covilDificuldade"
-              min="1"
-              max="5"
-              value="1"
-            />
-          </div>
-
-          <div class="form-group" style="width: 48%; float: right">
-            <label for="covilAndar">Andar do Covil:</label>
-            <input type="number" id="covilAndar" min="1" max="5" value="1" />
-          </div>
-        </div>
-
-        <div class="form-group" style="margin-top: 20px">
-          <label>Tipo de Geração:</label>
-          <div class="toggle-switch">
-            <button
-              class="tab active"
-              id="civilizadoTab"
-              data-gen="civilizado"
-              onclick="TreasureDataModule.setGenerationType('civilizado')"
-            >
-              Área Civilizada
-            </button>
-            <button
-              class="tab"
-              id="selvagemTab"
-              data-gen="selvagem"
-              onclick="TreasureDataModule.setGenerationType('selvagem')"
-            >
-              Selvagem
-            </button>
-          </div>
-        </div>
-
-        <button
-          class="secondary"
-          id="gerarTesouroBtn"
-          onclick="
-            TreasureDataModule.gerar().catch((err) => console.error(err))
-          "
-          disabled
-        >
-          Gerar Tesouro
-        </button>
-
-        <div
-          id="treasureResult"
-          class="treasure-result"
-          data-tooltips
-          style="
-            display: none;
-            margin-top: 15px;
-            padding: 15px;
-            background-color: #fff3cd;
-            border: 1px solid #ffeaa7;
-            border-radius: 4px;
-            font-weight: bold;
-          "
-        ></div>
-      </div>
-    </div>
-
-    <script src="js/bestiario.js"></script>
-    <script src="js/ui.js"></script>
+    <script src="dist/main.js"></script>
+    <script type="module" src="dist/js/guide.js"></script>
+    <!--script src="js/ui.js"></script>
     <script src="js/treasure.js"></script>
     <script src="js/guide.js"></script>
-    <script src="js/tooltip.js"></script>
+    <script src="js/tooltip.js"></script-->
     <script>
-      UIModule.init();
-      GuideModule.init();
-      TooltipModule.init();
+      // O TooltipModule vem primeiro: seu MutationObserver prepara os fragmentos assim que são inseridos.
+      //TooltipModule.init();
+      GuideModule.init()
+      //UIModule.init();
+
     </script>
   </body>
 </html>

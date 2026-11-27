@@ -1,0 +1,62 @@
+<div class="bestiary">
+  <h2>Gerador de Tesouros</h2>
+  <p>Funcionalidade em desenvolvimento.</p>
+
+  <div>
+    <div class="form-group" style="width: 48%; float: left">
+      <label for="covilDificuldade">Dificuldade do Covil:</label>
+      <input type="number" id="covilDificuldade" min="1" max="5" value="1" />
+    </div>
+
+    <div class="form-group" style="width: 48%; float: right">
+      <label for="covilAndar">Andar do Covil:</label>
+      <input type="number" id="covilAndar" min="1" max="5" value="1" />
+    </div>
+  </div>
+
+  <div class="form-group" style="margin-top: 20px">
+    <label>Tipo de Geração:</label>
+    <div class="toggle-switch">
+      <button
+        class="tab active"
+        id="civilizadoTab"
+        data-gen="civilizado"
+        onclick="TreasureDataModule.setGenerationType('civilizado')"
+      >
+        Área Civilizada
+      </button>
+      <button
+        class="tab"
+        id="selvagemTab"
+        data-gen="selvagem"
+        onclick="TreasureDataModule.setGenerationType('selvagem')"
+      >
+        Selvagem
+      </button>
+    </div>
+  </div>
+
+  <button
+    class="secondary"
+    id="gerarTesouroBtn"
+    onclick="TreasureDataModule.gerar().catch((err) => console.error(err))"
+    disabled
+  >
+    Gerar Tesouro
+  </button>
+
+  <div
+    id="treasureResult"
+    class="treasure-result"
+    data-tooltips
+    style="
+      display: none;
+      margin-top: 15px;
+      padding: 15px;
+      background-color: #fff3cd;
+      border: 1px solid #ffeaa7;
+      border-radius: 4px;
+      font-weight: bold;
+    "
+  ></div>
+</div>

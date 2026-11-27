@@ -1,0 +1,18 @@
+<div class="monster-actions" style="margin-bottom: 20px">
+  <button class="secondary" data-action="importar">Importar JSON</button>
+  <input
+    type="file"
+    id="importFile"
+    accept="application/json"
+    style="display: none"
+  />
+</div>
+
+<div class="bestiary">
+  <h2>Bestiário</h2>
+  <div class="monster-actions" style="margin-bottom: 15px">
+    <button class="secondary" data-action="exportar">Exportar JSON</button>
+    <button class="danger" data-action="limpar">Limpar Bestiário</button>
+  </div>
+  <div id="bestiaryList" data-tooltips></div>
+</div>

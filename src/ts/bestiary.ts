@@ -3,20 +3,37 @@
  * Responsável por persistência, CRUD e importação/exportação
  */
 
+import { z } from "zod";
+import {loadFile, localSave, localLoad} from "./data_handler.js"
 
+const skillSchema = z.object({
+    skillName: z.string(),
+    skillEffect: z.string()
+});
 
+const monsterSchema = z.object({
+    id: z.string(),
+    category: z.string(),
+    diff: z.number(),
+    attack: z.string(),
+    defense: z.string(),
+    flavor: z.string().optional,
+    strategy: z.string(),
+    skills: z.array(skillSchema).max(3)
+});
 
-
+type Monster = z.infer<typeof monsterSchema>;
 
 /** Habilidade de um monstro */
-interface Habilidade {
+interface Skill {
   name: string;
-  type: string; // '[Ação]' (ofensiva), '[Reação]' (defensiva) ou '' (não informado)
+  tags: string; 
   effect: string;
+  target: string
 }
 
 /** Monstro do bestiário (os valores vêm de campos de formulário, por isso são texto) */
-interface Monstro {
+interface Monster {
   name: string;
   type: string; // Armadilha, Lacaio, Oponente, Chefe ou Colosso
   diff: string;
@@ -31,9 +48,8 @@ const BestiarioDataModule = {
   /**
    * Carrega todos os monstros do localStorage
    */
-  carregar(): Monstro[] {
-    const data = localStorage.getItem("monsters");
-    return data ? (JSON.parse(data) as Monstro[]) : [];
+  carregar() {
+    return localLoad("monsters", monsterSchema)
   },
 
   /**

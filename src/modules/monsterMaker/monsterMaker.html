@@ -1,0 +1,53 @@
+<form id="monsterForm">
+  <div class="form-group">
+    <label for="name">Nome:</label>
+    <input type="text" id="name" required />
+  </div>
+
+  <div class="form-group">
+    <label for="type">Tipo:</label>
+    <select id="type" required>
+      <option value="">Selecione...</option>
+      <option value="Armadilha">Armadilha</option>
+      <option value="Lacaio">Lacaio</option>
+      <option value="Oponente">Oponente</option>
+      <option value="Chefe">Chefe</option>
+      <option value="Colosso">Colosso</option>
+    </select>
+  </div>
+
+  <div>
+    <div class="form-group" style="width: 20%; float: left">
+      <label for="attack"><span data-tooltip="attack">Ataque</span>:</label>
+      <input type="number" id="attack" min="0" required />
+    </div>
+
+    <div class="form-group" style="width: 20%; float: left; margin-left: 10%">
+      <label for="defense"><span data-tooltip="defense">Defesa</span>:</label>
+      <input type="number" id="defense" min="0" required />
+    </div>
+    <div
+      class="form-group"
+      style="width: 15%; float: right; margin-left: 10%; margin-right: 15%"
+    >
+      <label for="diff">Dificuldade:</label>
+      <input type="number" id="diff" readonly />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Descrição:</label>
+    <textarea id="description" rows="4"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="strategy">Estratégia:</label>
+    <textarea id="strategy" rows="2"></textarea>
+  </div>
+
+  <div id="skillsContainer"></div>
+
+  <button type="submit">Criar Monstro</button>
+</form>
+
+<div id="result" data-tooltips></div>
