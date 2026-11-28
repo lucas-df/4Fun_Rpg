@@ -4,21 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RPG 4 FUN</title>
-    <link rel="stylesheet" href="src/style.css">
+    <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
     <h1>RPG 4 FUN</h1>
 
-    <div class="tabs">
-      <button class="tab active" data-tab="guide">Guia de Regras</button>
-      <button class="tab active" data-tab="guide">Ferramentas DEV</button>
-      <!--button class="tab" data-tab="create">Fábrica de Monstros</button>
-      <button class="tab" data-tab="bestiary">Bestiário</button>
-      <button class="tab" data-tab="treasure">Tesouros</button-->
-    </div>
+    <nav class="sidebar fechada" id="sidebar" aria-label="Menu principal">
+      <button
+        type="button"
+        class="toggle"
+        id="toggle"
+        aria-expanded="true"
+        aria-label="Expandir menu"
+      >
+        ☰
+      </button>
+      <button
+        type="button"
+        class="item ativo"
+        data-alvo="guide"
+        aria-current="true"
+      >
+        <span class="icone">📚</span><span class="texto">Guia de Regras</span>
+      </button>
+      <button type="button" class="item" data-alvo="sobre">
+        <span class="icone">ℹ️</span><span class="texto">Ferramentas de Criação</span>
+      </button>
+    </nav>
 
-    <!-- Os fragmentos de partials/ são inseridos aqui pelo UIModule.showTab -->
-    <div id="content"></div>
+
+    
+    <main class="conteudo">
+      <!-- Os fragmentos de partials/ são inseridos aqui pelo view. -->
+      <div id="content"></div>
+    </main>
 
     <!--script type="module" src="dist/js/main.js"></script-->
     <script type="module" src="src/modules/main.ts"></script>

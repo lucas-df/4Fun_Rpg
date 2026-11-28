@@ -1,9 +1,26 @@
-<section class="guide">
-  <h2 data-field="title">
-    Guia de Regras
-  </h2>
-  <p data-field="text">
-    Escolha uma categoria para ler os tópicos em sequência, ou use os
-    botões para ir direto a um tópico.
+
+    <!-- Cabeçalho do módulo atual. Não muda -->
+<div class="section_header">
+  <h2>Guia de Regras</h2>
+  <p>
+    Escolha uma categoria para ler os tópicos em sequência, ou use os botões
+    para ir direto a um tópico.
   </p>
+</div>
+
+<section class="content">
+<!-- Abas para navegação no Guia de regras -->
+<div class="guide tabs">
+  <button class="tab active" data-tab="guide">Btn</button>
+  <button class="tab" data-tab="guide">Btn</button>
+</div>
+
+<!-- Renderização da Seção selecionada com tópicos -->
+<section class="current_section">
+  <div class="topic">
+    <h2 data-field="title"></h2>
+    <p data-field="text"></p>
+  </div>
 </section>
+</section>
+
