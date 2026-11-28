@@ -1,5 +1,4 @@
-import { z } from "zod";
-import { GuideView, type Topic } from "./guideView.js";
+/*import { z } from "zod";
 
 
 const guideSchema = z.object({
@@ -20,7 +19,49 @@ const sectionSchema = z.object({
 });
 
 export type Section = z.infer<typeof sectionSchema>;
+*/
 
+
+
+
+import { renderPartialPage } from "../view.js";
+
+// Formato do conteúdo para exibição no guia. As chaves devem coincidir
+// com os valores dos atributos data-field do guide.html.
+export type GuideContent = {
+  title: string;
+  text: string;
+}
+
+const defaultContent: GuideContent = {
+  title: "Título genérico",
+  text: "Texto genérico de exemplo para testar a exibição do conteúdo.",
+};
+
+export const GuideModule = {
+  partial: "src/modules/guide/guide.html",
+  content: defaultContent,
+
+  async init(): Promise<void> {
+    // Fluxo: 1) carrega o partial em #content  2) preenche os campos data-field
+    const target = await renderPartialPage(this.partial);
+     
+    this.fillContent(target)
+  },
+
+    
+  fillContent(target: HTMLElement, content: Record<string, string> =  defaultContent ) {
+    // Para cada elemento com data-field="x", troca o texto por content["x"].
+  // Campos sem valor correspondente em content ficam com o texto original do HTML.
+    target.querySelectorAll<HTMLElement>("[data-field]").forEach((el) => {
+      const value = content[el.dataset.field ?? ""];
+      if (value !== undefined) el.textContent = value; // textContent evita injeção de HTML
+    })
+    console.log("Conteúdo injetado") 
+  }
+};
+
+/*
 export const GuideModule = {
   sections: [] as Section[],
   topics: [] as Topic[],
@@ -29,7 +70,7 @@ export const GuideModule = {
   updating: false,
 
   /** Loads the guide, shows the categories and tracks page scrolling */
-  async init(url = 'guide.json'): Promise<void> {
+/* async init(url = 'guide.json'): Promise<void> {
     try {
       const response = await fetch(url);
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -52,7 +93,7 @@ export const GuideModule = {
   },
 
   /** Shows all topics of the category on a single page, with button navigation */
-  openCategory(category: Section): void {
+/*openCategory(category: Section): void {
     const { nav, topics } = GuideView.renderPage(category, (topic) => this.goToTopic(topic));
     this.topics = topics;
 
@@ -78,7 +119,7 @@ export const GuideModule = {
   },
 
   /** Batches scroll events into one update per frame */
-  onScroll(): void {
+/* onScroll(): void {
     if (this.updating) return;
     this.updating = true;
     requestAnimationFrame(() => {
@@ -90,4 +131,4 @@ export const GuideModule = {
   updateCurrentTopic(): void {
     this.markTopic(GuideView.topicInReading(this.topics));
   },
-};
+};*/
